@@ -6,8 +6,8 @@ export default function Header({ activePage, goToPage, mobileOpen, setMobileOpen
     <header className="site-header">
       <div className="header-rail" aria-label="Studio notice">
         <span>Independent web design for local businesses</span>
-        <button type="button" onClick={() => goToPage('pricing')}>
-          Website builds from €450
+        <button type="button" onClick={() => goToPage('contact')}>
+          Free website audit available
         </button>
       </div>
 
@@ -33,7 +33,7 @@ export default function Header({ activePage, goToPage, mobileOpen, setMobileOpen
 
         <div className="header-actions">
           <button className="availability-pill" onClick={() => goToPage('contact')}>
-            <span className="pulse-dot" /> New projects open
+            <span className="pulse-dot" /> Free audit
           </button>
 
           <button className="header-cta" onClick={() => goToPage('contact')}>
@@ -65,7 +65,7 @@ export default function Header({ activePage, goToPage, mobileOpen, setMobileOpen
             ))}
 
             <button className="mobile-quote-link" onClick={() => goToPage('contact')}>
-              Request a website quote
+              Request a free website audit
             </button>
           </div>
         </div>

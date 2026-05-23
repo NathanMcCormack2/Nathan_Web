@@ -6,8 +6,8 @@ export default function ContactPage() {
     <>
       <PageIntro
         eyebrow="Contact"
-        title="Start with a simple website quote."
-        text="This form is front-end only for now. Connect it to Formspree, Netlify Forms, EmailJS, a FastAPI backend or your preferred contact method before launch."
+        title="Start with a quote or a free website audit."
+        text="Send your business details, current website or social page, and what you want improved. I can review what is already online before recommending a full build."
       />
 
       <section className="container contact-layout">
@@ -33,7 +33,17 @@ export default function ContactPage() {
             </label>
           </div>
           <label>
-            What kind of website do you need?
+            What do you want to start with?
+            <select defaultValue="">
+              <option value="" disabled>Choose one</option>
+              <option>Free website audit</option>
+              <option>New website quote</option>
+              <option>Redesign my current website</option>
+              <option>Monthly maintenance / updates</option>
+            </select>
+          </label>
+          <label>
+            What kind of business is it?
             <select defaultValue="">
               <option value="" disabled>Choose one</option>
               <option>Restaurant / takeaway</option>
@@ -43,8 +53,12 @@ export default function ContactPage() {
             </select>
           </label>
           <label>
+            Current website, Google listing or social page
+            <input type="text" placeholder="Paste a link if you have one" />
+          </label>
+          <label>
             Tell me what you need
-            <textarea rows="7" placeholder="Tell me about the business, what pages you need, and whether you already have photos/text." />
+            <textarea rows="7" placeholder="Tell me about the business, what is not working online, and whether you already have photos/text." />
           </label>
           <button className="btn btn-primary" type="submit">Send enquiry <ArrowRight size={18} /></button>
           <p className="form-note">Replace this demo form with a working form handler before publishing.</p>
@@ -54,10 +68,10 @@ export default function ContactPage() {
           <p className="eyebrow dark">What happens next</p>
           <h2>A short, clear process.</h2>
           <ul>
-            <li><CheckCircle2 /> I review what the business needs online.</li>
+            <li><CheckCircle2 /> I review what the business currently has online.</li>
+            <li><CheckCircle2 /> I identify the main customer-facing issues.</li>
             <li><CheckCircle2 /> We agree pages, content and rough scope.</li>
-            <li><CheckCircle2 /> I provide a clear starting quote.</li>
-            <li><CheckCircle2 /> If approved, I build and launch the site.</li>
+            <li><CheckCircle2 /> I provide a clear starting quote if a build makes sense.</li>
           </ul>
           <div className="direct-contact-box">
             <div><Mail size={18} /> your-email@example.com</div>

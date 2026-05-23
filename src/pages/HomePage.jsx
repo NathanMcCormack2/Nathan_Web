@@ -69,6 +69,70 @@ export default function HomePage({ goToPage }) {
         </div>
       </section>
 
+      <section className="free-audit-section">
+        <div className="container free-audit-grid">
+          <div className="free-audit-copy">
+            <p className="eyebrow">Free website audit</p>
+            <h2>Before selling you a new site, I can show you what is currently holding yours back.</h2>
+            <p>
+              Send over your current website, Facebook page, Instagram profile or Google listing. I’ll review the main things a customer notices first: trust, mobile layout, contact clarity, menu/services visibility and whether the next step is obvious.
+            </p>
+
+            <div className="audit-proof-list" aria-label="Audit checks">
+              <div><CheckCircle2 size={18} /> Mobile clarity</div>
+              <div><CheckCircle2 size={18} /> Contact path</div>
+              <div><CheckCircle2 size={18} /> Trust signals</div>
+              <div><CheckCircle2 size={18} /> Menu/services visibility</div>
+            </div>
+
+            <button className="btn btn-primary audit-main-cta" onClick={() => goToPage('contact')}>
+              Request a free audit <ArrowRight size={18} />
+            </button>
+          </div>
+
+          <div className="audit-diagnostic-panel" aria-label="Example website audit report">
+            <div className="diagnostic-topline">
+              <span>Audit preview</span>
+              <strong>No obligation</strong>
+            </div>
+
+            <div className="audit-meter-card">
+              <div>
+                <span className="meter-label">Customer friction</span>
+                <strong>High impact fixes</strong>
+              </div>
+              <div className="meter-ring" aria-hidden="true">4</div>
+            </div>
+
+            <div className="diagnostic-stack">
+              <div className="diagnostic-row is-strong">
+                <span>Opening hours</span>
+                <strong>Clear</strong>
+              </div>
+              <div className="diagnostic-row is-warning">
+                <span>Menu / services</span>
+                <strong>Hard to find</strong>
+              </div>
+              <div className="diagnostic-row is-warning">
+                <span>Mobile call button</span>
+                <strong>Missing</strong>
+              </div>
+              <div className="diagnostic-row">
+                <span>First impression</span>
+                <strong>Needs polish</strong>
+              </div>
+            </div>
+
+            <div className="audit-note-card">
+              <Sparkles size={19} />
+              <p>
+                You get a short, plain-English review of what I would improve first — useful even if you do not go ahead with a full website build.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="container section-pad">
         <SectionHeading
           eyebrow="Who I build for"
