@@ -3421,3 +3421,371 @@ select:focus {
     max-width: none;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Care plan page cleanup
+   Fixes plain monthly care area, duplicate bullets, heavy beige block and CTA
+--------------------------------------------------------------------------- */
+
+/* Make the maintenance cards flow better */
+.maintenance-grid {
+  align-items: stretch;
+}
+
+.maintenance-grid .maintenance-card {
+  min-height: 165px;
+  padding: 26px;
+  border: 1px solid rgba(17, 18, 15, 0.13);
+  border-radius: 3px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.08)),
+    rgba(255, 250, 241, 0.86);
+  box-shadow: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.maintenance-grid .maintenance-card::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: var(--corner-cut);
+  height: var(--corner-cut);
+  background: var(--paper);
+  border-left: 1px solid rgba(17, 18, 15, 0.14);
+  border-bottom: 1px solid rgba(17, 18, 15, 0.14);
+  pointer-events: none;
+}
+
+.maintenance-grid .maintenance-card svg {
+  color: var(--forest);
+}
+
+.maintenance-grid .maintenance-card h3 {
+  margin: 18px 0 10px;
+  font-size: 1.25rem;
+  line-height: 1.1;
+}
+
+.maintenance-grid .maintenance-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.62;
+}
+
+/* Minimum care plan section */
+.care-plan-pricing-note {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.2fr);
+  gap: 54px;
+  align-items: start;
+
+  margin: 36px auto 58px;
+  padding: 38px 0;
+
+  border-top: 1px solid rgba(17, 18, 15, 0.14);
+  border-bottom: 1px solid rgba(17, 18, 15, 0.14);
+}
+
+.care-plan-pricing-note .eyebrow {
+  margin-bottom: 14px;
+}
+
+.care-plan-pricing-note h2 {
+  margin: 0;
+  max-width: 500px;
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: clamp(2.1rem, 4vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+}
+
+.care-plan-note-copy {
+  max-width: 720px;
+}
+
+.care-plan-note-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+/* Fix duplicate bullet issue */
+.care-plan-note-copy ul,
+.care-plan-note-copy li {
+  list-style: none;
+}
+
+.care-plan-note-copy ul {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 0;
+  padding: 0;
+}
+
+.care-plan-note-copy li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  color: var(--ink-2);
+  font-size: 0.95rem;
+  font-weight: 850;
+  line-height: 1.45;
+}
+
+.care-plan-note-copy li svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: var(--forest);
+}
+
+/* Why it matters section */
+.care-plan-breakdown,
+.care-plan-breakdown-refined {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.08fr);
+  gap: 54px;
+  align-items: center;
+
+  margin: 0 auto 58px;
+  padding: 42px 44px;
+
+  border: 1px solid rgba(17, 18, 15, 0.16);
+  border-radius: 2px 34px 2px 2px;
+
+  background:
+    radial-gradient(circle at 90% 12%, rgba(169, 133, 79, 0.16), transparent 34%),
+    linear-gradient(135deg, rgba(255, 250, 241, 0.92), rgba(229, 210, 173, 0.58));
+
+  box-shadow: 0 22px 58px rgba(17, 18, 15, 0.08);
+}
+
+.care-plan-breakdown .eyebrow,
+.care-plan-breakdown-refined .eyebrow {
+  color: var(--forest);
+}
+
+.care-plan-breakdown h2,
+.care-plan-breakdown-refined h2 {
+  margin: 12px 0 0;
+  max-width: 520px;
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+}
+
+.care-plan-breakdown > p,
+.care-plan-breakdown-refined > p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+/* Bottom CTA */
+.care-plan-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 34px;
+  align-items: center;
+
+  margin: 0 auto 82px;
+  padding: 34px 0;
+
+  border-top: 1px solid rgba(17, 18, 15, 0.14);
+  border-bottom: 1px solid rgba(17, 18, 15, 0.14);
+}
+
+.care-plan-cta span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--accent-dark);
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.care-plan-cta h2 {
+  max-width: 760px;
+  margin: 0;
+  font-family: "Crimson Text", Georgia, serif;
+  font-size: clamp(2rem, 3.6vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+}
+
+.care-plan-cta .btn {
+  min-width: 190px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .care-plan-pricing-note,
+  .care-plan-breakdown,
+  .care-plan-breakdown-refined,
+  .care-plan-cta {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .care-plan-breakdown,
+  .care-plan-breakdown-refined {
+    padding: 34px 28px;
+  }
+
+  .care-plan-cta .btn {
+    width: fit-content;
+  }
+}
+
+@media (max-width: 620px) {
+  .care-plan-pricing-note {
+    margin-top: 28px;
+    padding: 30px 0;
+  }
+
+  .care-plan-breakdown,
+  .care-plan-breakdown-refined {
+    padding: 28px 22px;
+    margin-bottom: 46px;
+  }
+
+  .care-plan-cta {
+    margin-bottom: 60px;
+  }
+
+  .care-plan-cta .btn {
+    width: 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Homepage serviceFeatures / build quality cards
+   Applies the same clean corner system used by pricing cards
+--------------------------------------------------------------------------- */
+
+.feature-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.feature-mosaic .feature-panel {
+  position: relative;
+  min-height: 205px;
+  padding: 26px;
+  border: 1px solid rgba(17, 18, 15, 0.13);
+  border-radius: 2px 28px 2px 2px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.08)),
+    rgba(255, 250, 241, 0.86);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.feature-mosaic .feature-panel::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: var(--corner-cut);
+  height: var(--corner-cut);
+  background: var(--paper);
+  border-left: 1px solid rgba(17, 18, 15, 0.14);
+  border-bottom: 1px solid rgba(17, 18, 15, 0.14);
+  pointer-events: none;
+}
+
+.feature-mosaic .feature-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--accent), rgba(169, 133, 79, 0.08));
+  opacity: 0.78;
+}
+
+.feature-mosaic .feature-panel:hover {
+  transform: translateY(-5px);
+  border-color: rgba(17, 18, 15, 0.26);
+  box-shadow: 0 18px 42px rgba(17, 18, 15, 0.08);
+}
+
+.feature-mosaic .feature-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 2px 14px 2px 2px;
+  background: var(--forest);
+  color: var(--panel);
+}
+
+.feature-mosaic .feature-index {
+  top: 14px;
+  right: 18px;
+  color: rgba(17, 18, 15, 0.075);
+  font-size: 46px;
+}
+
+.feature-mosaic .feature-panel h3 {
+  margin: 18px 0 10px;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.feature-mosaic .feature-panel p {
+  max-width: 430px;
+  color: var(--muted);
+  line-height: 1.68;
+}
+
+/* Optional: make the first homepage feature feel like the lead card */
+.feature-mosaic .feature-panel:first-child {
+  grid-column: span 2;
+  min-height: 230px;
+  background:
+    radial-gradient(circle at 88% 14%, rgba(169, 133, 79, 0.13), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.08)),
+    var(--panel);
+}
+
+.feature-mosaic .feature-panel:first-child .feature-index {
+  font-size: 62px;
+  right: 24px;
+  top: 18px;
+}
+
+@media (max-width: 980px) {
+  .feature-mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .feature-mosaic .feature-panel:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 680px) {
+  .feature-mosaic {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-mosaic .feature-panel,
+  .feature-mosaic .feature-panel:first-child {
+    grid-column: auto;
+    min-height: 190px;
+  }
+}

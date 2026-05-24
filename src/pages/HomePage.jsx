@@ -142,7 +142,7 @@ export default function HomePage({ goToPage }) {
           {businessTypes.map((item) => {
             const Icon = item.icon;
             return (
-              <article className="business-type-card" key={item.type}>
+              <article className="pricing-card care-feature-card" key={item.type}>
                 <div className="type-icon"><Icon size={24} /></div>
                 <h3>{item.type}</h3>
                 <div className="problem-build">
