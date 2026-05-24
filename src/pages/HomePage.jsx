@@ -10,27 +10,26 @@ export default function HomePage({ goToPage }) {
         <div className="container hero-grid-redesign">
           <div className="hero-copy-block">
             <div className="hero-label-row">
-              <span className="eyebrow">Local business websites</span>
-              <span className="micro-proof">Built with React, CSS, GitHub and care plans</span>
+              <span className="eyebrow">Professional builds · clear pricing · ongoing support</span>
             </div>
-            <h1>Websites that make small businesses look established before customers even walk in.</h1>
+            <h1>Websites that make small businesses look professional before customers even walk in.</h1>
             <p>
-              I build clean, distinctive websites for restaurants, cafés, shops and local services that need more than a Facebook page — without paying agency prices for features they do not need.
+              I design, build and maintain clean websites for restaurants, cafés, shops and local services that need a proper online home — without bloated agency costs.
             </p>
             <div className="hero-actions">
-              <button className="btn btn-primary" onClick={() => goToPage('contact')}>Get a website quote <ArrowRight size={18} /></button>
+              <button className="btn btn-primary" onClick={() => goToPage('contact')}>Get a free website audit <ArrowRight size={18} /></button>
               <button className="btn btn-outline" onClick={() => goToPage('work')}>See example builds</button>
             </div>
           </div>
 
           <div className="audit-board" aria-label="Website audit style preview">
             <div className="audit-header">
-              <span className="pulse-dot" /> Website readiness snapshot
+              <span className="pulse-dot" /> Example readiness audit snapshot
             </div>
             <div className="audit-score-wrap">
               <div className="audit-score">87</div>
               <div>
-                <strong>Customer-ready score</strong>
+                <strong>Customer clarity score</strong>
                 <p>What a finished small-business site should make obvious.</p>
               </div>
             </div>
@@ -38,7 +37,7 @@ export default function HomePage({ goToPage }) {
               <div><CheckCircle2 /> Menu/services visible</div>
               <div><CheckCircle2 /> Tap-to-call working</div>
               <div><CheckCircle2 /> Mobile layout clean</div>
-              <div><CheckCircle2 /> Google Maps path clear</div>
+              <div><CheckCircle2 /> Location and opening hours clear</div>
             </div>
             <div className="mini-site-frame">
               <div className="mini-site-sidebar">
@@ -62,9 +61,9 @@ export default function HomePage({ goToPage }) {
             <h2>Most small business websites do not fail because of code. They fail because customers cannot find what they need fast enough.</h2>
           </div>
           <div className="statement-list">
-            <p><Search size={18} /> Searchers need clear pages, not scattered posts.</p>
-            <p><PhoneCall size={18} /> Mobile users need instant contact options.</p>
-            <p><MousePointer2 size={18} /> Visitors need obvious next steps.</p>
+            <p><Search size={18} /> Customers need menus, prices and services without digging through social posts.</p>
+            <p><PhoneCall size={18} /> Mobile users should be able to call, message or get directions instantly.</p>
+            <p><MousePointer2 size={18} /> Visitors need one obvious next step: call, visit, enquire or order.</p>
           </div>
         </div>
       </section>
@@ -73,9 +72,9 @@ export default function HomePage({ goToPage }) {
         <div className="container free-audit-grid">
           <div className="free-audit-copy">
             <p className="eyebrow">Free website audit</p>
-            <h2>Before selling you a new site, I can show you what is currently holding yours back.</h2>
+            <h2>Before you commit to a new website, I’ll show you what is holding your current online presence back.</h2>
             <p>
-              Send over your current website, Facebook page, Instagram profile or Google listing. I’ll review the main things a customer notices first: trust, mobile layout, contact clarity, menu/services visibility and whether the next step is obvious.
+              Send over your current website, Facebook page, Instagram profile or Google listing. I’ll review what customers see first: trust, mobile layout, contact clarity, menu/services visibility and whether the next step is obvious.
             </p>
 
             <div className="audit-proof-list" aria-label="Audit checks">
@@ -137,7 +136,7 @@ export default function HomePage({ goToPage }) {
         <SectionHeading
           eyebrow="Who I build for"
           title="Designed around the real questions local customers ask."
-          text="Each business type gets a slightly different structure, because a restaurant site should not feel like a barber site with different photos pasted in."
+          text="A restaurant, barber, café and local shop all need different website structures. I build around what their customers actually look for first."
         />
         <div className="business-type-grid">
           {businessTypes.map((item) => {
@@ -158,8 +157,8 @@ export default function HomePage({ goToPage }) {
 
       <section className="studio-strip">
         <div className="studio-strip-track">
-          <span>mobile-first</span><span>maintainable</span><span>local SEO basics</span><span>fast loading</span><span>clear CTAs</span><span>care plans</span>
-          <span>mobile-first</span><span>maintainable</span><span>local SEO basics</span><span>fast loading</span><span>clear CTAs</span><span>care plans</span>
+          <span>mobile-friendly</span><span>easy to update</span><span>clear contact buttons</span><span>fast loading</span><span>constant support</span><span>care plans</span>
+          <span>mobile-friendly</span><span>easy to update</span><span>clear contact buttons</span><span>fast loading</span><span>constant support</span><span>care plans</span>
         </div>
       </section>
 
@@ -167,7 +166,7 @@ export default function HomePage({ goToPage }) {
         <SectionHeading
           eyebrow="Build quality"
           title="A site that looks good, works properly and can be maintained after launch."
-          text="The visible design matters, but so does the setup behind it: clean code, version control, deployment and repeatable updates."
+          text="The design is what customers see. The setup behind it is what keeps the site fast, stable and easy to update after launch."
         />
         <div className="feature-mosaic">
           {serviceFeatures.slice(0, 6).map((feature, index) => (
@@ -176,12 +175,28 @@ export default function HomePage({ goToPage }) {
         </div>
       </section>
 
-      <section className="cta-slab">
-        <div className="container cta-slab-inner">
-          <Sparkles size={32} />
-          <h2>Give customers one clear place to understand your business.</h2>
-          <p>Not a generic template. A focused website that shows what you do, where you are and why customers should trust you.</p>
-          <button className="btn btn-inverted" onClick={() => goToPage('contact')}>Start with a free quote</button>
+      <section className="final-cta-band">
+        <div className="container final-cta-inner">
+          <div className="final-cta-copy">
+            <span className="final-cta-kicker">Ready to improve your online presence?</span>
+
+            <h2>Make it easier for customers to choose you.</h2>
+
+            <p>
+              Start with a free audit and I’ll show you the first things I would improve:
+              mobile layout, contact clarity, trust, and how easy it is for customers to take action.
+            </p>
+          </div>
+
+          <div className="final-cta-actions">
+            <button className="btn btn-primary" onClick={() => goToPage('contact')}>
+              Request a free audit <ArrowRight size={18} />
+            </button>
+
+            <button className="final-cta-secondary" onClick={() => goToPage('work')}>
+              View example builds
+            </button>
+          </div>
         </div>
       </section>
     </>
