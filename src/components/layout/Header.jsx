@@ -35,10 +35,6 @@ export default function Header({ activePage, goToPage, mobileOpen, setMobileOpen
           <button className="availability-pill" onClick={() => goToPage('contact')}>
             <span className="pulse-dot" /> Free audit
           </button>
-
-          <button className="header-cta" onClick={() => goToPage('contact')}>
-            Request quote
-          </button>
         </div>
 
         <button
