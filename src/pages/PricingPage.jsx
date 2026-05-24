@@ -7,18 +7,30 @@ export default function PricingPage({ goToPage }) {
     <>
       <PageIntro
         eyebrow="Pricing"
-        title="Clear packages, flexible enough for different local businesses."
-        text="These are starting prices. Final quotes depend on page count, content, images, copywriting help and how much ongoing support the client wants."
+        title="Clear website packages with a simple monthly care plan."
+        text="Each website has an upfront build fee, then a minimum monthly care plan from €30/month if you want me to host, monitor and maintain the live site."
       />
 
-      <section className="container pricing-layout-section">
+      <section className="container pricing-layout-section pricing-layout-refined">
         <div className="pricing-side-note">
-          <p className="eyebrow">How to sell this</p>
-          <h2>Charge for the build. Charge monthly for keeping it useful.</h2>
+          <p className="eyebrow">How pricing works</p>
+
+          <h2>Pay once for the build, then monthly to keep the site live and supported.</h2>
+
           <p>
-            The upfront fee covers design, development and launch. The monthly fee covers care: hosting support, updates, checks and ongoing help.
+            The upfront fee covers the design, development and launch of the website.
+            The monthly care plan starts from €25/month and covers the basic running setup:
+            hosting/deployment support, SSL/domain checks, small fixes and light support from me.
           </p>
+
+          <div className="pricing-note-list">
+            <span>Upfront build fee for the website</span>
+            <span>Minimum care plan from €25/month</span>
+            <span>Basic hosting/deployment support included</span>
+            <span>Small updates and fixes depending on the care level</span>
+          </div>
         </div>
+
         <div className="pricing-grid">
           {packages.map((plan) => (
             <PackageCard key={plan.name} plan={plan} goToPage={goToPage} />
@@ -26,25 +38,32 @@ export default function PricingPage({ goToPage }) {
         </div>
       </section>
 
-      <section className="container value-comparison">
-        <div className="comparison-card bad">
-          <span>Without a proper site</span>
-          <h3>Customers have to work too hard.</h3>
-          <p>They search through old posts, screenshots, outdated pages or missing menus before deciding whether to contact the business.</p>
+      <section className="container monthly-care-strip">
+        <div>
+          <p className="eyebrow">Monthly care</p>
+          <h2>The minimum monthly fee keeps the website live and looked after.</h2>
         </div>
-        <div className="comparison-card good">
-          <span>With a focused site</span>
-          <h3>Customers get the answer quickly.</h3>
-          <p>The business has one polished place for menus, services, location, hours, photos, calls and enquiries.</p>
-        </div>
+
+        <p>
+          For the starter tier, the monthly charge is mainly there to cover the practical
+          running setup of the website and a small amount of support from me. Higher care
+          plans can include more regular content updates, checks and improvements.
+        </p>
       </section>
 
       <section className="faq-section">
         <div className="container faq-grid">
           <div>
             <p className="eyebrow">FAQ</p>
-            <h2>Questions clients are likely to ask.</h2>
+
+            <h2>Common questions before starting.</h2>
+
+            <p className="faq-intro">
+              Straight answers around upfront cost, monthly care, timelines, content,
+              maintenance and what is included before the website goes live.
+            </p>
           </div>
+
           <div className="faq-list">
             {faqs.map((faq) => (
               <article className="faq-item" key={faq.q}>

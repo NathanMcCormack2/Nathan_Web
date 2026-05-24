@@ -99,7 +99,7 @@ export const packages = [
   {
     name: 'Essential Presence',
     price: 'From €450',
-    monthly: 'Care from €35/month',
+    monthly: 'Care from €30/month',
     bestFor: 'A business that needs a clean site customers can trust.',
     features: ['Homepage or compact multi-page structure', 'Mobile-first layout', 'Opening hours, location and contact', 'Basic SEO setup', 'Deployment support'],
     highlight: false
