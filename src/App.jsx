@@ -8,6 +8,7 @@ import PricingPage from './pages/PricingPage.jsx';
 import MaintenancePage from './pages/MaintenancePage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
+import PizzaDemoPage from './pages/PizzaDemoPage.jsx';
 
 export default function App() {
   const [activePage, setActivePage] = useState('home');
@@ -34,21 +35,27 @@ export default function App() {
         return <AboutPage {...props} />;
       case 'contact':
         return <ContactPage {...props} />;
+      case 'pizza-demo':
+        return <PizzaDemoPage {...props} />;
       default:
         return <HomePage {...props} />;
     }
   }, [activePage]);
 
+  const isPizzaDemo = activePage === 'pizza-demo';
+
   return (
     <div className="app-shell">
-      <Header
-        activePage={activePage}
-        goToPage={goToPage}
-        mobileOpen={mobileOpen}
-        setMobileOpen={setMobileOpen}
-      />
+      {!isPizzaDemo && (
+        <Header
+          activePage={activePage}
+          goToPage={goToPage}
+          mobileOpen={mobileOpen}
+          setMobileOpen={setMobileOpen}
+        />
+      )}
       <main>{currentPage}</main>
-      <Footer goToPage={goToPage} />
+      {!isPizzaDemo && <Footer goToPage={goToPage} />}
     </div>
   );
 }
