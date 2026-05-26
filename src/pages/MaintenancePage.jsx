@@ -78,7 +78,7 @@ export default function MaintenancePage({ goToPage }) {
       <section className="container care-plan-pricing-note">
         <div>
           <p className="eyebrow">Minimum care plan</p>
-          <h2>Starter care from €25/month.</h2>
+          <h2>Starter care from €30/month.</h2>
         </div>
 
         <div className="care-plan-note-copy">

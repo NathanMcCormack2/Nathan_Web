@@ -19,13 +19,13 @@ export default function PricingPage({ goToPage }) {
 
           <p>
             The upfront fee covers the design, development and launch of the website.
-            The monthly care plan starts from €25/month and covers the basic running setup:
+            The monthly care plan starts from €30/month and covers the basic running setup:
             hosting/deployment support, SSL/domain checks, small fixes and light support from me.
           </p>
 
           <div className="pricing-note-list">
             <span>Upfront build fee for the website</span>
-            <span>Minimum care plan from €25/month</span>
+            <span>Minimum care plan from €30/month</span>
             <span>Basic hosting/deployment support included</span>
             <span>Small updates and fixes depending on the care level</span>
           </div>

@@ -11,8 +11,9 @@ import ContactPage from './pages/ContactPage.jsx';
 import MarioPizzaPage from './pages/MarioPizzaPage.jsx';
 import SandyFishPage from './pages/SandyFishPage.jsx';
 import RockysDinerPage from './pages/RockysDinerPage.jsx';
+import CommonRoomCafePage from './pages/CommonRoomCafePage.jsx';
 
-const pageIds = ['home', 'services', 'work', 'pricing', 'maintenance', 'about', 'contact', 'pizza-demo', 'sandys-fish-demo', 'rockys-diner-demo'];
+const pageIds = ['home', 'services', 'work', 'pricing', 'maintenance', 'about', 'contact', 'pizza-demo', 'sandys-fish-demo', 'rockys-diner-demo', 'common-room-cafe-demo'];
 
 const getPageFromHash = () => {
   const hashPage = window.location.hash.replace('#', '');
@@ -67,12 +68,14 @@ export default function App() {
         return <SandyFishPage {...props} />;
       case 'rockys-diner-demo':
         return <RockysDinerPage {...props} />;
+      case 'common-room-cafe-demo':
+        return <CommonRoomCafePage {...props} />;
       default:
         return <HomePage {...props} />;
     }
   }, [activePage]);
 
-  const isStandaloneDemo = activePage === 'pizza-demo' || activePage === 'sandys-fish-demo' || activePage === 'rockys-diner-demo';
+  const isStandaloneDemo = activePage === 'pizza-demo' || activePage === 'sandys-fish-demo' || activePage === 'rockys-diner-demo' || activePage === 'common-room-cafe-demo';
 
   return (
     <div className={`app-shell ${isStandaloneDemo ? 'demo-app-shell' : ''}`}>
