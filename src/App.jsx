@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Header from './components/layout/Header.jsx';
 import Footer from './components/layout/Footer.jsx';
 import HomePage from './pages/HomePage.jsx';
@@ -8,16 +8,41 @@ import PricingPage from './pages/PricingPage.jsx';
 import MaintenancePage from './pages/MaintenancePage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
+import MarioPizzaPage from './pages/MarioPizzaPage.jsx';
+
+const pageIds = ['home', 'services', 'work', 'pricing', 'maintenance', 'about', 'contact', 'pizza-demo'];
+
+const getPageFromHash = () => {
+  const hashPage = window.location.hash.replace('#', '');
+  return pageIds.includes(hashPage) ? hashPage : null;
+};
 
 export default function App() {
-  const [activePage, setActivePage] = useState('home');
+  const [activePage, setActivePage] = useState(() => getPageFromHash() || 'home');
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const goToPage = (page) => {
     setActivePage(page);
     setMobileOpen(false);
+    if (pageIds.includes(page) && window.location.hash !== `#${page}`) {
+      window.history.pushState(null, '', `#${page}`);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const nextPage = getPageFromHash();
+      if (!nextPage) return;
+
+      setActivePage(nextPage);
+      setMobileOpen(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   const currentPage = useMemo(() => {
     const props = { goToPage };
@@ -34,21 +59,27 @@ export default function App() {
         return <AboutPage {...props} />;
       case 'contact':
         return <ContactPage {...props} />;
+      case 'pizza-demo':
+        return <MarioPizzaPage {...props} />;
       default:
         return <HomePage {...props} />;
     }
   }, [activePage]);
 
+  const isStandaloneDemo = activePage === 'pizza-demo';
+
   return (
-    <div className="app-shell">
-      <Header
-        activePage={activePage}
-        goToPage={goToPage}
-        mobileOpen={mobileOpen}
-        setMobileOpen={setMobileOpen}
-      />
+    <div className={`app-shell ${isStandaloneDemo ? 'demo-app-shell' : ''}`}>
+      {!isStandaloneDemo && (
+        <Header
+          activePage={activePage}
+          goToPage={goToPage}
+          mobileOpen={mobileOpen}
+          setMobileOpen={setMobileOpen}
+        />
+      )}
       <main>{currentPage}</main>
-      <Footer goToPage={goToPage} />
+      {!isStandaloneDemo && <Footer goToPage={goToPage} />}
     </div>
   );
 }

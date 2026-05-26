@@ -34,19 +34,19 @@ export default function WorkPage({ goToPage }) {
         <div className="featured-demo-card">
           <div className="featured-demo-content">
             <p className="eyebrow">Featured demo</p>
-            <h2>Rosso Pizzeria & Kitchen</h2>
+            <h2>Mario's Pizza Galway</h2>
             <p>
-              A full demo website for a cosy local pizza restaurant. It includes a homepage, menu, about section, opening times, contact details and gallery.
+              A full demo website for a warm local pizza restaurant, built around phone orders, a clear menu, opening times, atmosphere and a sense of place.
             </p>
 
             <div className="featured-demo-points">
               <span>Mobile friendly</span>
               <span>Phone order focused</span>
-              <span>Full restaurant layout</span>
+              <span>Vintage Italian art direction</span>
             </div>
 
             <button className="btn btn-primary" onClick={() => goToPage('pizza-demo')}>
-              View pizza demo <ArrowRight size={18} />
+              View Mario's Pizza demo <ArrowRight size={18} />
             </button>
           </div>
 
@@ -60,8 +60,8 @@ export default function WorkPage({ goToPage }) {
 
               <div className="pizza-preview-hero">
                 <div>
-                  <small>Rosso</small>
-                  <strong>Proper pizza, warm tables.</strong>
+                  <small>Mario's</small>
+                  <strong>Wood-fired pizza, warm Galway nights.</strong>
                 </div>
                 <div className="pizza-preview-circle">
                   <span />
