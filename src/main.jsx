@@ -4,6 +4,7 @@ import App from './App.jsx';
 import './styles/global.css';
 import './styles/mariosPizza.css';
 import './styles/sandysFish.css';
+import './styles/rockysDiner.css';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>

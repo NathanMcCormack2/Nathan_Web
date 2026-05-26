@@ -122,6 +122,50 @@ export default function WorkPage({ goToPage }) {
             </div>
           </div>
         </div>
+
+        <div className="featured-demo-card rocky-demo-card">
+          <div className="featured-demo-content">
+            <p className="eyebrow">Featured demo</p>
+            <h2>Rockys Diner</h2>
+            <p>
+              A nostalgic American diner demo with a cinematic chrome storefront hero, booth-and-counter atmosphere, full menu board, gallery, hours and direct call/directions path.
+            </p>
+
+            <div className="featured-demo-points">
+              <span>Tourist friendly</span>
+              <span>Family focused</span>
+              <span>Classic American diner art direction</span>
+            </div>
+
+            <button className="btn btn-primary" onClick={() => goToPage('rockys-diner-demo')}>
+              View Rockys Diner demo <ArrowRight size={18} />
+            </button>
+          </div>
+
+          <div className="featured-demo-preview" aria-hidden="true">
+            <div className="rockys-preview-window">
+              <div className="rockys-preview-top">
+                <span />
+                <span />
+                <span />
+              </div>
+
+              <div className="rockys-preview-hero">
+                <div>
+                  <small>Rockys</small>
+                  <strong>Chrome, coffee, burgers, shakes.</strong>
+                </div>
+                <div className="rockys-preview-sign">Open<br />7am</div>
+              </div>
+
+              <div className="rockys-preview-menu">
+                <span />
+                <span />
+                <span />
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="container case-study-stack">
