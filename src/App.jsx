@@ -9,8 +9,9 @@ import MaintenancePage from './pages/MaintenancePage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import MarioPizzaPage from './pages/MarioPizzaPage.jsx';
+import SandyFishPage from './pages/SandyFishPage.jsx';
 
-const pageIds = ['home', 'services', 'work', 'pricing', 'maintenance', 'about', 'contact', 'pizza-demo'];
+const pageIds = ['home', 'services', 'work', 'pricing', 'maintenance', 'about', 'contact', 'pizza-demo', 'sandys-fish-demo'];
 
 const getPageFromHash = () => {
   const hashPage = window.location.hash.replace('#', '');
@@ -61,12 +62,14 @@ export default function App() {
         return <ContactPage {...props} />;
       case 'pizza-demo':
         return <MarioPizzaPage {...props} />;
+      case 'sandys-fish-demo':
+        return <SandyFishPage {...props} />;
       default:
         return <HomePage {...props} />;
     }
   }, [activePage]);
 
-  const isStandaloneDemo = activePage === 'pizza-demo';
+  const isStandaloneDemo = activePage === 'pizza-demo' || activePage === 'sandys-fish-demo';
 
   return (
     <div className={`app-shell ${isStandaloneDemo ? 'demo-app-shell' : ''}`}>

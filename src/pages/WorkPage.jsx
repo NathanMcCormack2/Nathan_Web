@@ -30,7 +30,7 @@ export default function WorkPage({ goToPage }) {
         </div>
       </section>
 
-      <section className="container featured-demo-section">
+      <section className="container featured-demo-stack">
         <div className="featured-demo-card">
           <div className="featured-demo-content">
             <p className="eyebrow">Featured demo</p>
@@ -71,6 +71,50 @@ export default function WorkPage({ goToPage }) {
               </div>
 
               <div className="pizza-preview-menu">
+                <span />
+                <span />
+                <span />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="featured-demo-card fish-demo-card">
+          <div className="featured-demo-content">
+            <p className="eyebrow">Featured demo</p>
+            <h2>Sandy's Fish Restaurant</h2>
+            <p>
+              A full coastal fish restaurant demo with a cinematic storefront hero, fresh-catch menu board, warm family copy, gallery, opening hours and direct call path.
+            </p>
+
+            <div className="featured-demo-points">
+              <span>Tourist focused</span>
+              <span>Family friendly</span>
+              <span>Rustic coastal art direction</span>
+            </div>
+
+            <button className="btn btn-primary" onClick={() => goToPage('sandys-fish-demo')}>
+              View Sandy's fish demo <ArrowRight size={18} />
+            </button>
+          </div>
+
+          <div className="featured-demo-preview" aria-hidden="true">
+            <div className="fish-preview-window">
+              <div className="fish-preview-top">
+                <span />
+                <span />
+                <span />
+              </div>
+
+              <div className="fish-preview-hero">
+                <div>
+                  <small>Sandy's</small>
+                  <strong>Warm fish suppers by the West Coast.</strong>
+                </div>
+                <div className="fish-preview-plate" />
+              </div>
+
+              <div className="fish-preview-menu">
                 <span />
                 <span />
                 <span />
