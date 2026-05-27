@@ -1,282 +1,183 @@
 import { ArrowRight } from 'lucide-react';
 import PageIntro from '../components/ui/PageIntro.jsx';
-import CaseStudyCard from '../components/ui/CaseStudyCard.jsx';
-import { examples } from '../data/siteData.js';
+
+const projects = [
+  {
+    eyebrow: 'Restaurant demo',
+    title: 'Rockys Diner',
+    text: 'A classic American diner website built around atmosphere, menu browsing, opening hours and quick directions.',
+    points: ['Classic diner style', 'Menu focused', 'Visit-ready layout'],
+    page: 'rockys-diner-demo',
+    button: 'View Diner demo',
+    preview: 'rockys',
+    cardClass: 'rocky-demo-card'
+  },
+  {
+    eyebrow: 'Fine dining demo',
+    title: 'Vespera',
+    text: 'A luxury restaurant website with editorial visuals, tasting-menu storytelling, private dining and reservation-focused sections.',
+    points: ['Luxury direction', 'Reservation focused', 'Private dining'],
+    page: 'vespera-demo',
+    button: 'View Vespera demo',
+    preview: 'vespera',
+    cardClass: 'vespera-demo-card'
+  },
+  {
+    eyebrow: 'Fish restaurant demo',
+    title: "Sandy's Fish Restaurant",
+    text: 'A coastal seafood website with a strong storefront hero, fresh-catch menu sections, gallery, hours and a direct call path.',
+    points: ['Coastal style', 'Family friendly', 'Call focused'],
+    page: 'sandys-fish-demo',
+    button: "View Sandy's demo",
+    preview: 'fish',
+    cardClass: 'fish-demo-card'
+  },
+  {
+    eyebrow: 'Pizza restaurant demo',
+    title: "Mario's Pizza Galway",
+    text: 'A warm local pizza website built around phone orders, menu clarity, opening times and a cosy vintage Italian feel.',
+    points: ['Phone orders', 'Warm visual style', 'Menu first'],
+    page: 'pizza-demo',
+    button: "View Pizza demo",
+    preview: 'pizza',
+    cardClass: ''
+  },
+  {
+    eyebrow: 'Cafe demo',
+    title: 'CTRL Coffee',
+    text: 'A digital-first cafe website with drink highlights, pickup-style UX, study seating, events and a younger customer feel.',
+    points: ['Cafe style', 'Drink focused', 'Modern UX'],
+    page: 'common-room-cafe-demo',
+    button: 'View Cafe demo',
+    preview: 'common',
+    cardClass: 'common-demo-card'
+  }
+];
+
+function ProjectPreview({ type }) {
+  if (type === 'rockys') {
+    return (
+      <div className="rockys-preview-window">
+        <div className="rockys-preview-top"><span /><span /><span /></div>
+        <div className="rockys-preview-hero">
+          <div>
+            <small>Rockys</small>
+            <strong>Chrome, coffee, burgers, shakes.</strong>
+          </div>
+          <div className="rockys-preview-sign">Open<br />7am</div>
+        </div>
+        <div className="rockys-preview-menu"><span /><span /><span /></div>
+      </div>
+    );
+  }
+
+  if (type === 'vespera') {
+    return (
+      <div className="vespera-preview-window">
+        <div className="vespera-preview-top"><span /><span /><span /></div>
+        <div className="vespera-preview-hero">
+          <div>
+            <small>Vespera</small>
+            <strong>Black lacquer, rare wine, late tables.</strong>
+          </div>
+          <div className="vespera-preview-seal" />
+        </div>
+        <div className="vespera-preview-menu"><span /><span /><span /></div>
+      </div>
+    );
+  }
+
+  if (type === 'fish') {
+    return (
+      <div className="fish-preview-window">
+        <div className="fish-preview-top"><span /><span /><span /></div>
+        <div className="fish-preview-hero">
+          <div>
+            <small>Sandy's</small>
+            <strong>Warm fish suppers by the West Coast.</strong>
+          </div>
+          <div className="fish-preview-plate" />
+        </div>
+        <div className="fish-preview-menu"><span /><span /><span /></div>
+      </div>
+    );
+  }
+
+  if (type === 'common') {
+    return (
+      <div className="common-preview-window">
+        <div className="common-preview-top"><span /><span /><span /></div>
+        <div className="common-preview-hero">
+          <div>
+            <small>CTRL Coffee</small>
+            <strong>Live queue, iced drinks, plug seats.</strong>
+          </div>
+          <div className="common-preview-phone"><span /><span /><span /></div>
+        </div>
+        <div className="common-preview-menu"><span /><span /><span /></div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="pizza-preview-window">
+      <div className="pizza-preview-top"><span /><span /><span /></div>
+      <div className="pizza-preview-hero">
+        <div>
+          <small>Mario's</small>
+          <strong>Wood-fired pizza, warm Galway nights.</strong>
+        </div>
+        <div className="pizza-preview-circle"><span /><span /><span /></div>
+      </div>
+      <div className="pizza-preview-menu"><span /><span /><span /></div>
+    </div>
+  );
+}
 
 export default function WorkPage({ goToPage }) {
   return (
     <>
       <PageIntro
-        eyebrow="Example work"
-        title="Concept websites that show the quality clients can expect."
-        text="Until real client projects are added, these demo builds show the visual direction, structure and business thinking behind the service. Replace the image slots with screenshots or photos as you create projects."
+        eyebrow="Work"
+        title="Demo projects built for real local business use cases."
+        text="Each project shows a different direction: diner, fine dining, seafood, pizza and cafe. The goal is simple: make the business feel trustworthy, memorable and easy to contact."
       />
 
-      <section className="container work-index-section">
-        <div className="work-index-card">
-          <span>01</span>
-          <h2>Not just screenshots.</h2>
-          <p>
-            Each example should explain the business problem, the structure chosen and the customer action the page is designed to support.
-          </p>
-        </div>
-
-        <div className="work-index-card secondary">
-          <span>02</span>
-          <h2>Show your process.</h2>
-          <p>
-            Local businesses trust people who can explain decisions clearly. This section gives you a more professional sales angle.
-          </p>
-        </div>
-      </section>
-
       <section className="container featured-demo-stack">
-        <div className="featured-demo-card">
-          <div className="featured-demo-content">
-            <p className="eyebrow">Featured demo</p>
-            <h2>Mario's Pizza Galway</h2>
-            <p>
-              A full demo website for a warm local pizza restaurant, built around phone orders, a clear menu, opening times, atmosphere and a sense of place.
-            </p>
+        {projects.map((project) => (
+          <article className={`featured-demo-card ${project.cardClass}`} key={project.title}>
+            <div className="featured-demo-content">
+              <p className="eyebrow">{project.eyebrow}</p>
+              <h2>{project.title}</h2>
+              <p>{project.text}</p>
 
-            <div className="featured-demo-points">
-              <span>Mobile friendly</span>
-              <span>Phone order focused</span>
-              <span>Vintage Italian art direction</span>
+              <div className="featured-demo-points">
+                {project.points.map((point) => <span key={point}>{point}</span>)}
+              </div>
+
+              <button className="btn btn-primary" onClick={() => goToPage(project.page)}>
+                {project.button} <ArrowRight size={18} />
+              </button>
             </div>
 
-            <button className="btn btn-primary" onClick={() => goToPage('pizza-demo')}>
-              View Mario's Pizza demo <ArrowRight size={18} />
-            </button>
-          </div>
-
-          <div className="featured-demo-preview" aria-hidden="true">
-            <div className="pizza-preview-window">
-              <div className="pizza-preview-top">
-                <span />
-                <span />
-                <span />
-              </div>
-
-              <div className="pizza-preview-hero">
-                <div>
-                  <small>Mario's</small>
-                  <strong>Wood-fired pizza, warm Galway nights.</strong>
-                </div>
-                <div className="pizza-preview-circle">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </div>
-
-              <div className="pizza-preview-menu">
-                <span />
-                <span />
-                <span />
-              </div>
+            <div className="featured-demo-preview" aria-hidden="true">
+              <ProjectPreview type={project.preview} />
             </div>
-          </div>
-        </div>
-
-        <div className="featured-demo-card fish-demo-card">
-          <div className="featured-demo-content">
-            <p className="eyebrow">Featured demo</p>
-            <h2>Sandy's Fish Restaurant</h2>
-            <p>
-              A full coastal fish restaurant demo with a cinematic storefront hero, fresh-catch menu board, warm family copy, gallery, opening hours and direct call path.
-            </p>
-
-            <div className="featured-demo-points">
-              <span>Tourist focused</span>
-              <span>Family friendly</span>
-              <span>Rustic coastal art direction</span>
-            </div>
-
-            <button className="btn btn-primary" onClick={() => goToPage('sandys-fish-demo')}>
-              View Sandy's fish demo <ArrowRight size={18} />
-            </button>
-          </div>
-
-          <div className="featured-demo-preview" aria-hidden="true">
-            <div className="fish-preview-window">
-              <div className="fish-preview-top">
-                <span />
-                <span />
-                <span />
-              </div>
-
-              <div className="fish-preview-hero">
-                <div>
-                  <small>Sandy's</small>
-                  <strong>Warm fish suppers by the West Coast.</strong>
-                </div>
-                <div className="fish-preview-plate" />
-              </div>
-
-              <div className="fish-preview-menu">
-                <span />
-                <span />
-                <span />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="featured-demo-card rocky-demo-card">
-          <div className="featured-demo-content">
-            <p className="eyebrow">Featured demo</p>
-            <h2>Rockys Diner</h2>
-            <p>
-              A nostalgic American diner demo with a cinematic chrome storefront hero, booth-and-counter atmosphere, full menu board, gallery, hours and direct call/directions path.
-            </p>
-
-            <div className="featured-demo-points">
-              <span>Tourist friendly</span>
-              <span>Family focused</span>
-              <span>Classic American diner art direction</span>
-            </div>
-
-            <button className="btn btn-primary" onClick={() => goToPage('rockys-diner-demo')}>
-              View Rockys Diner demo <ArrowRight size={18} />
-            </button>
-          </div>
-
-          <div className="featured-demo-preview" aria-hidden="true">
-            <div className="rockys-preview-window">
-              <div className="rockys-preview-top">
-                <span />
-                <span />
-                <span />
-              </div>
-
-              <div className="rockys-preview-hero">
-                <div>
-                  <small>Rockys</small>
-                  <strong>Chrome, coffee, burgers, shakes.</strong>
-                </div>
-                <div className="rockys-preview-sign">Open<br />7am</div>
-              </div>
-
-              <div className="rockys-preview-menu">
-                <span />
-                <span />
-                <span />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="featured-demo-card common-demo-card">
-          <div className="featured-demo-content">
-            <p className="eyebrow">Featured demo</p>
-            <h2>CTRL Coffee</h2>
-            <p>
-              A digital-first student cafe demo with interactive drink selection, live pickup status, stamp-pass thinking, study seating, event drops and app-like UX.
-            </p>
-
-            <div className="featured-demo-points">
-              <span>Under-30 audience</span>
-              <span>Interactive order flow</span>
-              <span>Digital cafe art direction</span>
-            </div>
-
-            <button className="btn btn-primary" onClick={() => goToPage('common-room-cafe-demo')}>
-              View CTRL Coffee demo <ArrowRight size={18} />
-            </button>
-          </div>
-
-          <div className="featured-demo-preview" aria-hidden="true">
-            <div className="ctrl-preview-window">
-              <div className="ctrl-preview-top">
-                <span />
-                <span />
-                <span />
-              </div>
-
-              <div className="ctrl-preview-hero">
-                <div>
-                  <small>CTRL Coffee</small>
-                  <strong>Live queue, iced drinks, plug seats.</strong>
-                </div>
-                <div className="ctrl-preview-phone">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </div>
-
-              <div className="ctrl-preview-menu">
-                <span />
-                <span />
-                <span />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="featured-demo-card vespera-demo-card">
-          <div className="featured-demo-content">
-            <p className="eyebrow">Featured demo</p>
-            <h2>Vespera</h2>
-            <p>
-              An ultra-luxury restaurant demo with theatrical fine-dining art direction, tasting-menu storytelling, cellar-led content, private dining and reservation flow.
-            </p>
-
-            <div className="featured-demo-points">
-              <span>High-end hospitality</span>
-              <span>Editorial luxury layout</span>
-              <span>Reservation focused</span>
-            </div>
-
-            <button className="btn btn-primary" onClick={() => goToPage('vespera-demo')}>
-              View Vespera demo <ArrowRight size={18} />
-            </button>
-          </div>
-
-          <div className="featured-demo-preview" aria-hidden="true">
-            <div className="vespera-preview-window">
-              <div className="vespera-preview-top">
-                <span />
-                <span />
-                <span />
-              </div>
-
-              <div className="vespera-preview-hero">
-                <div>
-                  <small>Vespera</small>
-                  <strong>Black lacquer, rare wine, late tables.</strong>
-                </div>
-                <div className="vespera-preview-seal" />
-              </div>
-
-              <div className="vespera-preview-menu">
-                <span />
-                <span />
-                <span />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="container case-study-stack">
-        {examples.map((example, index) => (
-          <CaseStudyCard key={example.title} example={example} index={index} />
+          </article>
         ))}
       </section>
 
       <section className="container work-cta-panel">
         <div>
           <p className="eyebrow">Next step</p>
-          <h2>Turn these demos into real proof.</h2>
+          <h2>Need a site like one of these?</h2>
           <p>
-            After your first few jobs, swap these concept projects for real client screenshots, before/after notes and measurable improvements.
+            Send me your business details and I can suggest the best layout, style and pages for your website.
           </p>
         </div>
 
         <button className="btn btn-primary" onClick={() => goToPage('contact')}>
-          Request a quote flow <ArrowRight size={18} />
+          Request a quote <ArrowRight size={18} />
         </button>
       </section>
     </>

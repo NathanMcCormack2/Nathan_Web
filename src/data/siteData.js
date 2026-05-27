@@ -2,14 +2,11 @@ import {
   BarChart3,
   Bell,
   Brush,
-  CheckCircle2,
   Clock3,
   Code2,
   FileText,
   Globe2,
-  Images,
   LayoutDashboard,
-  MapPin,
   MessageSquare,
   MonitorSmartphone,
   PhoneCall,
@@ -32,64 +29,64 @@ export const navLinks = [
 ];
 
 export const serviceFeatures = [
-  { title: 'Mobile-first design', text: 'Layouts built for how customers actually browse: on phones, quickly, while deciding where to go.', icon: MonitorSmartphone },
-  { title: 'Clear business information', text: 'Opening hours, menu/services, location, social links and contact options placed where customers expect them.', icon: Store },
-  { title: 'Local SEO foundations', text: 'Clean page structure, useful headings, metadata and Google-friendly content basics.', icon: Search },
-  { title: 'Deployment handled', text: 'Hosting, domain connection, SSL and launch support included so the client does not deal with technical setup.', icon: Globe2 },
-  { title: 'Fast loading pages', text: 'Lean React/Vite build, compressed assets and simple architecture for brochure-style websites.', icon: Zap },
-  { title: 'Maintainable codebase', text: 'Version-controlled project structure, reusable components and update-friendly content files.', icon: Code2 },
-  { title: 'Content guidance', text: 'Help turning rough business details into clear sections that customers can scan quickly.', icon: FileText },
-  { title: 'Ongoing support', text: 'Small edits, fixes and checks available through the monthly website care plan.', icon: Wrench }
+  { title: 'Mobile-first design', text: 'Layouts built for customers browsing quickly on their phone.', icon: MonitorSmartphone },
+  { title: 'Clear business details', text: 'Hours, location, menu/services and contact options placed upfront.', icon: Store },
+  { title: 'Local SEO basics', text: 'Clean headings, page structure and metadata foundations.', icon: Search },
+  { title: 'Launch handled', text: 'Hosting, domain connection, SSL and deployment support.', icon: Globe2 },
+  { title: 'Fast loading pages', text: 'Lean React/Vite builds with compressed assets.', icon: Zap },
+  { title: 'Maintainable setup', text: 'Reusable components and a codebase that is easy to update.', icon: Code2 },
+  { title: 'Content guidance', text: 'Help turning rough notes into clear website sections.', icon: FileText },
+  { title: 'Ongoing support', text: 'Small edits and fixes available through a care plan.', icon: Wrench }
 ];
 
 export const businessTypes = [
   {
     type: 'Restaurants & Takeaways',
-    problem: 'People cannot find the menu, phone number or opening hours quickly.',
-    build: 'A menu-led website with food sections, call button, map, gallery and social links.',
+    problem: 'Menus, hours and phone details are hard to find.',
+    build: 'A menu-led site with call buttons, gallery, map and opening hours.',
     icon: PhoneCall
   },
   {
     type: 'Cafés & Local Shops',
-    problem: 'The business is relying on Instagram, but customers want simple details fast.',
-    build: 'A warm local-business site with opening hours, products, photos and directions.',
+    problem: 'Customers rely on scattered social posts for basic info.',
+    build: 'A warm local-business site with products, photos and directions.',
     icon: Sparkles
   },
   {
     type: 'Barbers, Salons & Services',
-    problem: 'Services, prices and contact details are scattered or unclear.',
-    build: 'A polished service site with pricing, staff info, FAQs and contact options.',
+    problem: 'Prices, services and contact options are unclear.',
+    build: 'A polished service site with pricing, FAQs and enquiry paths.',
     icon: Brush
   }
 ];
 
 export const processSteps = [
-  { number: '01', title: 'Website audit', text: 'I look at what the business currently has online and identify what customers cannot find quickly.' },
-  { number: '02', title: 'Content map', text: 'We decide what pages and sections are needed: services, menu, hours, gallery, location and contact.' },
-  { number: '03', title: 'Design direction', text: 'I create a clean visual direction that fits the business instead of dropping them into a generic template.' },
-  { number: '04', title: 'Build and test', text: 'The site is built responsively, checked on mobile/desktop and prepared for deployment.' },
-  { number: '05', title: 'Launch and support', text: 'I deploy the site, help with domain setup and keep it maintainable through the care plan.' }
+  { number: '01', title: 'Audit', text: 'Review what customers currently see online.' },
+  { number: '02', title: 'Content map', text: 'Choose the pages, sections and calls to action.' },
+  { number: '03', title: 'Design direction', text: 'Create a look that fits the business.' },
+  { number: '04', title: 'Build and test', text: 'Build responsively and check desktop/mobile.' },
+  { number: '05', title: 'Launch', text: 'Deploy the site and support the handover.' }
 ];
 
 export const examples = [
   {
     type: 'Restaurant concept',
     title: 'The Harbour Table',
-    description: 'A food-led site with a strong menu preview, direct call button, location block and image-heavy specials section.',
+    description: 'A food-led site with menu previews, direct calls, location and image-led specials.',
     tags: ['Menu-first', 'Mobile CTA', 'Gallery'],
     imageNote: 'Replace with restaurant screenshot/image'
   },
   {
     type: 'Café concept',
     title: 'Corner & Steam',
-    description: 'A warm café website with product highlights, opening hours, Google Maps link and seasonal message panel.',
+    description: 'A warm café website with product highlights, opening hours and directions.',
     tags: ['Hours', 'Photos', 'Local'],
     imageNote: 'Replace with café screenshot/image'
   },
   {
     type: 'Salon concept',
     title: 'Northline Studio',
-    description: 'A clean service-led site with price categories, staff introduction, contact options and trust-building sections.',
+    description: 'A clean service-led site with pricing, staff information and contact options.',
     tags: ['Pricing', 'Services', 'Trust'],
     imageNote: 'Replace with salon screenshot/image'
   }
@@ -123,12 +120,12 @@ export const packages = [
 ];
 
 export const maintenanceItems = [
-  { title: 'Hosting and deployment checks', text: 'Keep the site online and correctly deployed.', icon: LayoutDashboard },
-  { title: 'Small content updates', text: 'Menus, hours, images, announcements and service text.', icon: MessageSquare },
-  { title: 'Technical fixes', text: 'Broken links, layout issues, form checks and small bugs.', icon: ShieldCheck },
-  { title: 'Performance review', text: 'Basic checks to keep the site fast and usable.', icon: BarChart3 },
-  { title: 'Change log', text: 'Track updates so the client knows what changed.', icon: Clock3 },
-  { title: 'Client reminders', text: 'Prompt businesses when seasonal updates are needed.', icon: Bell }
+  { title: 'Hosting checks', text: 'Make sure the live site stays accessible.', icon: LayoutDashboard },
+  { title: 'Small content edits', text: 'Menus, hours, images and short announcements.', icon: MessageSquare },
+  { title: 'Technical fixes', text: 'Broken links, layout issues and form checks.', icon: ShieldCheck },
+  { title: 'Performance review', text: 'Basic speed and usability checks.', icon: BarChart3 },
+  { title: 'Change log', text: 'Track what was updated and when.', icon: Clock3 },
+  { title: 'Seasonal reminders', text: 'Prompts for offers, holidays and opening-hour changes.', icon: Bell }
 ];
 
 export const stackItems = ['React', 'JavaScript', 'CSS', 'Vite', 'GitHub', 'VS Code', 'GitHub Codespaces', 'Python'];
@@ -144,7 +141,7 @@ export const faqs = [
   },
   {
     q: 'Can you update my menu or opening hours later?',
-    a: 'Yes. The monthly care plan is designed for exactly that: small changes, technical support and keeping the website current.'
+    a: 'Yes. The monthly care plan is designed for small changes, technical support and keeping the website current.'
   },
   {
     q: 'Do I need to provide all the wording?',

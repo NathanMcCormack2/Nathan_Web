@@ -9,30 +9,30 @@ export default function ServicesPage({ goToPage }) {
     <>
       <PageIntro
         eyebrow="Services"
-        title="Websites that give local customers the answers they came for."
-        text="I design, build and maintain focused websites for local businesses that need a clear online presence without unnecessary booking systems, payment features or bloated agency costs."
+        title="Focused websites for local businesses."
+        text="I build practical, mobile-friendly websites that make your business easier to trust, understand and contact."
       />
 
       <section className="container service-system-section">
         <div className="service-system-card dark-panel">
           <p className="eyebrow dark">Website system</p>
 
-          <h2>Every build is designed to do three jobs.</h2>
+          <h2>Every build has three jobs.</h2>
 
           <div className="system-steps">
             <div>
               <span>01</span>
-              <strong>Build trust quickly when someone lands on the site.</strong>
+              <strong>Make the first impression feel professional.</strong>
             </div>
 
             <div>
               <span>02</span>
-              <strong>Answer the practical questions customers already have.</strong>
+              <strong>Put the important details where customers expect them.</strong>
             </div>
 
             <div>
               <span>03</span>
-              <strong>Make the next step obvious: call, visit, enquire or get directions.</strong>
+              <strong>Make the next step clear: call, visit, enquire or order.</strong>
             </div>
           </div>
         </div>
@@ -41,10 +41,7 @@ export default function ServicesPage({ goToPage }) {
           <h2>What you receive</h2>
 
           <p>
-            A professional, mobile-friendly website built around your business:
-            services, menus, opening hours, images, location, contact details,
-            social links and clear calls to action. I also handle the launch setup
-            and can keep the website updated through an optional monthly care plan.
+            A responsive website with the right pages, clear calls to action, key business details, launch setup and optional ongoing support.
           </p>
 
           <button className="btn btn-primary" onClick={() => goToPage('pricing')}>
@@ -57,18 +54,18 @@ export default function ServicesPage({ goToPage }) {
         <div className="services-included-heading">
           <SectionHeading
             eyebrow="Included"
-            title="A focused website setup, not a pile of unnecessary extras."
-            text="Each feature is there for a reason: to help customers understand the business, trust what they see and take the next step without friction."
+            title="The essentials, handled properly."
+            text="No filler features. Just the pieces a local-business website needs to work well."
           />
 
           <div className="included-note">
             <span>Built for clarity</span>
-            <p>Mobile layout, key business details, launch setup and ongoing support all work together as one system.</p>
+            <p>Mobile layout, contact details, content structure and launch support working together.</p>
           </div>
         </div>
 
         <div className="service-feature-wall">
-          {serviceFeatures.map((feature, index) => (
+          {serviceFeatures.slice(0, 6).map((feature, index) => (
             <FeaturePanel key={feature.title} feature={feature} index={index} />
           ))}
         </div>
@@ -78,8 +75,8 @@ export default function ServicesPage({ goToPage }) {
         <div className="container">
           <SectionHeading
             eyebrow="Process"
-            title="A clear build process from audit to launch."
-            text="You know what is happening at each stage: what I need from you, what I am building, when the site is reviewed and how it goes live."
+            title="Simple process from audit to launch."
+            text="Clear steps, clear feedback points and no vague handover."
           />
 
           <div className="process-roadmap">
@@ -99,12 +96,11 @@ export default function ServicesPage({ goToPage }) {
           <div>
             <p className="eyebrow">Built in</p>
 
-            <h2>Professional, practical and ready to launch.</h2>
+            <h2>Ready for real customers.</h2>
 
             <ul>
-              <li><CheckCircle2 /> Responsive pages for desktop and mobile</li>
+              <li><CheckCircle2 /> Responsive desktop and mobile pages</li>
               <li><CheckCircle2 /> Clear calls to action</li>
-              <li><CheckCircle2 /> Business-specific page structure</li>
               <li><CheckCircle2 /> Contact, location and social links</li>
               <li><CheckCircle2 /> Deployment and launch support</li>
             </ul>
@@ -113,14 +109,13 @@ export default function ServicesPage({ goToPage }) {
           <div>
             <p className="eyebrow">Added later if needed</p>
 
-            <h2>No expensive complexity before you need it.</h2>
+            <h2>No expensive extras before you need them.</h2>
 
             <ul>
               <li><CheckCircle2 /> Booking systems</li>
               <li><CheckCircle2 /> Online payments</li>
-              <li><CheckCircle2 /> E-commerce functionality</li>
-              <li><CheckCircle2 /> Custom admin dashboards</li>
-              <li><CheckCircle2 /> Database-backed features</li>
+              <li><CheckCircle2 /> E-commerce</li>
+              <li><CheckCircle2 /> Admin dashboards</li>
             </ul>
           </div>
         </div>
