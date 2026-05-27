@@ -1,0 +1,1459 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap');
+
+.featured-demo-card.vespera-demo-card {
+  border-radius: 2px 2px 28px 2px;
+  border-color: #2a1c13;
+  background:
+    linear-gradient(115deg, rgba(7, 7, 6, 0.98), rgba(15, 9, 12, 0.9) 52%, rgba(68, 18, 36, 0.94)),
+    repeating-linear-gradient(90deg, rgba(241, 211, 155, 0.12) 0 1px, transparent 1px 20px);
+  color: #f5ecdc;
+  box-shadow: 12px 12px 0 rgba(7, 7, 6, 0.18), 0 30px 80px rgba(7, 7, 6, 0.16);
+}
+
+.featured-demo-card.vespera-demo-card::after {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(241, 211, 155, 0.25);
+  pointer-events: none;
+}
+
+.featured-demo-card.vespera-demo-card .featured-demo-content {
+  position: relative;
+  z-index: 1;
+}
+
+.featured-demo-card.vespera-demo-card .featured-demo-content h2 {
+  color: #f5ecdc;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.featured-demo-card.vespera-demo-card .featured-demo-content p:not(.eyebrow) {
+  color: rgba(245, 236, 220, 0.76);
+}
+
+.featured-demo-card.vespera-demo-card .eyebrow {
+  color: #d9b873;
+}
+
+.featured-demo-card.vespera-demo-card .featured-demo-points span {
+  border-color: rgba(241, 211, 155, 0.25);
+  background: rgba(245, 236, 220, 0.07);
+  color: #f5ecdc;
+}
+
+.featured-demo-card.vespera-demo-card .btn-primary {
+  background: #b98d54;
+  color: #090706;
+}
+
+.vespera-preview-window {
+  position: relative;
+  width: min(390px, 100%);
+  min-height: 292px;
+  overflow: hidden;
+  border: 1px solid rgba(241, 211, 155, 0.72);
+  background: #070706;
+  color: #f5ecdc;
+  box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.vespera-preview-top {
+  display: flex;
+  gap: 7px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(241, 211, 155, 0.45);
+  background: #120c0d;
+}
+
+.vespera-preview-top span {
+  width: 9px;
+  height: 9px;
+  border: 1px solid #b98d54;
+  background: #f5ecdc;
+}
+
+.vespera-preview-hero {
+  display: grid;
+  grid-template-columns: 1fr 92px;
+  gap: 18px;
+  align-items: end;
+  min-height: 168px;
+  padding: 24px;
+  background:
+    linear-gradient(90deg, rgba(7, 7, 6, 0.84), rgba(7, 7, 6, 0.34)),
+    linear-gradient(135deg, #090706, #4d1328 58%, #b98d54);
+}
+
+.vespera-preview-hero small {
+  display: block;
+  margin-bottom: 8px;
+  color: #d9b873;
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-preview-hero strong {
+  display: block;
+  max-width: 230px;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 35px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 0.95;
+}
+
+.vespera-preview-seal {
+  position: relative;
+  width: 86px;
+  height: 118px;
+  border: 1px solid rgba(241, 211, 155, 0.75);
+  background:
+    linear-gradient(rgba(245, 236, 220, 0.08), rgba(245, 236, 220, 0.02)),
+    #120c0d;
+}
+
+.vespera-preview-seal::before,
+.vespera-preview-seal::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  height: 1px;
+  background: #b98d54;
+}
+
+.vespera-preview-seal::before {
+  top: 38px;
+}
+
+.vespera-preview-seal::after {
+  top: 72px;
+}
+
+.vespera-preview-menu {
+  display: grid;
+  gap: 10px;
+  padding: 22px 24px 24px;
+  background:
+    linear-gradient(rgba(241, 211, 155, 0.08) 1px, transparent 1px),
+    #070706;
+  background-size: 100% 26px;
+}
+
+.vespera-preview-menu span {
+  height: 12px;
+  background: rgba(245, 236, 220, 0.24);
+}
+
+.vespera-preview-menu span:nth-child(2) {
+  width: 82%;
+}
+
+.vespera-preview-menu span:nth-child(3) {
+  width: 62%;
+}
+
+.vespera-page {
+  --vespera-black: #070706;
+  --vespera-lacquer: #100b0d;
+  --vespera-ink: #150d10;
+  --vespera-aubergine: #21101e;
+  --vespera-burgundy: #4b1428;
+  --vespera-wine: #6e1731;
+  --vespera-ivory: #f5ecdc;
+  --vespera-parchment: #e7d6bd;
+  --vespera-gold: #b98d54;
+  --vespera-gold-soft: #d9b873;
+  --vespera-muted: rgba(245, 236, 220, 0.72);
+  --vespera-muted-dark: rgba(21, 13, 16, 0.66);
+  --vespera-line: rgba(241, 211, 155, 0.22);
+  --vespera-dark-line: rgba(21, 13, 16, 0.16);
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(241, 211, 155, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(241, 211, 155, 0.025) 1px, transparent 1px),
+    var(--vespera-black);
+  background-size: 42px 42px;
+  color: var(--vespera-ivory);
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.vespera-page * {
+  box-sizing: border-box;
+}
+
+.vespera-page a {
+  color: inherit;
+}
+
+.vespera-page section {
+  scroll-margin-top: 96px;
+}
+
+.vespera-site-header {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  z-index: 50;
+  width: min(1220px, calc(100% - 32px));
+  display: grid;
+  grid-template-columns: auto minmax(170px, auto) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 12px;
+  border: 1px solid rgba(241, 211, 155, 0.28);
+  background: rgba(7, 7, 6, 0.82);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(14px);
+  transform: translateX(-50%);
+}
+
+.vespera-site-header::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(245, 236, 220, 0.08);
+  pointer-events: none;
+}
+
+.vespera-back-link,
+.vespera-reserve-link,
+.vespera-footer button {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  border: 1px solid rgba(241, 211, 155, 0.35);
+  border-radius: 2px;
+  background: rgba(245, 236, 220, 0.06);
+  color: var(--vespera-ivory);
+  padding: 10px 14px;
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-size: 0.96rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: transform 0.24s ease, background 0.24s ease, border-color 0.24s ease;
+}
+
+.vespera-back-link:hover,
+.vespera-reserve-link:hover,
+.vespera-footer button:hover {
+  border-color: rgba(241, 211, 155, 0.72);
+  background: rgba(185, 141, 84, 0.2);
+  transform: translateY(-2px);
+}
+
+.vespera-brand {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vespera-brand img {
+  width: 180px;
+  height: auto;
+}
+
+.vespera-nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+
+.vespera-nav a {
+  position: relative;
+  padding: 9px 0;
+  color: rgba(245, 236, 220, 0.78);
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.vespera-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 1px;
+  background: var(--vespera-gold-soft);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.24s ease;
+}
+
+.vespera-nav a:hover {
+  color: var(--vespera-ivory);
+}
+
+.vespera-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.vespera-hero {
+  position: relative;
+  min-height: 760px;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  padding: 150px max(22px, calc((100vw - 1220px) / 2)) 88px;
+  background: var(--vespera-black);
+}
+
+.vespera-hero-image,
+.vespera-hero-shade,
+.vespera-hero-frame {
+  position: absolute;
+  inset: 0;
+}
+
+.vespera-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.03) contrast(1.08) brightness(0.82);
+  transform: scale(1.015);
+}
+
+.vespera-hero-shade {
+  background:
+    linear-gradient(90deg, rgba(7, 7, 6, 0.95), rgba(7, 7, 6, 0.58) 42%, rgba(7, 7, 6, 0.32) 72%, rgba(7, 7, 6, 0.82)),
+    linear-gradient(0deg, rgba(7, 7, 6, 0.9), rgba(7, 7, 6, 0.08) 36%, rgba(7, 7, 6, 0.76));
+}
+
+.vespera-hero-frame {
+  inset: 116px 28px 30px;
+  border: 1px solid rgba(241, 211, 155, 0.28);
+  pointer-events: none;
+}
+
+.vespera-hero-frame::before,
+.vespera-hero-frame::after {
+  content: "";
+  position: absolute;
+  width: 92px;
+  height: 92px;
+  border: 1px solid rgba(241, 211, 155, 0.42);
+}
+
+.vespera-hero-frame::before {
+  left: 14px;
+  top: 14px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.vespera-hero-frame::after {
+  right: 14px;
+  bottom: 14px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.vespera-hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 48px;
+  align-items: end;
+  width: 100%;
+}
+
+.vespera-hero-copy {
+  max-width: 760px;
+}
+
+.vespera-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  color: var(--vespera-gold-soft);
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-kicker::before {
+  content: "";
+  width: 36px;
+  height: 1px;
+  background: currentColor;
+}
+
+.vespera-kicker.dark {
+  color: #7e5a31;
+}
+
+.vespera-hero h1 {
+  margin: 14px 0 0;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 6rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.vespera-hero-copy > p:not(.vespera-kicker) {
+  max-width: 590px;
+  margin: 24px 0 0;
+  color: var(--vespera-muted);
+  font-size: 1.28rem;
+  line-height: 1.62;
+}
+
+.vespera-hero-actions,
+.vespera-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.vespera-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 13px 20px;
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: transform 0.24s ease, background 0.24s ease, border-color 0.24s ease;
+}
+
+.vespera-button.primary {
+  border-color: rgba(241, 211, 155, 0.62);
+  background: var(--vespera-gold);
+  color: #090706;
+}
+
+.vespera-button.secondary {
+  border-color: rgba(241, 211, 155, 0.35);
+  background: rgba(7, 7, 6, 0.52);
+  color: var(--vespera-ivory);
+}
+
+.vespera-button:hover {
+  transform: translateY(-2px);
+}
+
+.vespera-invitation {
+  position: relative;
+  min-height: 360px;
+  display: grid;
+  align-content: end;
+  padding: 28px;
+  border: 1px solid rgba(241, 211, 155, 0.42);
+  background:
+    linear-gradient(rgba(245, 236, 220, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(16, 11, 13, 0.96), rgba(75, 20, 40, 0.76));
+  background-size: 100% 24px, auto;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32);
+}
+
+.vespera-invitation::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(245, 236, 220, 0.09);
+  pointer-events: none;
+}
+
+.vespera-invitation span {
+  color: var(--vespera-gold-soft);
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-invitation strong {
+  display: block;
+  margin-top: 12px;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 2.35rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.vespera-invitation p {
+  margin: 16px 0 20px;
+  color: var(--vespera-muted);
+  line-height: 1.55;
+}
+
+.vespera-invitation dl {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid rgba(241, 211, 155, 0.22);
+}
+
+.vespera-invitation div {
+  padding-top: 14px;
+}
+
+.vespera-invitation dt,
+.vespera-invitation dd {
+  margin: 0;
+}
+
+.vespera-invitation dt {
+  color: var(--vespera-gold-soft);
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-invitation dd {
+  margin-top: 5px;
+  color: var(--vespera-ivory);
+  font-size: 1.05rem;
+}
+
+.vespera-vertical-note {
+  position: absolute;
+  right: 28px;
+  top: 190px;
+  z-index: 2;
+  writing-mode: vertical-rl;
+  color: rgba(245, 236, 220, 0.52);
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.vespera-ledger {
+  position: relative;
+  z-index: 4;
+  width: min(1120px, calc(100% - 36px));
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: -42px auto 0;
+  border: 1px solid rgba(21, 13, 16, 0.22);
+  background: var(--vespera-ivory);
+  color: var(--vespera-ink);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+}
+
+.vespera-ledger div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 13px;
+  align-items: center;
+  padding: 22px;
+}
+
+.vespera-ledger div + div {
+  border-left: 1px solid var(--vespera-dark-line);
+}
+
+.vespera-ledger svg {
+  grid-row: span 2;
+  color: var(--vespera-gold);
+}
+
+.vespera-ledger span {
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-ledger strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.18rem;
+  font-weight: 600;
+}
+
+.vespera-tasting {
+  padding: 110px max(22px, calc((100vw - 1180px) / 2)) 104px;
+  background:
+    linear-gradient(rgba(241, 211, 155, 0.045) 1px, transparent 1px),
+    var(--vespera-black);
+  background-size: 100% 27px;
+}
+
+.vespera-section-lead {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.62fr);
+  gap: 56px;
+  align-items: end;
+  margin-bottom: 42px;
+}
+
+.vespera-section-lead h2,
+.vespera-room-copy h2,
+.vespera-cellar-copy h2,
+.vespera-salon-copy h2,
+.vespera-reserve-copy h2 {
+  margin: 14px 0 0;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.vespera-section-lead p:not(.vespera-kicker),
+.vespera-room-copy p,
+.vespera-cellar-copy p,
+.vespera-salon-copy p,
+.vespera-reserve-copy p {
+  margin: 18px 0 0;
+  color: var(--vespera-muted);
+  font-size: 1.18rem;
+  line-height: 1.68;
+}
+
+.vespera-act-stage {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 350px;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.vespera-act-tabs {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.vespera-act-tabs button {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  min-height: 90px;
+  border: 1px solid rgba(241, 211, 155, 0.24);
+  border-radius: 2px;
+  background: rgba(245, 236, 220, 0.045);
+  color: rgba(245, 236, 220, 0.78);
+  padding: 16px;
+  text-align: left;
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: background 0.24s ease, color 0.24s ease, border-color 0.24s ease;
+}
+
+.vespera-act-tabs button span {
+  grid-column: 1 / -1;
+  color: var(--vespera-gold-soft);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.14rem;
+  font-style: italic;
+  text-transform: none;
+}
+
+.vespera-act-tabs button.is-active {
+  border-color: rgba(241, 211, 155, 0.68);
+  background: rgba(185, 141, 84, 0.2);
+  color: var(--vespera-ivory);
+}
+
+.vespera-course-portrait {
+  position: relative;
+  min-height: 560px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(241, 211, 155, 0.34);
+  background: var(--vespera-lacquer);
+}
+
+.vespera-course-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.02) contrast(1.04);
+}
+
+.vespera-course-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(7, 7, 6, 0.76), transparent 45%);
+}
+
+.vespera-course-portrait figcaption {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 20px;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+}
+
+.vespera-course-portrait span {
+  color: var(--vespera-gold-soft);
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-course-portrait strong {
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.vespera-menu-paper {
+  display: grid;
+  align-content: center;
+  padding: 28px;
+  border: 1px solid rgba(21, 13, 16, 0.18);
+  background:
+    linear-gradient(rgba(21, 13, 16, 0.045) 1px, transparent 1px),
+    var(--vespera-ivory);
+  background-size: 100% 25px;
+  color: var(--vespera-ink);
+}
+
+.vespera-menu-paper > span {
+  color: #7e5a31;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.22rem;
+  font-style: italic;
+}
+
+.vespera-menu-paper h3 {
+  margin: 10px 0 0;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 2.15rem;
+  font-weight: 600;
+  line-height: 1.02;
+}
+
+.vespera-menu-paper p {
+  margin: 16px 0 0;
+  color: var(--vespera-muted-dark);
+  font-size: 1.1rem;
+  line-height: 1.58;
+}
+
+.vespera-menu-paper ul {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vespera-menu-paper li {
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(21, 13, 16, 0.12);
+  color: #211417;
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.vespera-pairing-line {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  margin-top: 24px;
+  color: #7e5a31;
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-rooms {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+  padding: 104px max(22px, calc((100vw - 1180px) / 2));
+  background:
+    linear-gradient(rgba(21, 13, 16, 0.035) 1px, transparent 1px),
+    var(--vespera-ivory);
+  background-size: 100% 28px;
+  color: var(--vespera-ink);
+}
+
+.vespera-room-image {
+  position: relative;
+  min-height: 560px;
+  border: 1px solid rgba(21, 13, 16, 0.18);
+  background: var(--vespera-lacquer);
+  box-shadow: 18px 18px 0 rgba(185, 141, 84, 0.18);
+}
+
+.vespera-room-image::before {
+  content: "";
+  position: absolute;
+  inset: -14px 18px 18px -14px;
+  border: 1px solid rgba(185, 141, 84, 0.44);
+  pointer-events: none;
+}
+
+.vespera-room-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  object-fit: cover;
+}
+
+.vespera-room-image span {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  max-width: 290px;
+  padding: 12px 14px;
+  background: rgba(7, 7, 6, 0.78);
+  color: var(--vespera-ivory);
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-room-copy p {
+  color: var(--vespera-muted-dark);
+}
+
+.vespera-material-ledger {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 30px;
+  border-top: 1px solid var(--vespera-dark-line);
+  border-left: 1px solid var(--vespera-dark-line);
+}
+
+.vespera-material-ledger div {
+  min-height: 96px;
+  padding: 18px;
+  border-right: 1px solid var(--vespera-dark-line);
+  border-bottom: 1px solid var(--vespera-dark-line);
+}
+
+.vespera-material-ledger span {
+  color: #7e5a31;
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-weight: 700;
+}
+
+.vespera-material-ledger strong {
+  display: block;
+  margin-top: 8px;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 1.32rem;
+  font-weight: 600;
+}
+
+.vespera-cellar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.72fr);
+  gap: 0;
+  min-height: 680px;
+  background: var(--vespera-black);
+}
+
+.vespera-cellar-image {
+  min-height: 680px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.vespera-cellar-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.03) contrast(1.08);
+}
+
+.vespera-cellar-copy {
+  display: grid;
+  align-content: center;
+  padding: 78px max(22px, calc((100vw - 1180px) / 2)) 78px 62px;
+  border-left: 1px solid rgba(241, 211, 155, 0.2);
+  background:
+    linear-gradient(rgba(241, 211, 155, 0.04) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(16, 11, 13, 0.98), rgba(33, 16, 30, 0.92));
+  background-size: 100% 26px, auto;
+}
+
+.vespera-cellar-copy h2 {
+  max-width: 560px;
+}
+
+.vespera-cellar-copy p {
+  max-width: 560px;
+}
+
+.vespera-cellar-ledger {
+  display: grid;
+  margin-top: 28px;
+  border-top: 1px solid var(--vespera-line);
+}
+
+.vespera-cellar-ledger div {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--vespera-line);
+}
+
+.vespera-cellar-ledger span {
+  color: var(--vespera-gold-soft);
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-cellar-ledger strong {
+  color: var(--vespera-ivory);
+  font-size: 1.12rem;
+  font-weight: 600;
+}
+
+.vespera-text-link {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  width: fit-content;
+  margin-top: 28px;
+  color: var(--vespera-gold-soft);
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-salon {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr);
+  gap: 54px;
+  align-items: end;
+  padding: 120px max(22px, calc((100vw - 1180px) / 2));
+  background:
+    linear-gradient(90deg, rgba(7, 7, 6, 0.92), rgba(7, 7, 6, 0.64) 52%, rgba(7, 7, 6, 0.78)),
+    var(--vespera-salon-image) center / cover;
+}
+
+.vespera-salon::before {
+  content: "";
+  position: absolute;
+  inset: 28px;
+  border: 1px solid rgba(241, 211, 155, 0.24);
+  pointer-events: none;
+}
+
+.vespera-salon-copy,
+.vespera-salon-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.vespera-salon-copy h2 {
+  max-width: 620px;
+}
+
+.vespera-salon-copy p {
+  max-width: 590px;
+}
+
+.vespera-salon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.vespera-salon-grid article {
+  min-height: 230px;
+  padding: 22px;
+  border: 1px solid rgba(241, 211, 155, 0.32);
+  background: rgba(7, 7, 6, 0.74);
+}
+
+.vespera-salon-grid svg {
+  color: var(--vespera-gold-soft);
+}
+
+.vespera-salon-grid h3 {
+  margin: 44px 0 0;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+.vespera-salon-grid p {
+  margin: 12px 0 0;
+  color: var(--vespera-muted);
+  line-height: 1.52;
+}
+
+.vespera-gallery {
+  display: grid;
+  grid-template-columns: 1.1fr 0.62fr 0.62fr;
+  gap: 12px;
+  padding: 12px;
+  background: var(--vespera-black);
+}
+
+.vespera-gallery figure {
+  position: relative;
+  min-height: 360px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(241, 211, 155, 0.18);
+}
+
+.vespera-gallery figure.large {
+  min-height: 520px;
+}
+
+.vespera-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.02) contrast(1.05);
+  transition: transform 0.5s ease;
+}
+
+.vespera-gallery figure:hover img {
+  transform: scale(1.035);
+}
+
+.vespera-gallery figcaption {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 9px 12px;
+  border: 1px solid rgba(241, 211, 155, 0.32);
+  background: rgba(7, 7, 6, 0.72);
+  color: var(--vespera-ivory);
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-reserve {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(360px, 0.76fr);
+  gap: 58px;
+  align-items: start;
+  padding: 104px max(22px, calc((100vw - 1180px) / 2));
+  background:
+    linear-gradient(rgba(21, 13, 16, 0.035) 1px, transparent 1px),
+    var(--vespera-ivory);
+  background-size: 100% 28px;
+  color: var(--vespera-ink);
+}
+
+.vespera-reserve-copy p {
+  color: var(--vespera-muted-dark);
+}
+
+.vespera-reserve address {
+  margin: 28px 0 0;
+  color: #211417;
+  font-family: "Bodoni Moda", Georgia, serif;
+  font-size: 1.32rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.vespera-hours {
+  display: grid;
+  margin-top: 28px;
+  border-top: 1px solid var(--vespera-dark-line);
+}
+
+.vespera-hours div {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--vespera-dark-line);
+}
+
+.vespera-hours span {
+  color: #7e5a31;
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-hours strong {
+  font-weight: 600;
+}
+
+.vespera-reserve-form {
+  display: grid;
+  gap: 16px;
+  padding: 30px;
+  border: 1px solid rgba(21, 13, 16, 0.18);
+  background:
+    linear-gradient(135deg, rgba(7, 7, 6, 0.97), rgba(33, 16, 30, 0.94));
+  color: var(--vespera-ivory);
+  box-shadow: 18px 18px 0 rgba(185, 141, 84, 0.16);
+}
+
+.vespera-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.vespera-reserve-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--vespera-gold-soft);
+  font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vespera-reserve-form input,
+.vespera-reserve-form select,
+.vespera-reserve-form textarea {
+  width: 100%;
+  border: 1px solid rgba(241, 211, 155, 0.26);
+  border-radius: 2px;
+  background: rgba(245, 236, 220, 0.08);
+  color: var(--vespera-ivory);
+  padding: 12px 13px;
+  font: 1rem "Cormorant Garamond", Georgia, serif;
+}
+
+.vespera-reserve-form option {
+  color: #150d10;
+}
+
+.vespera-reserve-form textarea {
+  resize: vertical;
+}
+
+.vespera-reserve-form input::placeholder,
+.vespera-reserve-form textarea::placeholder {
+  color: rgba(245, 236, 220, 0.48);
+}
+
+.vespera-reserve-form .vespera-button {
+  width: 100%;
+}
+
+.vespera-form-status {
+  margin: 0;
+  color: var(--vespera-gold-soft);
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+
+.vespera-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 24px max(22px, calc((100vw - 1180px) / 2));
+  border-top: 1px solid var(--vespera-line);
+  background: var(--vespera-black);
+  color: var(--vespera-muted);
+}
+
+.vespera-footer button {
+  background: transparent;
+}
+
+.vespera-footer p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.vespera-mobile-reserve {
+  display: none;
+}
+
+@media (max-width: 1160px) {
+  .vespera-site-header {
+    grid-template-columns: auto minmax(160px, auto) 1fr;
+  }
+
+  .vespera-reserve-link {
+    display: none;
+  }
+
+  .vespera-hero-inner,
+  .vespera-section-lead,
+  .vespera-rooms,
+  .vespera-cellar,
+  .vespera-salon,
+  .vespera-reserve {
+    grid-template-columns: 1fr;
+  }
+
+  .vespera-act-stage {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .vespera-act-tabs {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .vespera-cellar-copy {
+    padding: 74px max(22px, calc((100vw - 920px) / 2));
+    border-left: 0;
+  }
+
+  .vespera-cellar-image,
+  .vespera-cellar {
+    min-height: auto;
+  }
+
+  .vespera-cellar-image {
+    height: 520px;
+  }
+
+  .vespera-salon-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 880px) {
+  .vespera-site-header {
+    grid-template-columns: auto 1fr;
+  }
+
+  .vespera-brand {
+    justify-content: end;
+  }
+
+  .vespera-nav {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    gap: 24px;
+    overflow-x: auto;
+    padding-top: 8px;
+    border-top: 1px solid rgba(241, 211, 155, 0.18);
+  }
+
+  .vespera-hero {
+    min-height: auto;
+    padding-top: 198px;
+  }
+
+  .vespera-hero h1 {
+    font-size: 4.8rem;
+  }
+
+  .vespera-ledger,
+  .vespera-material-ledger,
+  .vespera-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .vespera-ledger div + div {
+    border-left: 0;
+    border-top: 1px solid var(--vespera-dark-line);
+  }
+
+  .vespera-act-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .vespera-act-tabs,
+  .vespera-salon-grid,
+  .vespera-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .vespera-course-portrait {
+    min-height: 430px;
+  }
+
+  .vespera-gallery figure,
+  .vespera-gallery figure.large {
+    min-height: 330px;
+  }
+}
+
+@media (max-width: 640px) {
+  .vespera-site-header {
+    top: 10px;
+    width: calc(100% - 20px);
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .vespera-back-link {
+    display: none;
+  }
+
+  .vespera-brand {
+    justify-content: center;
+  }
+
+  .vespera-brand img {
+    width: 164px;
+  }
+
+  .vespera-nav {
+    gap: 20px;
+  }
+
+  .vespera-nav a {
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+
+  .vespera-hero {
+    padding: 208px 18px 58px;
+  }
+
+  .vespera-hero-frame,
+  .vespera-vertical-note {
+    display: none;
+  }
+
+  .vespera-hero h1 {
+    font-size: 3.8rem;
+  }
+
+  .vespera-hero-copy > p:not(.vespera-kicker) {
+    font-size: 1.12rem;
+  }
+
+  .vespera-hero-actions {
+    display: grid;
+  }
+
+  .vespera-button {
+    width: 100%;
+  }
+
+  .vespera-invitation {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .vespera-invitation dl {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .vespera-ledger {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .vespera-tasting,
+  .vespera-rooms,
+  .vespera-reserve {
+    padding: 66px 18px;
+  }
+
+  .vespera-salon {
+    padding: 72px 18px;
+  }
+
+  .vespera-section-lead h2,
+  .vespera-room-copy h2,
+  .vespera-cellar-copy h2,
+  .vespera-salon-copy h2,
+  .vespera-reserve-copy h2 {
+    font-size: 2.35rem;
+  }
+
+  .vespera-act-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+
+  .vespera-act-tabs button {
+    min-width: 210px;
+  }
+
+  .vespera-course-portrait,
+  .vespera-room-image,
+  .vespera-room-image img,
+  .vespera-cellar-image {
+    min-height: 320px;
+  }
+
+  .vespera-cellar-image {
+    height: 360px;
+  }
+
+  .vespera-cellar-copy {
+    padding: 62px 18px;
+  }
+
+  .vespera-cellar-ledger div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .vespera-room-image span {
+    left: 14px;
+    right: 14px;
+    max-width: none;
+  }
+
+  .vespera-reserve-form {
+    padding: 22px;
+    box-shadow: 10px 10px 0 rgba(185, 141, 84, 0.14);
+  }
+
+  .vespera-hours div {
+    display: grid;
+    gap: 4px;
+  }
+
+  .vespera-footer {
+    display: grid;
+    padding: 22px 18px 88px;
+  }
+
+  .vespera-mobile-reserve {
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 52px;
+    border: 1px solid rgba(241, 211, 155, 0.42);
+    border-radius: 2px;
+    background: var(--vespera-gold);
+    color: #090706;
+    font-family: "IBM Plex Sans Condensed", Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
+  }
+}

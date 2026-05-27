@@ -6,6 +6,7 @@ import './styles/mariosPizza.css';
 import './styles/sandysFish.css';
 import './styles/rockysDiner.css';
 import './styles/commonRoomCafe.css';
+import './styles/vespera.css';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>

@@ -1,32 +1,31 @@
 import { ArrowRight } from 'lucide-react';
 import PageIntro from '../components/ui/PageIntro.jsx';
+import CaseStudyCard from '../components/ui/CaseStudyCard.jsx';
+import { examples } from '../data/siteData.js';
 
 export default function WorkPage({ goToPage }) {
   return (
     <>
       <PageIntro
         eyebrow="Example work"
-        title="Working demo websites for restaurants, cafés and local food businesses."
-        text="These demo sites show the kind of design, structure and customer-focused thinking I can bring to a real local business website. Each one is built around the information customers look for first: menus, opening hours, location, atmosphere and a clear next step."
+        title="Concept websites that show the quality clients can expect."
+        text="Until real client projects are added, these demo builds show the visual direction, structure and business thinking behind the service. Replace the image slots with screenshots or photos as you create projects."
       />
 
       <section className="container work-index-section">
         <div className="work-index-card">
           <span>01</span>
-          <h2>Built around real customer actions.</h2>
+          <h2>Not just screenshots.</h2>
           <p>
-            A good local business website should make it easy to view the menu,
-            check opening hours, get directions, call the business or decide to visit.
+            Each example should explain the business problem, the structure chosen and the customer action the page is designed to support.
           </p>
         </div>
 
         <div className="work-index-card secondary">
           <span>02</span>
-          <h2>Different businesses need different designs.</h2>
+          <h2>Show your process.</h2>
           <p>
-            A pizza restaurant, fish restaurant, café and diner should not all look
-            like the same template with different photos. Each demo has its own tone,
-            layout and customer journey.
+            Local businesses trust people who can explain decisions clearly. This section gives you a more professional sales angle.
           </p>
         </div>
       </section>
@@ -34,24 +33,20 @@ export default function WorkPage({ goToPage }) {
       <section className="container featured-demo-stack">
         <div className="featured-demo-card">
           <div className="featured-demo-content">
-            <p className="eyebrow">Restaurant demo</p>
-
-            <h2>Mario&apos;s Pizza Galway</h2>
-
+            <p className="eyebrow">Featured demo</p>
+            <h2>Mario's Pizza Galway</h2>
             <p>
-              A warm, classic pizza restaurant website designed around atmosphere,
-              menu browsing, opening times and fast phone orders. The aim is to make
-              the business feel established, welcoming and easy to contact.
+              A full demo website for a warm local pizza restaurant, built around phone orders, a clear menu, opening times, atmosphere and a sense of place.
             </p>
 
             <div className="featured-demo-points">
               <span>Mobile friendly</span>
               <span>Phone order focused</span>
-              <span>Classic Italian feel</span>
+              <span>Vintage Italian art direction</span>
             </div>
 
             <button className="btn btn-primary" onClick={() => goToPage('pizza-demo')}>
-              View pizza demo <ArrowRight size={18} />
+              View Mario's Pizza demo <ArrowRight size={18} />
             </button>
           </div>
 
@@ -65,10 +60,9 @@ export default function WorkPage({ goToPage }) {
 
               <div className="pizza-preview-hero">
                 <div>
-                  <small>Mario&apos;s</small>
+                  <small>Mario's</small>
                   <strong>Wood-fired pizza, warm Galway nights.</strong>
                 </div>
-
                 <div className="pizza-preview-circle">
                   <span />
                   <span />
@@ -87,24 +81,20 @@ export default function WorkPage({ goToPage }) {
 
         <div className="featured-demo-card fish-demo-card">
           <div className="featured-demo-content">
-            <p className="eyebrow">Restaurant demo</p>
-
-            <h2>Sandy&apos;s Fish Restaurant</h2>
-
+            <p className="eyebrow">Featured demo</p>
+            <h2>Sandy's Fish Restaurant</h2>
             <p>
-              A coastal fish restaurant website focused on fresh food, family dining,
-              tourist appeal and a clear visit path. The layout supports menus,
-              opening hours, gallery sections and direct call/directions actions.
+              A full coastal fish restaurant demo with a cinematic storefront hero, fresh-catch menu board, warm family copy, gallery, opening hours and direct call path.
             </p>
 
             <div className="featured-demo-points">
-              <span>Tourist friendly</span>
-              <span>Family focused</span>
-              <span>Coastal visual style</span>
+              <span>Tourist focused</span>
+              <span>Family friendly</span>
+              <span>Rustic coastal art direction</span>
             </div>
 
             <button className="btn btn-primary" onClick={() => goToPage('sandys-fish-demo')}>
-              View fish restaurant demo <ArrowRight size={18} />
+              View Sandy's fish demo <ArrowRight size={18} />
             </button>
           </div>
 
@@ -118,10 +108,9 @@ export default function WorkPage({ goToPage }) {
 
               <div className="fish-preview-hero">
                 <div>
-                  <small>Sandy&apos;s</small>
+                  <small>Sandy's</small>
                   <strong>Warm fish suppers by the West Coast.</strong>
                 </div>
-
                 <div className="fish-preview-plate" />
               </div>
 
@@ -136,24 +125,20 @@ export default function WorkPage({ goToPage }) {
 
         <div className="featured-demo-card rocky-demo-card">
           <div className="featured-demo-content">
-            <p className="eyebrow">Diner demo</p>
-
+            <p className="eyebrow">Featured demo</p>
             <h2>Rockys Diner</h2>
-
             <p>
-              A nostalgic American diner website built around personality, menu
-              discovery, family visits and a strong sense of place. The design gives
-              the business a memorable identity instead of a generic food-site layout.
+              A nostalgic American diner demo with a cinematic chrome storefront hero, booth-and-counter atmosphere, full menu board, gallery, hours and direct call/directions path.
             </p>
 
             <div className="featured-demo-points">
-              <span>Family friendly</span>
-              <span>Strong visual identity</span>
-              <span>Classic diner styling</span>
+              <span>Tourist friendly</span>
+              <span>Family focused</span>
+              <span>Classic American diner art direction</span>
             </div>
 
             <button className="btn btn-primary" onClick={() => goToPage('rockys-diner-demo')}>
-              View diner demo <ArrowRight size={18} />
+              View Rockys Diner demo <ArrowRight size={18} />
             </button>
           </div>
 
@@ -170,12 +155,7 @@ export default function WorkPage({ goToPage }) {
                   <small>Rockys</small>
                   <strong>Chrome, coffee, burgers, shakes.</strong>
                 </div>
-
-                <div className="rockys-preview-sign">
-                  Open
-                  <br />
-                  7am
-                </div>
+                <div className="rockys-preview-sign">Open<br />7am</div>
               </div>
 
               <div className="rockys-preview-menu">
@@ -189,49 +169,88 @@ export default function WorkPage({ goToPage }) {
 
         <div className="featured-demo-card common-demo-card">
           <div className="featured-demo-content">
-            <p className="eyebrow">Café demo</p>
-
-            <h2>Common Room Cafe</h2>
-
+            <p className="eyebrow">Featured demo</p>
+            <h2>CTRL Coffee</h2>
             <p>
-              A modern café website designed for a younger audience, with a focus on
-              iced drinks, study seating, takeaway habits and quick decision-making.
-              The structure supports menu browsing, gallery content and clear visit actions.
+              A digital-first student cafe demo with interactive drink selection, live pickup status, stamp-pass thinking, study seating, event drops and app-like UX.
             </p>
 
             <div className="featured-demo-points">
-              <span>Modern café style</span>
-              <span>Order-ahead thinking</span>
-              <span>Student audience</span>
+              <span>Under-30 audience</span>
+              <span>Interactive order flow</span>
+              <span>Digital cafe art direction</span>
             </div>
 
             <button className="btn btn-primary" onClick={() => goToPage('common-room-cafe-demo')}>
-              View café demo <ArrowRight size={18} />
+              View CTRL Coffee demo <ArrowRight size={18} />
             </button>
           </div>
 
           <div className="featured-demo-preview" aria-hidden="true">
-            <div className="common-preview-window">
-              <div className="common-preview-top">
+            <div className="ctrl-preview-window">
+              <div className="ctrl-preview-top">
                 <span />
                 <span />
                 <span />
               </div>
 
-              <div className="common-preview-hero">
+              <div className="ctrl-preview-hero">
                 <div>
-                  <small>Common Room</small>
-                  <strong>Iced drinks, plugs, pickup shelf.</strong>
+                  <small>CTRL Coffee</small>
+                  <strong>Live queue, iced drinks, plug seats.</strong>
                 </div>
-
-                <div className="common-preview-phone">
+                <div className="ctrl-preview-phone">
                   <span />
                   <span />
                   <span />
                 </div>
               </div>
 
-              <div className="common-preview-menu">
+              <div className="ctrl-preview-menu">
+                <span />
+                <span />
+                <span />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="featured-demo-card vespera-demo-card">
+          <div className="featured-demo-content">
+            <p className="eyebrow">Featured demo</p>
+            <h2>Vespera</h2>
+            <p>
+              An ultra-luxury restaurant demo with theatrical fine-dining art direction, tasting-menu storytelling, cellar-led content, private dining and reservation flow.
+            </p>
+
+            <div className="featured-demo-points">
+              <span>High-end hospitality</span>
+              <span>Editorial luxury layout</span>
+              <span>Reservation focused</span>
+            </div>
+
+            <button className="btn btn-primary" onClick={() => goToPage('vespera-demo')}>
+              View Vespera demo <ArrowRight size={18} />
+            </button>
+          </div>
+
+          <div className="featured-demo-preview" aria-hidden="true">
+            <div className="vespera-preview-window">
+              <div className="vespera-preview-top">
+                <span />
+                <span />
+                <span />
+              </div>
+
+              <div className="vespera-preview-hero">
+                <div>
+                  <small>Vespera</small>
+                  <strong>Black lacquer, rare wine, late tables.</strong>
+                </div>
+                <div className="vespera-preview-seal" />
+              </div>
+
+              <div className="vespera-preview-menu">
                 <span />
                 <span />
                 <span />
@@ -241,6 +260,25 @@ export default function WorkPage({ goToPage }) {
         </div>
       </section>
 
+      <section className="container case-study-stack">
+        {examples.map((example, index) => (
+          <CaseStudyCard key={example.title} example={example} index={index} />
+        ))}
+      </section>
+
+      <section className="container work-cta-panel">
+        <div>
+          <p className="eyebrow">Next step</p>
+          <h2>Turn these demos into real proof.</h2>
+          <p>
+            After your first few jobs, swap these concept projects for real client screenshots, before/after notes and measurable improvements.
+          </p>
+        </div>
+
+        <button className="btn btn-primary" onClick={() => goToPage('contact')}>
+          Request a quote flow <ArrowRight size={18} />
+        </button>
+      </section>
     </>
   );
 }
