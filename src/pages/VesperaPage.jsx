@@ -21,6 +21,7 @@ import courseImage from '../assets/vespera-course.png';
 import cellarImage from '../assets/vespera-cellar.png';
 import privateDiningImage from '../assets/vespera-private-dining.png';
 import logoImage from '../assets/vespera-logo.svg';
+import '../styles/vespera.css';
 
 const navItems = [
   ['Home', '#vespera-home'],

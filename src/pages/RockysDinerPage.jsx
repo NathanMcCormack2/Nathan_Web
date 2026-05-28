@@ -18,6 +18,7 @@ import heroImage from '../assets/rockys-diner-hero.png';
 import interiorImage from '../assets/rockys-diner-interior.png';
 import foodImage from '../assets/rockys-diner-food.png';
 import logoImage from '../assets/rockys-diner-logo.svg';
+import '../styles/rockysDiner.css';
 
 const navItems = [
   ['Home', '#rockys-home'],

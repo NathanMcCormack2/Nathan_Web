@@ -1,294 +1,353 @@
-import {
-  ArrowLeft,
-  ArrowRight,
-  Clock3,
-  Flame,
-  MapPin,
-  Phone,
-  Star,
-  Utensils
-} from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { ArrowLeft, Phone, MapPin, Clock3, Star } from 'lucide-react';
 import heroImage from '../assets/marios-pizza-hero.png';
 import closeupImage from '../assets/marios-pizza-closeup.png';
 import storefrontImage from '../assets/marios-pizza-storefront.png';
 import logoImage from '../assets/marios-pizza-logo.svg';
+import '../styles/mariosPizza.css';
 
-const menuSections = [
+const menu = [
   {
-    title: 'Wood-fired pizzas',
-    note: 'Slow dough, San Marzano tomato, fior di latte, baked hard and fast.',
+    num: 'I',
+    category: 'Pizze al Forno a Legna',
+    note: 'Dough slow-proved 48 hrs · San Marzano tomato · fior di latte · wood-fired at 450°C',
     items: [
-      ['Margherita Tradizionale', 'Tomato, fior di latte, basil, extra virgin olive oil', 'EUR 12.50'],
-      ['Diavola', 'Spicy salami, chilli honey, mozzarella, torn basil', 'EUR 14.90'],
-      ['Galway Funghi', 'Roasted mushrooms, garlic cream, thyme, parmesan', 'EUR 14.40'],
-      ["Mario's Special", 'Prosciutto, artichoke, olives, rocket, shaved parmesan', 'EUR 16.50']
-    ]
+      { name: 'Margherita Tradizionale', desc: 'Tomato, fior di latte, fresh basil, extra virgin olive oil', price: '12.50' },
+      { name: 'Diavola', desc: 'Calabrian salami, chilli honey, mozzarella, torn basil', price: '14.90' },
+      { name: 'Galway Funghi', desc: 'Roasted wild mushrooms, garlic cream, thyme, aged parmesan', price: '14.40' },
+      { name: "Mario's Special", desc: 'Prosciutto di Parma, artichoke, olives, rocket, shaved parmesan', price: '16.50' },
+    ],
   },
   {
-    title: 'For the table',
-    note: 'Easy plates for families, late lunches, and the first glass of wine.',
+    num: 'II',
+    category: 'Dal Tavolo',
+    note: 'Sharing plates, antipasti & dolci — easy plates for families and long evenings',
     items: [
-      ['Garlic bread al forno', 'Wood-fired bread, garlic butter, parsley', 'EUR 6.50'],
-      ['Antipasti board', 'Cured meats, olives, roasted peppers, warm bread', 'EUR 15.00'],
-      ['House salad', 'Rocket, cherry tomato, parmesan, lemon dressing', 'EUR 7.00'],
-      ['Tiramisu', 'Coffee-soaked sponge, mascarpone, cocoa', 'EUR 6.90']
-    ]
-  }
-];
-
-const galleryShots = [
-  {
-    title: 'The oven table',
-    text: 'Evening service, timber counters, and the smell of basil hitting hot dough.',
-    image: heroImage
+      { name: 'Pane al Forno', desc: 'Wood-fired bread, garlic butter, flat-leaf parsley', price: '6.50' },
+      { name: 'Antipasti Board', desc: 'Cured meats, olives, roasted peppers, warm focaccia', price: '15.00' },
+      { name: 'Insalata della Casa', desc: 'Wild rocket, cherry tomato, parmesan, lemon dressing', price: '7.00' },
+      { name: 'Tiramisù Classico', desc: 'Coffee-soaked sponge, mascarpone, dark cocoa — nonna\'s recipe', price: '6.90' },
+    ],
   },
-  {
-    title: 'Pizza for sharing',
-    text: 'Crisp edges, melted cheese, and enough on the table for everyone.',
-    image: closeupImage
-  },
-  {
-    title: 'Galway evenings',
-    text: 'A red awning, warm windows, and a quick walk from the city centre.',
-    image: storefrontImage
-  }
-];
-
-const navItems = [
-  ['Home', '#marios-home'],
-  ['Menu', '#marios-menu'],
-  ['About', '#marios-about'],
-  ['Gallery', '#marios-gallery'],
-  ['Contact', '#marios-contact']
 ];
 
 export default function MarioPizzaPage({ goToPage }) {
+  const revealRef = useRef(null);
+
+  useEffect(() => {
+    revealRef.current = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('in')),
+      { threshold: 0.06, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => revealRef.current.observe(el));
+    return () => revealRef.current?.disconnect();
+  }, []);
+
   return (
-    <article className="marios-page">
-      <header className="marios-site-header" aria-label="Mario's Pizza demo navigation">
-        <button className="marios-back-link" type="button" onClick={() => goToPage('work')}>
-          <ArrowLeft size={17} />
-          Back to work
+    <div className="mp">
+      {/* grain filter definition */}
+      <svg width="0" height="0" className="mp-svg-filters" aria-hidden="true">
+        <defs>
+          <filter id="grain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" />
+            <feColorMatrix type="saturate" values="0" />
+            <feBlend in="SourceGraphic" mode="multiply" />
+          </filter>
+          <filter id="sepia-grain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch" result="noise" />
+            <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+            <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blended" />
+            <feColorMatrix type="matrix" values="0.393 0.769 0.189 0 0  0.349 0.686 0.168 0 0  0.272 0.534 0.131 0 0  0 0 0 1 0" in="blended" />
+          </filter>
+        </defs>
+      </svg>
+
+      {/* ── HEADER ── */}
+      <header className="mp-header">
+        <button className="mp-back" onClick={() => goToPage('work')} type="button">
+          <ArrowLeft size={14} strokeWidth={2.5} />
+          <span>Portfolio</span>
         </button>
 
-        <a className="marios-brand" href="#marios-home" aria-label="Mario's Pizza homepage">
-          <img src={logoImage} alt="Mario's Pizza Galway" />
-        </a>
+        <div className="mp-header-brand">
+          <img src={logoImage} alt="Mario's Pizza" />
+        </div>
 
-        <nav className="marios-nav" aria-label="Mario's Pizza pages">
-          {navItems.map(([label, href]) => (
-            <a key={label} href={href}>{label}</a>
+        <nav className="mp-nav" aria-label="Page sections">
+          {[['Menu','#mp-menu'],['About','#mp-about'],['Gallery','#mp-gallery'],['Contact','#mp-contact']].map(([l,h]) => (
+            <a key={l} href={h}>{l}</a>
           ))}
         </nav>
 
-        <a className="marios-call-link" href="tel:+35391555149">
-          <Phone size={17} />
-          Call to order
+        <a className="mp-header-call" href="tel:+35391555149">
+          <Phone size={13} strokeWidth={2.5} />
+          091 555 149
         </a>
       </header>
 
-      <section className="marios-hero" id="marios-home">
-        <img src={heroImage} alt="" className="marios-hero-image" />
-        <div className="marios-hero-shade" />
-        <div className="marios-hero-grain" />
+      {/* ── HERO ── */}
+      <section className="mp-hero" id="mp-hero">
+        <div className="mp-hero-photo">
+          <img src={heroImage} alt="" />
+          <div className="mp-hero-warmth" />
+          <div className="mp-grain-overlay" aria-hidden="true" />
+        </div>
 
-        <div className="marios-hero-content">
-          <p className="marios-kicker">Family pizza house - Galway city</p>
-          <h1>Mario's Pizza</h1>
-          <p>
-            Wood-fired pizza, warm tables, and proper Italian comfort for families,
-            tourists, and late Galway evenings.
+        <div className="mp-hero-frame" aria-hidden="true" />
+
+        <div className="mp-hero-body">
+          <div className="mp-hero-eyebrow reveal">
+            <span className="mp-ornament">✦</span>
+            <span>Family Pizza House · Galway City · Est. 1998</span>
+            <span className="mp-ornament">✦</span>
+          </div>
+
+          <h1 className="mp-hero-title reveal">
+            <span className="mp-hero-title-mario">Mario's</span>
+            <span className="mp-hero-title-pizza">Pizza</span>
+          </h1>
+
+          <p className="mp-hero-tagline reveal">
+            Wood-fired dough, warm tables &amp; proper Italian comfort —<br/>
+            for families, tourists and late Galway evenings.
           </p>
 
-          <div className="marios-hero-actions">
-            <a className="marios-button primary" href="tel:+35391555149">
-              <Phone size={18} />
+          <div className="mp-hero-actions reveal">
+            <a className="mp-btn-red" href="tel:+35391555149">
+              <Phone size={15} />
               Call 091 555 149
             </a>
-            <a className="marios-button secondary" href="#marios-menu">
-              View menu
-              <ArrowRight size={18} />
-            </a>
+            <a className="mp-btn-outline" href="#mp-menu">See the menu</a>
           </div>
         </div>
 
-        <aside className="marios-hero-ticket" aria-label="Opening details">
-          <span>Tonight</span>
-          <strong>Open until 10:30pm</strong>
-          <p>Order by phone for collection, or walk in for a table when the oven is glowing.</p>
-        </aside>
-      </section>
-
-      <section className="marios-info-strip" aria-label="Restaurant quick details">
-        <div>
-          <Phone size={19} />
-          <span>Phone orders</span>
-          <strong>091 555 149</strong>
-        </div>
-        <div>
-          <MapPin size={19} />
-          <span>Find us</span>
-          <strong>Quay Street, Galway</strong>
-        </div>
-        <div>
-          <Clock3 size={19} />
-          <span>Open</span>
-          <strong>12pm - 10:30pm</strong>
+        <div className="mp-hero-open">
+          <span className="mp-open-dot" />
+          <span>Open now · Until 10:30 pm</span>
         </div>
       </section>
 
-      <section className="marios-story" id="marios-about">
-        <div className="marios-story-copy">
-          <p className="marios-kicker dark">About the restaurant</p>
-          <h2>A small Galway pizza room with old Italian manners.</h2>
-          <p>
+      {/* ── RIBBON ── */}
+      <div className="mp-ribbon" aria-hidden="true">
+        {Array.from({length:12}).map((_,i) => (
+          <span key={i}>✦ Wood-fired pizza ✦ Galway since 1998 ✦ Walk-in & collection</span>
+        ))}
+      </div>
+
+      {/* ── INFO BAND ── */}
+      <div className="mp-band">
+        <div className="mp-band-item">
+          <Phone size={17} className="mp-band-icon" />
+          <div>
+            <span>Phone orders</span>
+            <strong>091 555 149</strong>
+          </div>
+        </div>
+        <div className="mp-band-sep" aria-hidden="true">✦</div>
+        <div className="mp-band-item">
+          <MapPin size={17} className="mp-band-icon" />
+          <div>
+            <span>Find us</span>
+            <strong>18 Quay St, Galway</strong>
+          </div>
+        </div>
+        <div className="mp-band-sep" aria-hidden="true">✦</div>
+        <div className="mp-band-item">
+          <Clock3 size={17} className="mp-band-icon" />
+          <div>
+            <span>Open daily</span>
+            <strong>12 noon – 10:30 pm</strong>
+          </div>
+        </div>
+      </div>
+
+      {/* ── ABOUT ── */}
+      <section className="mp-about" id="mp-about">
+        <div className="mp-about-photos">
+          <figure className="mp-photo-main reveal">
+            <div className="mp-photo-inner">
+              <img src={storefrontImage} alt="Mario's Pizza on Quay Street" />
+              <div className="mp-grain-overlay" aria-hidden="true" />
+            </div>
+            <figcaption>Quay Street · Galway</figcaption>
+          </figure>
+          <figure className="mp-photo-inset reveal">
+            <div className="mp-photo-inner">
+              <img src={closeupImage} alt="Wood-fired pizza" />
+              <div className="mp-grain-overlay" aria-hidden="true" />
+            </div>
+            <figcaption>From the oven</figcaption>
+          </figure>
+          <div className="mp-stamp reveal">
+            <span>Est.</span>
+            <strong>1998</strong>
+            <span>Galway</span>
+          </div>
+        </div>
+
+        <div className="mp-about-copy">
+          <p className="mp-label reveal">About the restaurant</p>
+          <div className="mp-ornament-rule reveal" aria-hidden="true"><span>✦</span></div>
+          <h2 className="mp-section-heading reveal">
+            A small Galway pizza room with old Italian manners.
+          </h2>
+          <p className="mp-body reveal">
             Mario's keeps things simple: dough made each morning, tomato sauce
             simmering in the back, and a room that feels easy after a day around
-            the city. Families come in early, tourists drift over from Quay Street,
-            and regulars call ahead when they want collection.
+            the city. Families come in early, tourists drift over from Quay
+            Street, and regulars call ahead when they want collection.
           </p>
-          <div className="marios-story-proof">
-            <span><Star size={17} /> Family-friendly tables</span>
-            <span><Flame size={17} /> Wood-fired dough</span>
-            <span><Utensils size={17} /> Sit in or collect</span>
-          </div>
-        </div>
-
-        <div className="marios-story-collage" aria-hidden="true">
-          <div className="marios-polaroid large">
-            <img src={storefrontImage} alt="" />
-            <span>Quay Street evenings</span>
-          </div>
-          <div className="marios-polaroid small">
-            <img src={closeupImage} alt="" />
-            <span>Slow dough daily</span>
-          </div>
-          <div className="marios-menu-stamp">Since 1998</div>
+          <p className="mp-body reveal">
+            The oven runs hot, the tables are close, and the menu hasn't needed
+            much changing in twenty-five years. That's the point.
+          </p>
+          <ul className="mp-features reveal">
+            {['Family-friendly tables','48-hour slow dough','Sit in or collect','A short walk from the Latin Quarter'].map(f => (
+              <li key={f}><span className="mp-feat-dot" />{ f}</li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      <section className="marios-menu-section" id="marios-menu">
-        <div className="marios-menu-heading">
-          <p className="marios-kicker">Menu favourites</p>
-          <h2>From the oven</h2>
-          <p>
-            Phone-order favourites from Mario's: blistered pizzas, sharing plates,
-            and a few easy extras for families coming in from Quay Street.
-          </p>
+      {/* ── MENU ── */}
+      <section className="mp-menu-section" id="mp-menu">
+        <div className="mp-menu-heading reveal">
+          <p className="mp-label centered">From the kitchen</p>
+          <div className="mp-ornament-rule" aria-hidden="true"><span>✦</span></div>
+          <h2 className="mp-menu-title">The Menu</h2>
+          <p className="mp-menu-sub">Phone-order favourites and sharing plates from the wood-fired kitchen on Quay Street.</p>
         </div>
 
-        <div className="marios-menu-board">
-          <div className="marios-menu-tape tape-left" aria-hidden="true" />
-          <div className="marios-menu-tape tape-right" aria-hidden="true" />
-          <div className="marios-menu-fold" aria-hidden="true" />
-          <div className="marios-menu-cover">
-            <img className="marios-menu-logo" src={logoImage} alt="" />
-            <span className="marios-menu-ribbon">Mario's family menu</span>
-            <strong>Pizza Menu</strong>
-            <p>Galway city - phone orders - sit in - collect</p>
+        <div className="mp-menu-parchment reveal">
+          <div className="mp-menu-parchment-header">
+            <img src={logoImage} alt="" className="mp-menu-logo" />
+            <div className="mp-ornament-rule"><span>✦</span></div>
+            <p>Galway · Phone orders · Sit in · Collect</p>
           </div>
 
-          {menuSections.map((section) => (
-            <section key={section.title} className="marios-menu-column" aria-labelledby={section.title.replaceAll(' ', '-')}>
-              <div className="marios-menu-column-head">
-                <span>{section.title.includes('pizzas') ? '01' : '02'}</span>
-                <h3 id={section.title.replaceAll(' ', '-')}>{section.title}</h3>
-                <p>{section.note}</p>
+          <div className="mp-menu-grid">
+            {menu.map(section => (
+              <div className="mp-menu-col" key={section.category}>
+                <div className="mp-menu-col-head">
+                  <span className="mp-menu-num">{section.num}</span>
+                  <h3>{section.category}</h3>
+                  <p>{section.note}</p>
+                </div>
+                <ul className="mp-menu-items">
+                  {section.items.map(item => (
+                    <li key={item.name} className="mp-menu-item">
+                      <div>
+                        <strong>{item.name}</strong>
+                        <span>{item.desc}</span>
+                      </div>
+                      <b className="mp-price">€{item.price}</b>
+                    </li>
+                  ))}
+                </ul>
               </div>
+            ))}
+          </div>
 
-              <div className="marios-menu-items">
-                {section.items.map(([name, description, price]) => (
-                  <article key={name} className="marios-menu-item">
-                    <div>
-                      <h4>{name}</h4>
-                      <p>{description}</p>
-                    </div>
-                    <span className="marios-price-leader" aria-hidden="true" />
-                    <strong>{price}</strong>
-                  </article>
-                ))}
-              </div>
-            </section>
-          ))}
-
-          <div className="marios-menu-footer-note">
+          <footer className="mp-menu-foot">
             <span>Fresh dough daily</span>
+            <span className="mp-ornament">✦</span>
             <span>Extra chilli on request</span>
+            <span className="mp-ornament">✦</span>
             <span>Ask about kids portions</span>
-          </div>
+          </footer>
         </div>
       </section>
 
-      <section className="marios-gallery" id="marios-gallery">
-        <div className="marios-gallery-lead">
-          <div>
-            <p className="marios-kicker dark">Gallery</p>
-            <h2>A look inside Mario's</h2>
-          </div>
-          <p className="marios-gallery-note">
-            Oven light, shared tables, a red Galway shopfront, and the kind of
-            food photos that make people ring before they keep scrolling.
-          </p>
+      {/* ── QUOTE BAND ── */}
+      <div className="mp-quote-band">
+        <blockquote className="mp-quote reveal">
+          <span className="mp-quote-mark">&ldquo;</span>
+          <p>The kind of pizza that makes you understand why Italians are so particular about it.</p>
+          <footer>
+            <Star size={13} fill="currentColor" /><Star size={13} fill="currentColor" /><Star size={13} fill="currentColor" /><Star size={13} fill="currentColor" /><Star size={13} fill="currentColor" />
+            <cite>— Regular, Quay Street</cite>
+          </footer>
+        </blockquote>
+      </div>
+
+      {/* ── GALLERY ── */}
+      <section className="mp-gallery" id="mp-gallery">
+        <div className="mp-gallery-head">
+          <p className="mp-label reveal">Gallery</p>
+          <div className="mp-ornament-rule reveal" aria-hidden="true"><span>✦</span></div>
+          <h2 className="mp-section-heading reveal">A look inside Mario's</h2>
         </div>
 
-        <div className="marios-gallery-grid">
-          {galleryShots.map((shot, index) => (
-            <figure key={shot.title} className={`marios-gallery-shot shot-${index + 1}`}>
-              <img src={shot.image} alt="" />
+        <div className="mp-polaroids">
+          {[
+            { img: heroImage, cap: 'The Oven Table', sub: 'Evening service, timber counters, basil on hot stone.' },
+            { img: closeupImage, cap: 'Pizza for Sharing', sub: 'Crisp edges, melted cheese — enough for everyone.' },
+            { img: storefrontImage, cap: 'Galway Evenings', sub: 'A red awning and warm windows on Quay Street.' },
+          ].map((p,i) => (
+            <figure className={`mp-polaroid reveal`} key={p.cap} style={{ '--delay': `${i * 0.12}s` }}>
+              <div className="mp-polaroid-photo">
+                <img src={p.img} alt={p.cap} />
+                <div className="mp-grain-overlay" aria-hidden="true" />
+              </div>
               <figcaption>
-                <strong>{shot.title}</strong>
-                <span>{shot.text}</span>
+                <strong>{p.cap}</strong>
+                <span>{p.sub}</span>
               </figcaption>
             </figure>
           ))}
         </div>
       </section>
 
-      <section
-        className="marios-contact"
-        id="marios-contact"
-        style={{ '--marios-contact-image': `url(${storefrontImage})` }}
-      >
-        <div className="marios-contact-card">
-          <p className="marios-kicker">Visit or order</p>
-          <h2>Phone first if you want collection ready.</h2>
-          <p>
-            Call us for collection, ask about tables, or drop in if you are
-            nearby. We are a short walk from the Latin Quarter and easiest to
-            spot by the red awning and warm front window.
-          </p>
-          <a className="marios-button primary" href="tel:+35391555149">
-            <Phone size={18} />
-            Call Mario's Pizza
-          </a>
-        </div>
+      {/* ── CONTACT ── */}
+      <section className="mp-contact" id="mp-contact">
+        <div className="mp-contact-inner">
+          <div className="mp-contact-copy reveal">
+            <p className="mp-label">Visit or order</p>
+            <div className="mp-ornament-rule" aria-hidden="true"><span>✦</span></div>
+            <h2 className="mp-section-heading light">
+              Phone first if you<br/>want collection ready.
+            </h2>
+            <p className="mp-body light">
+              Call ahead for collection, ask about tables, or just drop in.
+              We're an easy walk from the Latin Quarter — the red awning and
+              warm front window are hard to miss.
+            </p>
+            <a className="mp-btn-red" href="tel:+35391555149">
+              <Phone size={15} />
+              Call Mario's — 091 555 149
+            </a>
+          </div>
 
-        <div className="marios-hours-board">
-          <span className="marios-board-label">Opening hours</span>
-          <dl>
-            <div><dt>Mon - Thu</dt><dd>12:00 - 22:00</dd></div>
-            <div><dt>Fri - Sat</dt><dd>12:00 - 22:30</dd></div>
-            <div><dt>Sunday</dt><dd>13:00 - 21:30</dd></div>
-          </dl>
-          <address>
-            18 Quay Street<br />
-            Galway, Ireland
-          </address>
+          <div className="mp-hours reveal">
+            <div className="mp-hours-inner">
+              <span className="mp-hours-label">Opening Hours</span>
+              <dl>
+                <div><dt>Mon – Thu</dt><dd>12:00 – 22:00</dd></div>
+                <div><dt>Fri – Sat</dt><dd>12:00 – 22:30</dd></div>
+                <div><dt>Sunday</dt><dd>13:00 – 21:30</dd></div>
+              </dl>
+              <address>
+                18 Quay Street<br/>Galway, Ireland
+              </address>
+            </div>
+          </div>
         </div>
       </section>
 
-      <footer className="marios-footer">
-        <button type="button" onClick={() => goToPage('work')}>
-          <ArrowLeft size={17} />
-          Return to portfolio work
+      {/* ── FOOTER ── */}
+      <footer className="mp-footer">
+        <button type="button" onClick={() => goToPage('work')} className="mp-footer-back">
+          <ArrowLeft size={14} strokeWidth={2.5} />
+          Return to portfolio
         </button>
-        <p>Mario's Pizza demo site for McCormack Digital.</p>
+        <p>Mario's Pizza · Demo site · McCormack Digital</p>
       </footer>
 
-      <a className="marios-mobile-call" href="tel:+35391555149">
-        <Phone size={18} />
-        Call to order
+      {/* ── MOBILE CALL ── */}
+      <a className="mp-floating-call" href="tel:+35391555149" aria-label="Call Mario's Pizza">
+        <Phone size={19} strokeWidth={2} />
+        <span>Call to order</span>
       </a>
-    </article>
+    </div>
   );
 }

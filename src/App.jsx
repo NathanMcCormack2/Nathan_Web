@@ -91,15 +91,7 @@ export default function App() {
     }
   }, [activePage]);
 
-  // const isStandaloneDemo = [
-  //   'pizza-demo',
-  //   'sandys-fish-demo',
-  //   'rockys-diner-demo',
-  //   'common-room-cafe-demo',
-  //   'vespera-demo'
-  // ].includes(activePage);
-
-const isStandaloneDemo = activePage === 'pizza-demo' || activePage === 'sandys-fish-demo' || activePage === 'rockys-diner-demo' || activePage === 'common-room-cafe-demo' || activePage === 'vespera-demo';
+  const isStandaloneDemo = activePage === 'pizza-demo' || activePage === 'sandys-fish-demo' || activePage === 'rockys-diner-demo' || activePage === 'common-room-cafe-demo';
 
   return (
     <div className={`app-shell ${isStandaloneDemo ? 'demo-app-shell' : ''}`}>

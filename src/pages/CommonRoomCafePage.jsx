@@ -1,356 +1,397 @@
+import { useEffect, useRef } from 'react';
 import {
-  ArrowLeft,
-  ArrowRight,
-  BatteryCharging,
-  Camera,
-  Clock3,
-  Coffee,
-  CupSoda,
-  Headphones,
-  LaptopMinimalCheck,
-  ListMusic,
-  MapPin,
-  Phone,
-  PlugZap,
-  QrCode,
-  ScanQrCode,
-  Sparkles,
-  Star,
-  Wifi
+  ArrowLeft, ArrowRight, Phone, MapPin, Clock3,
+  Wifi, BatteryCharging, Music2, Coffee, Star
 } from 'lucide-react';
 import heroImage from '../assets/common-room-cafe-hero.png';
 import drinksImage from '../assets/common-room-cafe-drinks.png';
 import studyImage from '../assets/common-room-cafe-study.png';
 import logoImage from '../assets/common-room-cafe-logo.svg';
+import '../styles/commonRoomCafe.css';
 
-const navItems = [
-  ['Home', '#common-home'],
-  ['Menu', '#common-menu'],
-  ['Vibe', '#common-vibe'],
-  ['Gallery', '#common-gallery'],
-  ['Contact', '#common-contact']
+const drinks = [
+  { name: 'Iced Cloud Latte', desc: 'Espresso, oat milk, salted vanilla cold foam', price: '5.80' },
+  { name: 'Matcha Split', desc: 'Ceremonial grade matcha, whole milk, strawberry layer', price: '6.20' },
+  { name: 'Espresso Tonic', desc: 'Double shot, Galway Bay tonic, orange peel', price: '5.60' },
+  { name: 'Cold Brew Hour', desc: 'House cold brew, ice, optional sweet cream top', price: '4.90' },
+  { name: 'Flat White', desc: 'Double ristretto, steamed whole milk, light latte art', price: '3.90' },
 ];
 
-const quickDetails = [
-  { icon: CupSoda, label: 'Pickup shelf', value: 'Order ahead' },
-  { icon: PlugZap, label: 'Seats with plugs', value: '34 spots' },
-  { icon: Clock3, label: 'Open today', value: '7:30 - 21:30' }
+const food = [
+  { name: 'Breakfast Focaccia', desc: 'Egg, cheddar, chilli jam, rocket, toasted focaccia', price: '8.75' },
+  { name: 'Cinnamon Bun', desc: 'Cardamom sugar, vanilla glaze, warmed on request', price: '4.60' },
+  { name: 'Avocado Toast', desc: 'Sourdough, avocado, lemon, seeds, soft egg optional', price: '7.90' },
+  { name: 'Espresso Brownie', desc: 'Dark chocolate, espresso salt, cut thick', price: '4.20' },
+  { name: 'Toasted Banana Bread', desc: 'House-baked daily, served with salted butter', price: '3.80' },
 ];
 
-const drinkMenu = [
-  ['Iced cloud latte', 'Espresso, oat milk, salted vanilla cold foam', '$5.80'],
-  ['Matcha split', 'Ceremonial matcha, milk, strawberry layer', '$6.20'],
-  ['Espresso tonic', 'Double shot, citrus tonic, orange peel', '$5.60'],
-  ['Cold brew hour', 'House cold brew, ice, optional sweet cream', '$4.90']
-];
-
-const foodMenu = [
-  ['Breakfast focaccia', 'Egg, cheddar, chilli jam, rocket, toasted focaccia', '$8.75'],
-  ['Cinnamon bun', 'Cardamom sugar, vanilla glaze, warmed to order', '$4.60'],
-  ['Study toast', 'Avocado, lemon, seeds, soft egg add-on', '$7.90'],
-  ['After-class brownie', 'Dark chocolate, espresso salt, cut thick', '$4.20']
-];
-
-const vibeNotes = [
-  { icon: Wifi, title: 'Fast Wi-Fi', text: 'Stable enough for lecture notes, group projects, and a last-minute submission.' },
-  { icon: Headphones, title: 'Playlist hours', text: 'Lo-fi mornings, indie afternoons, louder Fridays after 6pm.' },
-  { icon: BatteryCharging, title: 'Low-battery mercy', text: 'Counter chargers, table plugs, and no side-eye for staying a while.' },
-  { icon: QrCode, title: 'Stamp wallet', text: 'Scan for every drink. Sixth iced coffee is on the house.' }
-];
-
-const galleryShots = [
-  {
-    title: 'Counter rush',
-    text: 'Iced drinks, pickup bags, blue tile, and a room that moves quickly.',
-    image: heroImage
-  },
-  {
-    title: 'Desk snacks',
-    text: 'Matcha, cold brew, focaccia, and a pastry within laptop reach.',
-    image: drinksImage
-  },
-  {
-    title: 'Plug-in tables',
-    text: 'A study corner that still feels like a cafe, not a library.',
-    image: studyImage
-  }
+const perks = [
+  { icon: Wifi, title: 'Fast Wi-Fi', text: 'Strong enough for a submission, comfortable enough for a scroll.' },
+  { icon: BatteryCharging, title: 'Always plugged in', text: 'Table plugs, counter chargers, and no side-eye for staying a while.' },
+  { icon: Music2, title: 'Daily playlist', text: 'Lo-fi until noon, indie afternoons, something louder Fridays after 6.' },
+  { icon: Coffee, title: 'Loyalty stamp', text: 'Every drink earns a stamp. Your sixth coffee is on the house.' },
 ];
 
 export default function CommonRoomCafePage({ goToPage }) {
-  return (
-    <article className="common-page">
-      <header className="common-site-header" aria-label="Common Room Cafe demo navigation">
-        <button className="common-back-link" type="button" onClick={() => goToPage('work')}>
-          <ArrowLeft size={17} />
-          Back to work
-        </button>
+  const obs = useRef(null);
 
-        <a className="common-brand" href="#common-home" aria-label="Common Room Cafe homepage">
+  useEffect(() => {
+    obs.current = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('crc-in')),
+      { threshold: 0.07, rootMargin: '0px 0px -32px 0px' }
+    );
+    document.querySelectorAll('.crc-reveal').forEach((el) => obs.current.observe(el));
+    return () => obs.current?.disconnect();
+  }, []);
+
+  return (
+    <div className="crc">
+
+      {/* ── HEADER ── */}
+      <header className="crc-header">
+        <button className="crc-back" type="button" onClick={() => goToPage('work')}>
+          <ArrowLeft size={14} strokeWidth={2.5} />
+          Portfolio
+        </button>
+        <a className="crc-logo-link" href="#crc-hero">
           <img src={logoImage} alt="Common Room Cafe" />
         </a>
-
-        <nav className="common-nav" aria-label="Common Room Cafe pages">
-          {navItems.map(([label, href]) => (
-            <a key={label} href={href}>{label}</a>
+        <nav className="crc-nav">
+          {[['Menu','#crc-menu'],['About','#crc-about'],['Vibe','#crc-vibe'],['Contact','#crc-contact']].map(([l,h]) => (
+            <a key={l} href={h}>{l}</a>
           ))}
         </nav>
-
-        <a className="common-order-link" href="tel:+12125550137">
-          <Phone size={17} />
-          Order ahead
+        <a className="crc-header-cta" href="tel:+35391550100">
+          <Phone size={13} strokeWidth={2.5} />
+          <span>091 550 100</span>
         </a>
       </header>
 
-      <section className="common-hero" id="common-home">
-        <img className="common-hero-image" src={heroImage} alt="" />
-        <div className="common-hero-wash" />
-        <div className="common-hero-grid" />
+      {/* ── HERO ── */}
+      <section className="crc-hero" id="crc-hero">
+        <div className="crc-hero-bg">
+          <img src={heroImage} alt="" />
+          <div className="crc-hero-layer" />
+          <div className="crc-hero-grain" />
+          <div className="crc-hero-vignette" />
+        </div>
 
-        <div className="common-hero-inner">
-          <div className="common-hero-copy">
-            <p className="common-kicker">Campus edge cafe - iced drinks - study seats</p>
-            <h1>Common Room Cafe</h1>
-            <p>
-              Iced coffee, matcha, desk snacks, playlists, and plug-in tables for
-              students, creatives, and anyone with thirty minutes between plans.
-            </p>
+        {/* Vertical side text */}
+        <p className="crc-hero-vert" aria-hidden="true">Good Coffee · Galway · Est. 2019</p>
 
-            <div className="common-hero-actions">
-              <a className="common-button primary" href="tel:+12125550137">
-                <Phone size={18} />
-                Order pickup
-              </a>
-              <a className="common-button secondary" href="#common-menu">
-                Scan the menu
-                <ArrowRight size={18} />
-              </a>
-            </div>
+        <div className="crc-hero-body">
+          <p className="crc-hero-overline crc-reveal">
+            <span className="crc-dot-accent" />
+            Abbeygate Street · Galway City
+            <span className="crc-dot-accent" />
+          </p>
+
+          <h1 className="crc-hero-title crc-reveal">
+            <span className="crc-hero-common">Common</span>
+            <span className="crc-hero-room">Room</span>
+          </h1>
+          <p className="crc-hero-word crc-reveal">Café</p>
+
+          <p className="crc-hero-tag crc-reveal">
+            Iced drinks, warm seats &amp; proper coffee for Galway's students,<br />
+            creatives and late-morning regulars.
+          </p>
+
+          <div className="crc-hero-actions crc-reveal">
+            <a className="crc-btn-terra" href="tel:+35391550100">
+              <Phone size={15} />
+              Call to order
+            </a>
+            <a className="crc-btn-ghost" href="#crc-menu">
+              See the menu
+            </a>
           </div>
+        </div>
 
-          <aside className="common-phone-card" aria-label="Order pickup status">
-            <span>Pickup board</span>
-            <strong>12 min</strong>
-            <p>Order on the way from class and grab it from the blue tile shelf.</p>
-            <div className="common-pickup-row">
-              <ScanQrCode size={21} />
-              <small>Scan for stamps</small>
-            </div>
-          </aside>
+        <div className="crc-hero-badge crc-reveal" aria-label="Open now">
+          <span className="crc-pulse" />
+          <strong>Open now</strong>
+          <span>Until 9:30 pm</span>
+        </div>
+
+        {/* Coffee ring decorative */}
+        <div className="crc-ring-deco" aria-hidden="true" />
+      </section>
+
+      {/* ── MARQUEE ── */}
+      <div className="crc-marquee" aria-hidden="true">
+        {[...Array(10)].map((_,i) => (
+          <span key={i}>✦ Good Coffee ✦ Galway City ✦ Wi-Fi ✦ Iced Drinks ✦ Study Seats ✦ Stamp Card</span>
+        ))}
+      </div>
+
+      {/* ── INFO STRIP ── */}
+      <div className="crc-strip">
+        <div className="crc-strip-item">
+          <Phone size={16} />
+          <span>Order ahead</span>
+          <strong>091 550 100</strong>
+        </div>
+        <div className="crc-strip-rule" aria-hidden="true" />
+        <div className="crc-strip-item">
+          <MapPin size={16} />
+          <span>Find us</span>
+          <strong>14 Abbeygate St, Galway</strong>
+        </div>
+        <div className="crc-strip-rule" aria-hidden="true" />
+        <div className="crc-strip-item">
+          <Clock3 size={16} />
+          <span>Open daily</span>
+          <strong>7:30 am – 9:30 pm</strong>
+        </div>
+      </div>
+
+      {/* ── ABOUT ── */}
+      <section className="crc-about" id="crc-about">
+        <div className="crc-about-image">
+          <div className="crc-about-photo">
+            <img src={studyImage} alt="Inside Common Room Cafe" />
+            <div className="crc-about-grain" />
+          </div>
+          <div className="crc-about-tag crc-reveal">
+            <span>Est.</span>
+            <strong>2019</strong>
+            <span>Galway</span>
+          </div>
+        </div>
+
+        <div className="crc-about-copy">
+          <p className="crc-label crc-reveal">About the cafe</p>
+          <h2 className="crc-about-heading crc-reveal">
+            A corner of Galway that belongs to whoever needs it most that morning.
+          </h2>
+          <blockquote className="crc-pull-quote crc-reveal">
+            "We built Common Room for the people who drink their coffee with a purpose."
+          </blockquote>
+          <p className="crc-body crc-reveal">
+            We opened on Abbeygate Street in 2019 because Galway needed a cafe that felt
+            like a living room — somewhere between a proper coffee shop and somewhere you
+            actually wanted to stay. Students come for the Wi-Fi and the iced matcha.
+            Freelancers come for the long tables. Regulars come because they always have.
+          </p>
+          <p className="crc-body crc-reveal">
+            Every drink is made to order. The playlist changes after noon. The brownies
+            are baked in-house. We're not trying to be a chain. We're trying to be yours.
+          </p>
+          <ul className="crc-about-list crc-reveal">
+            <li><span />Speciality coffee & matcha</li>
+            <li><span />Long tables &amp; plug-in seats</li>
+            <li><span />Student loyalty stamp card</li>
+            <li><span />Tuesday student discount</li>
+          </ul>
         </div>
       </section>
 
-      <section className="common-detail-strip" aria-label="Cafe quick details">
-        {quickDetails.map((detail) => {
-          const Icon = detail.icon;
-          return (
-            <div key={detail.label}>
-              <Icon size={20} />
-              <span>{detail.label}</span>
-              <strong>{detail.value}</strong>
-            </div>
-          );
-        })}
-      </section>
-
-      <section className="common-marquee" aria-label="Cafe highlights">
-        <div>
-          <span>Iced matcha</span>
-          <i />
-          <span>Cold brew</span>
-          <i />
-          <span>Plug-in seats</span>
-          <i />
-          <span>Stamp wallet</span>
-          <i />
-          <span>Playlist Fridays</span>
+      {/* ── MENU ── */}
+      <section className="crc-menu" id="crc-menu">
+        <div className="crc-menu-hero-img">
+          <img src={drinksImage} alt="" />
+          <div className="crc-menu-img-overlay" />
         </div>
-      </section>
 
-      <section className="common-menu-section" id="common-menu">
-        <div className="common-menu-lead">
-          <div>
-            <p className="common-kicker dark">Menu</p>
-            <h2>Fast drinks, proper snacks, and nothing that needs a white tablecloth.</h2>
+        <div className="crc-menu-content">
+          <div className="crc-menu-title-block crc-reveal">
+            <p className="crc-label light">From the counter</p>
+            <h2 className="crc-menu-title">The Menu</h2>
+            <p className="crc-menu-sub">Made fresh, ordered fast. No tablecloths required.</p>
           </div>
-          <p>
-            The menu is built for quick choices: iced drinks at the top, food that
-            travels to a lecture hall, and a few reasons to come back after 4pm.
+
+          <div className="crc-menu-board crc-reveal">
+            <div className="crc-menu-col">
+              <div className="crc-menu-col-header">
+                <span className="crc-menu-roman">I</span>
+                <div>
+                  <h3>Drinks</h3>
+                  <p>Iced, hot &amp; everything between</p>
+                </div>
+              </div>
+              {drinks.map(item => (
+                <div key={item.name} className="crc-menu-item">
+                  <div>
+                    <strong>{item.name}</strong>
+                    <em>{item.desc}</em>
+                  </div>
+                  <span className="crc-dots" aria-hidden="true" />
+                  <b>€{item.price}</b>
+                </div>
+              ))}
+            </div>
+
+            <div className="crc-menu-divider" aria-hidden="true" />
+
+            <div className="crc-menu-col">
+              <div className="crc-menu-col-header">
+                <span className="crc-menu-roman">II</span>
+                <div>
+                  <h3>Food</h3>
+                  <p>Baked fresh · travels to a lecture hall</p>
+                </div>
+              </div>
+              {food.map(item => (
+                <div key={item.name} className="crc-menu-item">
+                  <div>
+                    <strong>{item.name}</strong>
+                    <em>{item.desc}</em>
+                  </div>
+                  <span className="crc-dots" aria-hidden="true" />
+                  <b>€{item.price}</b>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="crc-menu-note crc-reveal">
+            Oat milk &amp; soy available at no extra charge · Ask about daily specials · Stamp card accepted
           </p>
         </div>
-
-        <div className="common-menu-board">
-          <div className="common-menu-photo">
-            <img src={drinksImage} alt="" />
-            <span>Current desk order</span>
-          </div>
-
-          <section className="common-menu-list" aria-labelledby="common-drinks">
-            <div className="common-menu-heading">
-              <CupSoda size={23} />
-              <h3 id="common-drinks">Iced drinks</h3>
-            </div>
-            {drinkMenu.map(([name, description, price]) => (
-              <article className="common-menu-item" key={name}>
-                <div>
-                  <h4>{name}</h4>
-                  <p>{description}</p>
-                </div>
-                <span aria-hidden="true" />
-                <strong>{price}</strong>
-              </article>
-            ))}
-          </section>
-
-          <section className="common-menu-list food" aria-labelledby="common-food">
-            <div className="common-menu-heading">
-              <Coffee size={23} />
-              <h3 id="common-food">Desk snacks</h3>
-            </div>
-            {foodMenu.map(([name, description, price]) => (
-              <article className="common-menu-item" key={name}>
-                <div>
-                  <h4>{name}</h4>
-                  <p>{description}</p>
-                </div>
-                <span aria-hidden="true" />
-                <strong>{price}</strong>
-              </article>
-            ))}
-          </section>
-        </div>
       </section>
 
-      <section className="common-vibe" id="common-vibe">
-        <div className="common-vibe-copy">
-          <p className="common-kicker dark">The room</p>
-          <h2>Built for the half-study, half-social way people actually use cafes now.</h2>
-          <p>
-            Common Room is not pretending everyone sits quietly with a paperback.
-            Some people are revising, some are catching up, some are waiting for
-            the group chat to decide where next. The site sells that rhythm clearly.
-          </p>
-          <a className="common-text-link" href="#common-contact">
-            Find a table <ArrowRight size={17} />
-          </a>
+      {/* ── VIBE ── */}
+      <section className="crc-vibe" id="crc-vibe">
+        <div className="crc-vibe-intro">
+          <p className="crc-label crc-reveal">The room</p>
+          <h2 className="crc-vibe-heading crc-reveal">
+            Built for the way people<br />actually use a cafe in 2025.
+          </h2>
         </div>
 
-        <div className="common-vibe-panel">
-          {vibeNotes.map((note) => {
-            const Icon = note.icon;
+        <div className="crc-perks">
+          {perks.map((p, i) => {
+            const Icon = p.icon;
             return (
-              <article key={note.title}>
-                <Icon size={24} />
-                <h3>{note.title}</h3>
-                <p>{note.text}</p>
-              </article>
+              <div key={p.title} className="crc-perk crc-reveal" style={{ '--delay': `${i * 0.1}s` }}>
+                <div className="crc-perk-icon"><Icon size={20} strokeWidth={1.5} /></div>
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
+              </div>
             );
           })}
         </div>
-      </section>
 
-      <section className="common-study-band">
-        <figure>
-          <img src={studyImage} alt="Students studying inside Common Room Cafe" />
-        </figure>
-        <div>
-          <p className="common-kicker">Study corner</p>
-          <h2>Stay for twenty minutes or three hours. Just keep ordering coffee.</h2>
-          <p>
-            Long tables, plugs in reach, softer music before lunch, and enough buzz
-            to make work feel less like being stuck at home.
-          </p>
-          <div className="common-study-stats">
-            <span><LaptopMinimalCheck size={18} /> Laptop tables</span>
-            <span><ListMusic size={18} /> Live playlist</span>
-            <span><Sparkles size={18} /> Student discount Tue</span>
+        <div className="crc-study-banner crc-reveal">
+          <div className="crc-study-photo">
+            <img src={studyImage} alt="Study corner at Common Room" />
+            <div className="crc-study-overlay" />
+          </div>
+          <div className="crc-study-copy">
+            <p className="crc-label light">Study corner</p>
+            <h3>Stay twenty minutes or three hours. Just keep ordering coffee.</h3>
+            <p>Long tables, plugs in reach, softer music before lunch. Tuesday student discount with ID. We won't rush you.</p>
+            <a className="crc-btn-cream" href="#crc-contact">Find a table <ArrowRight size={15} /></a>
           </div>
         </div>
       </section>
 
-      <section className="common-gallery" id="common-gallery">
-        <div className="common-gallery-lead">
-          <div>
-            <p className="common-kicker dark">Gallery</p>
-            <h2>A cafe that looks like the audience already belongs there.</h2>
-          </div>
-          <a className="common-text-link" href="#common-contact">
-            Visit today <ArrowRight size={17} />
-          </a>
+      {/* ── GALLERY ── */}
+      <section className="crc-gallery" id="crc-gallery">
+        <div className="crc-gallery-head crc-reveal">
+          <p className="crc-label">Gallery</p>
+          <h2 className="crc-section-heading">A look inside Common Room.</h2>
         </div>
-
-        <div className="common-gallery-grid">
-          {galleryShots.map((shot, index) => (
-            <figure key={shot.title} className={`common-gallery-shot shot-${index + 1}`}>
-              <img src={shot.image} alt={shot.title} />
-              <figcaption>
-                <strong>{shot.title}</strong>
-                <span>{shot.text}</span>
-              </figcaption>
-            </figure>
-          ))}
-
-          <div className="common-gallery-note">
-            <Camera size={20} />
-            <strong>Visual story</strong>
-            <p>Images show the counter, the products, and the study culture without relying on generic stock portraits.</p>
-          </div>
+        <div className="crc-gallery-grid">
+          <figure className="crc-gf crc-gf-a crc-reveal">
+            <div className="crc-gf-photo">
+              <img src={heroImage} alt="Counter at Common Room Cafe" />
+              <div className="crc-gf-caption">
+                <strong>The Counter</strong>
+                <span>Blue tile, warm light, and the best iced latte in Galway.</span>
+              </div>
+            </div>
+          </figure>
+          <figure className="crc-gf crc-gf-b crc-reveal">
+            <div className="crc-gf-photo">
+              <img src={drinksImage} alt="Drinks from Common Room" />
+              <div className="crc-gf-caption">
+                <strong>Desk Order</strong>
+                <span>Matcha, cold brew, focaccia — within laptop reach.</span>
+              </div>
+            </div>
+          </figure>
+          <figure className="crc-gf crc-gf-c crc-reveal">
+            <div className="crc-gf-photo">
+              <img src={studyImage} alt="Study area at Common Room" />
+              <div className="crc-gf-caption">
+                <strong>The Long Tables</strong>
+                <span>A study corner that still feels like a cafe, not a library.</span>
+              </div>
+            </div>
+          </figure>
         </div>
       </section>
 
-      <section
-        className="common-contact"
-        id="common-contact"
-        style={{ '--common-contact-image': `url(${heroImage})` }}
-      >
-        <div className="common-contact-copy">
-          <p className="common-kicker">Contact</p>
-          <h2>Order before you leave class, or come find the blue tile counter.</h2>
-          <p>
-            Call for pickup, ask about table space, or get directions to the cafe.
-            Evening seats move fastest after lectures and before gigs.
-          </p>
-          <div className="common-contact-actions">
-            <a className="common-button primary" href="tel:+12125550137">
-              <Phone size={18} />
-              Call Common Room
+      {/* ── QUOTE ── */}
+      <div className="crc-quote-band">
+        <div className="crc-quote-inner crc-reveal">
+          <span className="crc-qmark">&ldquo;</span>
+          <p>The best iced coffee in Galway. I've tried to leave and I just keep coming back.</p>
+          <footer>
+            <Star size={13} fill="currentColor" strokeWidth={0} />
+            <Star size={13} fill="currentColor" strokeWidth={0} />
+            <Star size={13} fill="currentColor" strokeWidth={0} />
+            <Star size={13} fill="currentColor" strokeWidth={0} />
+            <Star size={13} fill="currentColor" strokeWidth={0} />
+            <cite>— Aoife, NUIG student</cite>
+          </footer>
+        </div>
+      </div>
+
+      {/* ── CONTACT ── */}
+      <section className="crc-contact" id="crc-contact">
+        <div className="crc-contact-inner">
+          <div className="crc-contact-copy crc-reveal">
+            <p className="crc-label light">Visit or order</p>
+            <h2 className="crc-contact-heading">
+              Call ahead, or just<br />walk through the door.
+            </h2>
+            <p className="crc-contact-body">
+              Phone for pickup, ask about table space, or get directions from the Latin Quarter.
+              We're a four-minute walk from Eyre Square. Look for the warm windows.
+            </p>
+            <a className="crc-btn-terra" href="tel:+35391550100">
+              <Phone size={15} />
+              Call 091 550 100
             </a>
-            <a className="common-button secondary" href="https://maps.google.com/?q=88+Mercer+Street+New+York+NY" target="_blank" rel="noreferrer">
-              Get directions
-              <ArrowRight size={18} />
-            </a>
+          </div>
+
+          <div className="crc-hours crc-reveal">
+            <span className="crc-hours-label">Opening Hours</span>
+            <dl>
+              <div><dt>Mon – Fri</dt><dd>7:30 – 21:30</dd></div>
+              <div><dt>Saturday</dt><dd>8:30 – 22:00</dd></div>
+              <div><dt>Sunday</dt><dd>9:00 – 20:00</dd></div>
+            </dl>
+            <address>
+              14 Abbeygate Street<br />
+              Galway, Ireland
+            </address>
+            <p className="crc-hours-note">
+              <Star size={12} fill="currentColor" strokeWidth={0} />
+              Tuesday student discount with ID
+            </p>
           </div>
         </div>
-
-        <aside className="common-hours-card" aria-label="Opening hours and address">
-          <span className="common-board-label">Open hours</span>
-          <dl>
-            <div><dt>Mon - Thu</dt><dd>7:30 - 21:30</dd></div>
-            <div><dt>Fri</dt><dd>7:30 - 23:00</dd></div>
-            <div><dt>Sat - Sun</dt><dd>8:30 - 22:00</dd></div>
-          </dl>
-          <address>
-            88 Mercer Street<br />
-            New York, NY
-          </address>
-          <div className="common-rating-note">
-            <Star size={17} />
-            Student discount on Tuesdays with ID. Plugs are first come, first served.
-          </div>
-        </aside>
       </section>
 
-      <footer className="common-footer">
-        <button type="button" onClick={() => goToPage('work')}>
-          <ArrowLeft size={17} />
-          Return to portfolio work
+      {/* ── FOOTER ── */}
+      <footer className="crc-footer">
+        <button type="button" onClick={() => goToPage('work')} className="crc-footer-back">
+          <ArrowLeft size={14} strokeWidth={2.5} />
+          Back to portfolio
         </button>
-        <p>Common Room Cafe demo site for McCormack Digital.</p>
+        <p>Common Room Cafe · Demo site · McCormack Digital</p>
       </footer>
 
-      <a className="common-mobile-call" href="tel:+12125550137">
-        <Phone size={18} />
-        Order pickup
+      {/* ── MOBILE CALL ── */}
+      <a className="crc-float-call" href="tel:+35391550100" aria-label="Call Common Room">
+        <Phone size={19} strokeWidth={2} />
+        <span>Call to order</span>
       </a>
-    </article>
+
+    </div>
   );
 }
