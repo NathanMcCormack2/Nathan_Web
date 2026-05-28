@@ -3,26 +3,6 @@ import PageIntro from '../components/ui/PageIntro.jsx';
 
 const projects = [
   {
-    eyebrow: 'Restaurant demo',
-    title: 'Rockys Diner',
-    text: 'A classic American diner website built around atmosphere, menu browsing, opening hours and quick directions.',
-    points: ['Classic diner style', 'Menu focused', 'Visit-ready layout'],
-    page: 'rockys-diner-demo',
-    button: 'View Diner demo',
-    preview: 'rockys',
-    cardClass: 'rocky-demo-card'
-  },
-  {
-    eyebrow: 'Fine dining demo',
-    title: 'Vespera',
-    text: 'A luxury restaurant website with editorial visuals, tasting-menu storytelling, private dining and reservation-focused sections.',
-    points: ['Luxury direction', 'Reservation focused', 'Private dining'],
-    page: 'vespera-demo',
-    button: 'View Vespera demo',
-    preview: 'vespera',
-    cardClass: 'vespera-demo-card'
-  },
-  {
     eyebrow: 'Fish restaurant demo',
     title: "Sandy's Fish Restaurant",
     text: 'A coastal seafood website with a strong storefront hero, fresh-catch menu sections, gallery, hours and a direct call path.',
@@ -31,6 +11,16 @@ const projects = [
     button: "View Sandy's demo",
     preview: 'fish',
     cardClass: 'fish-demo-card'
+  },
+  {
+    eyebrow: 'Restaurant demo',
+    title: 'Rockys Diner',
+    text: 'A classic American diner website built around atmosphere, menu browsing, opening hours and quick directions.',
+    points: ['Classic diner style', 'Menu focused', 'Visit-ready layout'],
+    page: 'rockys-diner-demo',
+    button: 'View Diner demo',
+    preview: 'rockys',
+    cardClass: 'rocky-demo-card'
   },
   {
     eyebrow: 'Pizza restaurant demo',
@@ -51,6 +41,16 @@ const projects = [
     button: 'View Cafe demo',
     preview: 'common',
     cardClass: 'common-demo-card'
+  },
+  {
+    eyebrow: 'Fine dining demo',
+    title: 'Vespera',
+    text: 'A luxury restaurant website with editorial visuals, tasting-menu storytelling, private dining and reservation-focused sections.',
+    points: ['Luxury direction', 'Reservation focused', 'Private dining'],
+    page: 'vespera-demo',
+    button: 'View Vespera demo',
+    preview: 'vespera',
+    cardClass: 'vespera-demo-card'
   }
 ];
 
