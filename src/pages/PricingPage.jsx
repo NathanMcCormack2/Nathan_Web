@@ -7,27 +7,24 @@ export default function PricingPage({ goToPage }) {
     <>
       <PageIntro
         eyebrow="Pricing"
-        title="Clear website packages with a simple monthly care plan."
-        text="Each website has an upfront build fee, then a minimum monthly care plan from €30/month if you want me to host, monitor and maintain the live site."
+        title="Clear packages. No hidden costs."
+        text="An upfront build fee, then a monthly care plan to keep the site live and supported."
       />
 
       <section className="container pricing-layout-section pricing-layout-refined">
         <div className="pricing-side-note">
           <p className="eyebrow">How pricing works</p>
-
-          <h2>Pay once for the build, then monthly to keep the site live and supported.</h2>
-
+          <h2>Pay once to build. Monthly to maintain.</h2>
           <p>
-            The upfront fee covers the design, development and launch of the website.
-            The monthly care plan starts from €30/month and covers the basic running setup:
-            hosting/deployment support, SSL/domain checks, small fixes and light support from me.
+            The build fee covers design, development and launch.
+            Monthly care starts from €30/month and covers hosting support,
+            small fixes and ongoing access to me.
           </p>
-
           <div className="pricing-note-list">
-            <span>Upfront build fee for the website</span>
-            <span>Minimum care plan from €30/month</span>
-            <span>Basic hosting/deployment support included</span>
-            <span>Small updates and fixes depending on the care level</span>
+            <span>Upfront build fee</span>
+            <span>Monthly care from €30/month</span>
+            <span>Hosting and deployment support</span>
+            <span>Small updates included by tier</span>
           </div>
         </div>
 
@@ -38,32 +35,15 @@ export default function PricingPage({ goToPage }) {
         </div>
       </section>
 
-      <section className="container monthly-care-strip">
-        <div>
-          <p className="eyebrow">Monthly care</p>
-          <h2>The minimum monthly fee keeps the website live and looked after.</h2>
-        </div>
-
-        <p>
-          For the starter tier, the monthly charge is mainly there to cover the practical
-          running setup of the website and a small amount of support from me. Higher care
-          plans can include more regular content updates, checks and improvements.
-        </p>
-      </section>
-
       <section className="faq-section">
         <div className="container faq-grid">
           <div>
             <p className="eyebrow">FAQ</p>
-
-            <h2>Common questions before starting.</h2>
-
+            <h2>Common questions.</h2>
             <p className="faq-intro">
-              Straight answers around upfront cost, monthly care, timelines, content,
-              maintenance and what is included before the website goes live.
+              Straight answers on cost, timelines, content and what happens after launch.
             </p>
           </div>
-
           <div className="faq-list">
             {faqs.map((faq) => (
               <article className="faq-item" key={faq.q}>

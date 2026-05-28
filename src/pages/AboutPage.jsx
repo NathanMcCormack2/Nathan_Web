@@ -1,6 +1,7 @@
 import { Briefcase, Code2, GraduationCap, TerminalSquare } from 'lucide-react';
 import PageIntro from '../components/ui/PageIntro.jsx';
 import { stackItems } from '../data/siteData.js';
+import profilePhoto from '../assets/nathan-profile.jpg';
 
 export default function AboutPage() {
   return (
@@ -13,9 +14,11 @@ export default function AboutPage() {
 
       <section className="container about-split-section">
         <div className="portrait-placeholder">
-          <div className="portrait-frame-text">
-            Add your photo here
-          </div>
+          <img
+            className="portrait-photo"
+            src={profilePhoto}
+            alt="Nathan McCormack"
+          />
         </div>
 
         <div className="about-copy-card">
