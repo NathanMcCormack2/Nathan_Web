@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { ArrowRight, CheckCircle2, Mail, Phone } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Mail, Phone, Loader2 } from 'lucide-react';
 import PageIntro from '../components/ui/PageIntro.jsx';
 
-const contactEmail = 'your-email@example.com';
-const contactPhone = 'Add your phone number';
+const contactEmail = 'nmccormack@zohomail.eu';
 
 const initialForm = {
   name: '',
@@ -17,37 +16,77 @@ const initialForm = {
 };
 
 export default function ContactPage() {
-  const [form, setForm] = useState(initialForm);
+  const [form,   setForm]   = useState(initialForm);
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
   function updateField(field, value) {
-    setForm((current) => ({
-      ...current,
-      [field]: value,
-    }));
+    setForm((current) => ({ ...current, [field]: value }));
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    setStatus('sending');
 
-    const subject = `Website enquiry from ${form.businessName || form.name || 'a local business'}`;
+    const formData = new FormData();
+    formData.append('access_key',    '0767b7c9-bfcd-4e39-bc2c-1b7764926e73');
+    formData.append('subject',       `Website enquiry from ${form.businessName || form.name}`);
+    formData.append('from_name',     form.name);
+    formData.append('replyto',       form.email);
+    formData.append('name',          form.name);
+    formData.append('business_name', form.businessName);
+    formData.append('email',         form.email);
+    formData.append('phone',         form.phone         || 'Not provided');
+    formData.append('enquiry_type',  form.enquiryType);
+    formData.append('business_type', form.businessType);
+    formData.append('current_link',  form.currentLink   || 'Not provided');
+    formData.append('message',       form.message);
 
-    const body = `
-Name: ${form.name}
-Business name: ${form.businessName}
-Email: ${form.email}
-Phone: ${form.phone || 'Not provided'}
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
 
-Enquiry type: ${form.enquiryType}
-Business type: ${form.businessType}
-Current website/social/Google listing: ${form.currentLink || 'Not provided'}
-
-Message:
-${form.message}
-    `.trim();
-
-    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (data.success) {
+        setStatus('success');
+        setForm(initialForm);
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   }
 
+  /* ── SUCCESS STATE ── */
+  if (status === 'success') {
+    return (
+      <>
+        <PageIntro
+          eyebrow="Contact"
+          title="Start with a free website audit or a clear project enquiry."
+          text="Send over your business details, current website, social page or Google listing."
+        />
+        <section className="container contact-success">
+          <div className="contact-success-inner">
+            <CheckCircle2 size={44} />
+            <h2>Enquiry received.</h2>
+            <p>
+              I'll review your details and reply within one business day.
+              If you included a link to your current website or social page,
+              I'll look at that before getting back to you.
+            </p>
+            <button className="btn btn-primary" onClick={() => setStatus('idle')}>
+              Send another enquiry <ArrowRight size={18} />
+            </button>
+          </div>
+        </section>
+      </>
+    );
+  }
+
+  /* ── FORM ── */
   return (
     <>
       <PageIntro
@@ -57,7 +96,8 @@ ${form.message}
       />
 
       <section className="container contact-layout contact-layout-refined">
-        <form className="brief-form contact-brief-refined" onSubmit={handleSubmit}>
+        <form className="brief-form contact-brief-refined" onSubmit={handleSubmit} noValidate>
+
           <div className="contact-form-heading">
             <p className="eyebrow">Project brief</p>
             <h2>Tell me what you need help with.</h2>
@@ -73,18 +113,17 @@ ${form.message}
               <input
                 type="text"
                 value={form.name}
-                onChange={(event) => updateField('name', event.target.value)}
+                onChange={(e) => updateField('name', e.target.value)}
                 placeholder="Your name"
                 required
               />
             </label>
-
             <label>
               Business name
               <input
                 type="text"
                 value={form.businessName}
-                onChange={(event) => updateField('businessName', event.target.value)}
+                onChange={(e) => updateField('businessName', e.target.value)}
                 placeholder="Example Café"
                 required
               />
@@ -97,18 +136,17 @@ ${form.message}
               <input
                 type="email"
                 value={form.email}
-                onChange={(event) => updateField('email', event.target.value)}
+                onChange={(e) => updateField('email', e.target.value)}
                 placeholder="you@example.com"
                 required
               />
             </label>
-
             <label>
               Phone
               <input
                 type="tel"
                 value={form.phone}
-                onChange={(event) => updateField('phone', event.target.value)}
+                onChange={(e) => updateField('phone', e.target.value)}
                 placeholder="Optional"
               />
             </label>
@@ -118,7 +156,7 @@ ${form.message}
             What do you want to start with?
             <select
               value={form.enquiryType}
-              onChange={(event) => updateField('enquiryType', event.target.value)}
+              onChange={(e) => updateField('enquiryType', e.target.value)}
               required
             >
               <option value="" disabled>Choose one</option>
@@ -133,7 +171,7 @@ ${form.message}
             What kind of business is it?
             <select
               value={form.businessType}
-              onChange={(event) => updateField('businessType', event.target.value)}
+              onChange={(e) => updateField('businessType', e.target.value)}
               required
             >
               <option value="" disabled>Choose one</option>
@@ -150,7 +188,7 @@ ${form.message}
             <input
               type="text"
               value={form.currentLink}
-              onChange={(event) => updateField('currentLink', event.target.value)}
+              onChange={(e) => updateField('currentLink', e.target.value)}
               placeholder="Paste a link if you have one"
             />
           </label>
@@ -160,28 +198,37 @@ ${form.message}
             <textarea
               rows="7"
               value={form.message}
-              onChange={(event) => updateField('message', event.target.value)}
+              onChange={(e) => updateField('message', e.target.value)}
               placeholder="Tell me about the business, what is not working online, and whether you already have photos, menus, prices or text ready."
               required
             />
           </label>
 
-          <div className="contact-form-actions">
-            <button className="btn btn-primary" type="submit">
-              Send enquiry <ArrowRight size={18} />
-            </button>
-
-            <p className="form-note">
-              This opens your email app with the enquiry filled in. A direct form handler can be added before launch.
+          {status === 'error' && (
+            <p className="form-error">
+              Something went wrong — please try again or email me directly at {contactEmail}.
             </p>
+          )}
+
+          <div className="contact-form-actions">
+            <button
+              className="btn btn-primary"
+              type="submit"
+              disabled={status === 'sending'}
+            >
+              {status === 'sending' ? (
+                <><Loader2 size={18} className="spin" /> Sending…</>
+              ) : (
+                <>Send enquiry <ArrowRight size={18} /></>
+              )}
+            </button>
           </div>
+
         </form>
 
         <aside className="contact-side-panel contact-side-refined">
           <p className="eyebrow dark">What happens next</p>
-
           <h2>A short, clear process.</h2>
-
           <ul>
             <li><CheckCircle2 /> I review your current website, social page or Google listing.</li>
             <li><CheckCircle2 /> I identify the biggest customer-facing issues.</li>
@@ -201,10 +248,6 @@ ${form.message}
             <a href={`mailto:${contactEmail}`}>
               <Mail size={18} /> {contactEmail}
             </a>
-
-            <div>
-              <Phone size={18} /> {contactPhone}
-            </div>
           </div>
         </aside>
       </section>

@@ -3,6 +3,16 @@ import PageIntro from '../components/ui/PageIntro.jsx';
 
 const projects = [
   {
+    eyebrow: 'Inn · Bar · Kitchen demo',
+    title: 'Tigh Mhóir',
+    text: 'A characterful Irish inn and pub on the Mayo coast. Rooms, food menu, trad events and a proper bar — built with GSAP, Motion and Lenis smooth scroll.',
+    points: ['Atmospheric design', 'GSAP animations', 'Lenis smooth scroll'],
+    page: 'inn-demo',
+    button: 'View Inn demo',
+    preview: 'inn',
+    cardClass: 'inn-demo-card'
+  },
+  {
     eyebrow: 'Fish restaurant demo',
     title: "Sandy's Fish Restaurant",
     text: 'A coastal seafood website with a strong storefront hero, fresh-catch menu sections, gallery, hours and a direct call path.',
@@ -52,6 +62,7 @@ const projects = [
     preview: 'vespera',
     cardClass: 'vespera-demo-card'
   }
+  
 ];
 
 function ProjectPreview({ type }) {
@@ -115,6 +126,21 @@ function ProjectPreview({ type }) {
           <div className="common-preview-phone"><span /><span /><span /></div>
         </div>
         <div className="common-preview-menu"><span /><span /><span /></div>
+      </div>
+    );
+  }
+
+  if (type === 'inn') {
+    return (
+      <div className="inn-preview-window">
+        <div className="inn-preview-top"><span /><span /><span /></div>
+        <div className="inn-preview-hero">
+          <div>
+            <small>Tigh Mhóir · Since 1892</small>
+            <strong>Bar · Inn · Kitchen</strong>
+          </div>
+        </div>
+        <div className="inn-preview-band"><span /><span /><span /></div>
       </div>
     );
   }

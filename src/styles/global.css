@@ -6440,3 +6440,7 @@ select:focus {
   object-position: center top;
   display: block;
 }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin .8s linear infinite; }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
