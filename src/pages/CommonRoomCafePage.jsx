@@ -383,7 +383,7 @@ export default function CommonRoomCafePage({ goToPage }) {
           <ArrowLeft size={14} strokeWidth={2.5} />
           Back to portfolio
         </button>
-        <p>Common Room Cafe · Demo site · McCormack Digital</p>
+        <p>Common Room Cafe · Demo site · McCormack Web Designs</p>
       </footer>
 
       {/* ── MOBILE CALL ── */}

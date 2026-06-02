@@ -612,7 +612,7 @@ export default function InnPage({ goToPage }) {
           <button onClick={() => goToPage('work')} className="inn-back-btn">
             <ArrowLeft size={13}/> Back to portfolio
           </button>
-          <p>© 2025 Tigh Mhóir · Demo site by McCormack Digital</p>
+          <p>© 2025 Tigh Mhóir · Demo site by McCormack Web Designs</p>
         </div>
       </footer>
 

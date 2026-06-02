@@ -340,7 +340,7 @@ export default function MarioPizzaPage({ goToPage }) {
           <ArrowLeft size={14} strokeWidth={2.5} />
           Return to portfolio
         </button>
-        <p>Mario's Pizza · Demo site · McCormack Digital</p>
+        <p>Mario's Pizza · Demo site · McCormack Web Designs</p>
       </footer>
 
       {/* ── MOBILE CALL ── */}

@@ -435,7 +435,7 @@ export default function VesperaPage({ goToPage }) {
           <ArrowLeft size={17} />
           Return to portfolio work
         </button>
-        <p>Vespera demo site for McCormack Digital.</p>
+        <p>Vespera demo site for McCormack Web Designs.</p>
       </footer>
 
       <a className="vespera-mobile-reserve" href="#vespera-reserve">

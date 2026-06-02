@@ -512,7 +512,7 @@ export default function SandyFishPage({ goToPage }) {
         <div className="sf-footer-fish" aria-hidden="true">
           <FishSVG size={24} color="rgba(255,255,255,0.2)"/>
         </div>
-        <p>Sandy's Fish Restaurant · Demo · McCormack Digital</p>
+        <p>Sandy's Fish Restaurant · Demo · McCormack Web Designs</p>
       </footer>
 
       {/* ── MOBILE CALL ── */}

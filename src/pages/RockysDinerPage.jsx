@@ -359,7 +359,7 @@ export default function RockysDinerPage({ goToPage }) {
           <ArrowLeft size={17} />
           Return to portfolio work
         </button>
-        <p>Rockys Diner demo site for McCormack Digital.</p>
+        <p>Rockys Diner demo site for McCormack Web Designs.</p>
       </footer>
 
       <a className="rockys-mobile-call" href="tel:+19285550148">

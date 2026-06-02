@@ -7,7 +7,7 @@ export default function Footer({ goToPage }) {
     <footer className="site-footer">
       <div className="container footer-main">
         <div className="footer-brand-block">
-          <p className="footer-kicker">McCormack Digital</p>
+          <p className="footer-kicker">McCormack Web Designs</p>
           <h2>Websites for local businesses.</h2>
           <button className="footer-cta" onClick={() => goToPage('contact')}>
             Request a free audit <ArrowUpRight size={17} />
@@ -35,7 +35,7 @@ export default function Footer({ goToPage }) {
       </div>
 
       <div className="container footer-bottom">
-        <p>© {year} McCormack Digital</p>
+        <p>© {year} McCormack Web Designs</p>
         <p>Design · Build · Maintain</p>
       </div>
     </footer>
