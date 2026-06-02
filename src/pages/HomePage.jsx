@@ -2,35 +2,42 @@ import { ArrowRight } from 'lucide-react';
 
 const demos = [
   {
-    num: '01', label: "Fish Restaurant · West Coast",
+    num: '01', label: 'Inn · Bar · Kitchen · Co. Mayo',
+    title: 'Tigh Mhóir',
+    desc: 'Atmospheric Irish inn with GSAP parallax, smooth scroll, live events and full room booking.',
+    color: '#1B3A2F', accent: '#C8873E', textLight: true,
+    page: 'inn-demo',
+  },
+  {
+    num: '02', label: "Fish Restaurant · West Coast",
     title: "Sandy's Fish Restaurant",
     desc: 'Coastal seafood with animated hero, fresh-catch menu and gallery.',
     color: '#0D3355', accent: '#D64832', textLight: true,
     page: 'sandys-fish-demo',
   },
   {
-    num: '02', label: 'American Diner · Galway',
+    num: '03', label: 'American Diner · Galway',
     title: 'Rockys Diner',
     desc: 'Bold Americana atmosphere, full menu board and family callout.',
     color: '#172245', accent: '#B51E2B', textLight: true,
     page: 'rockys-diner-demo',
   },
   {
-    num: '03', label: 'Pizza Restaurant · Galway',
+    num: '04', label: 'Pizza Restaurant · Galway',
     title: "Mario's Pizza",
     desc: 'Warm Italian character, wood-fired menu and polaroid gallery.',
     color: '#1C0F0A', accent: '#C02B19', textLight: true,
     page: 'pizza-demo',
   },
   {
-    num: '04', label: 'Café · Galway',
+    num: '05', label: 'Café · Galway',
     title: 'Common Room Café',
     desc: 'Indie café energy with drink highlights and study seating.',
     color: '#F5E4C4', accent: '#C4471A', textLight: true,
     page: 'common-room-cafe-demo',
   },
   {
-    num: '05', label: 'Fine Dining · London',
+    num: '06', label: 'Fine Dining · London',
     title: 'Vespera',
     desc: 'Editorial luxury, tasting-menu storytelling and private dining.',
     color: '#070706', accent: '#B98D54', textLight: true,
@@ -63,15 +70,15 @@ export default function HomePage({ goToPage }) {
           </div>
           <div className="hp-hero-meta">
             <div className="hp-hero-meta-item">
-              <strong>From €450</strong>
-              <span>Complete build</span>
+              <strong>€600 – €1,500</strong>
+              <span>Typical build cost</span>
             </div>
             <div className="hp-hero-meta-item">
-              <strong>2–3 weeks</strong>
+              <strong>1–2 weeks</strong>
               <span>Typical turnaround</span>
             </div>
             <div className="hp-hero-meta-item">
-              <strong>€30/mo</strong>
+              <strong>€50/mo</strong>
               <span>Care plan from</span>
             </div>
           </div>
@@ -145,7 +152,7 @@ export default function HomePage({ goToPage }) {
             Request your free audit <ArrowRight size={17} />
           </button>
           <button className="hp-cta-secondary" onClick={() => goToPage('pricing')}>
-            View packages & pricing
+            View pricing
           </button>
         </div>
       </section>

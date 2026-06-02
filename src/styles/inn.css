@@ -292,16 +292,35 @@
   min-height: 640px;
 }
 
-.inn-welcome-photos { position: relative; overflow: hidden; background: var(--stone); }
-.inn-wp-main { position: absolute; inset: 0; top: 0; bottom: 40%; overflow: hidden; }
-.inn-wp-main img { transition: transform .7s ease; }
+.inn-welcome-photos {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--stone);
+  min-height: 540px;
+}
+.inn-wp-main {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+.inn-wp-main img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .7s ease;
+}
 .inn-welcome-photos:hover .inn-wp-main img { transform: scale(1.03); }
 
 .inn-wp-small {
-  position: absolute; bottom: 0; left: 0; right: 0; top: 60%;
+  height: 200px;
+  flex-shrink: 0;
   overflow: hidden;
+  position: relative;
 }
-.inn-wp-small img { transition: transform .7s ease; }
+.inn-wp-small img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .7s ease;
+}
 .inn-welcome-photos:hover .inn-wp-small img { transform: scale(1.03); }
 
 .inn-wp-caption {
@@ -632,7 +651,7 @@
   .inn-header { grid-template-columns: auto 1fr auto; }
   .inn-nav { display: none; }
   .inn-welcome { grid-template-columns: 1fr; }
-  .inn-welcome-photos { min-height: 400px; }
+  .inn-welcome-photos { min-height: 480px; }
   .inn-food-layout { grid-template-columns: 1fr; gap: 36px; }
   .inn-bar-section { grid-template-columns: 1fr; }
   .inn-bar-photo { min-height: 280px; }

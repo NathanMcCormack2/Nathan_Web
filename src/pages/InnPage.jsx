@@ -27,7 +27,7 @@ const PHOTOS = {
   room3:     'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&auto=format&fit=crop&q=85',
   room4:     'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=800&auto=format&fit=crop&q=85',
   sunday:    'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&auto=format&fit=crop&q=85',
-  quiz:      'https://images.unsplash.com/photo-1528495612343-9ca542193d13?w=800&auto=format&fit=crop&q=85',
+  quiz:      'https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=800&auto=format&fit=crop&q=85',
 };
 
 /* ── DATA ── */
@@ -612,7 +612,7 @@ export default function InnPage({ goToPage }) {
           <button onClick={() => goToPage('work')} className="inn-back-btn">
             <ArrowLeft size={13}/> Back to portfolio
           </button>
-          <p>© 2025 Tigh Mhóir · Demo site by McCormack Web Designs</p>
+          <p>© 2025 Tigh Mhóir · Demo site by McCormack Digital</p>
         </div>
       </footer>
 

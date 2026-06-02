@@ -6444,3 +6444,230 @@ select:focus {
 @keyframes spin { to { transform: rotate(360deg); } }
 .spin { animation: spin .8s linear infinite; }
 .btn:disabled { opacity: .55; cursor: not-allowed; }
+
+/* ── Add to bottom of global.css ── */
+
+/* PRICE RANGE */
+.pricing-range-section {
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(56px, 8vw, 96px) 0;
+}
+.pricing-range-inner { max-width: 820px; margin: 0 auto; }
+
+.pricing-range-card {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.pricing-range-block {
+  padding: clamp(28px, 4vw, 44px);
+}
+.pricing-range-block > span {
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.pricing-range-block > strong {
+  display: block;
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.pricing-range-block > p {
+  font-size: 15px;
+  line-height: 1.72;
+  color: var(--muted);
+  margin: 0;
+}
+.pricing-range-divider {
+  width: 1px;
+  background: var(--line);
+  align-self: stretch;
+}
+.pricing-range-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px 20px;
+  background: rgba(38, 56, 45, 0.06);
+  border: 1px solid rgba(38, 56, 45, 0.14);
+  border-radius: 2px;
+}
+.pricing-range-note svg { color: var(--forest); flex-shrink: 0; margin-top: 2px; }
+.pricing-range-note p { font-size: 14px; line-height: 1.65; color: var(--ink-2); margin: 0; }
+
+/* COST FACTORS */
+.pricing-factors-light {
+  padding: clamp(64px, 9vw, 108px) 0;
+}
+.pricing-factors-head {
+  max-width: 600px;
+  margin-bottom: clamp(40px, 6vw, 60px);
+}
+.pricing-factors-head h2 {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  line-height: 1.15;
+  margin: 0 0 14px;
+}
+.pricing-factors-head p { font-size: 15px; line-height: 1.72; color: var(--muted); margin: 0; }
+
+.pricing-factors-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.pricing-factor-row {
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--panel);
+}
+.pricing-factor-row strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.pricing-factor-row p { font-size: 14px; line-height: 1.65; color: var(--muted); margin: 0; }
+
+/* CARE PLAN */
+.pricing-care-section {
+  background: var(--ink);
+  padding: clamp(64px, 9vw, 108px) 0;
+}
+.pricing-care-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+.pricing-care-copy .eyebrow { color: var(--accent); }
+.pricing-care-copy h2 {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--paper);
+  line-height: 1.1;
+  margin: 0 0 18px;
+}
+.pricing-care-copy p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(245, 240, 232, 0.6);
+  margin: 0 0 16px;
+}
+.pricing-care-range {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 24px;
+  border-top: 1px solid rgba(245, 240, 232, 0.1);
+  padding-top: 24px;
+}
+.pricing-care-range > div {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.pricing-care-range strong {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--paper);
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+}
+.pricing-care-range span { font-size: 13px; color: rgba(245, 240, 232, 0.5); line-height: 1.5; }
+
+.pricing-care-aside {
+  border: 1px solid rgba(245, 240, 232, 0.12);
+  padding: clamp(24px, 3.5vw, 36px);
+  border-radius: 2px;
+  background: rgba(245, 240, 232, 0.04);
+}
+.pricing-care-aside-title {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+.pricing-care-aside > p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.5);
+  margin: 0 0 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.1);
+}
+.pricing-care-included .eyebrow {
+  color: rgba(245, 240, 232, 0.4);
+  margin-bottom: 14px;
+  display: block;
+}
+.pricing-care-included > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(245, 240, 232, 0.6);
+}
+.pricing-care-included > div:last-child { border-bottom: none; }
+.pricing-care-included svg { color: var(--forest); flex-shrink: 0; }
+
+/* PRICING CTA */
+.pricing-cta-section {
+  background: var(--forest);
+  padding: clamp(56px, 8vw, 88px) 0;
+  text-align: center;
+}
+.pricing-cta-inner { max-width: 580px; margin: 0 auto; }
+.pricing-cta-inner h2 {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--paper);
+  margin: 0 0 14px;
+  line-height: 1.1;
+}
+.pricing-cta-inner p {
+  font-size: 15px;
+  line-height: 1.72;
+  color: rgba(245, 240, 232, 0.65);
+  margin: 0 0 28px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 760px) {
+  .pricing-range-card { grid-template-columns: 1fr; }
+  .pricing-range-divider { width: 100%; height: 1px; }
+  .pricing-factors-list { grid-template-columns: 1fr; }
+  .pricing-care-inner { grid-template-columns: 1fr; }
+}

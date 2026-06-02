@@ -92,31 +92,57 @@ export const examples = [
   }
 ];
 
+// Replace the existing `packages` array in siteData.js with this:
+
 export const packages = [
   {
     name: 'Essential Presence',
-    price: 'From €450',
-    monthly: 'Care from €30/month',
-    bestFor: 'A business that needs a clean site customers can trust.',
-    features: ['Homepage or compact multi-page structure', 'Mobile-first layout', 'Opening hours, location and contact', 'Basic SEO setup', 'Deployment support'],
-    highlight: false
+    price: '€450 – €650',
+    monthly: 'Care from €50/month',
+    firstYear: '€810 – €1,010',
+    bestFor: 'A business that needs a clean, trustworthy site fast.',
+    features: [
+      'Homepage or compact 2–3 page structure',
+      'Mobile-first layout',
+      'Opening hours, location and contact',
+      'Tap-to-call and directions button',
+      'Basic SEO setup',
+      'Deployment and launch support',
+    ],
+    highlight: false,
   },
   {
     name: 'Local Business Site',
-    price: 'From €850',
+    price: '€850 – €1,200',
     monthly: 'Care from €55/month',
-    bestFor: 'Restaurants, cafés, shops and service businesses with more content.',
-    features: ['Multiple pages', 'Menu/services structure', 'Gallery/image sections', 'Contact form or direct enquiry path', 'Stronger content and conversion layout', 'Launch checklist'],
-    highlight: true
+    firstYear: '€1,510 – €1,860',
+    bestFor: 'Restaurants, cafés, shops and service businesses.',
+    features: [
+      '4–6 pages with full content structure',
+      'Menu, services or product sections',
+      'Gallery and image sections',
+      'Contact form with email delivery',
+      'Stronger conversion layout',
+      'Launch checklist and handover',
+    ],
+    highlight: true,
   },
   {
     name: 'Signature Build',
-    price: 'From €1,250',
+    price: '€1,250 – €1,800',
     monthly: 'Care from €85/month',
-    bestFor: 'A business that wants a more distinctive brand presence.',
-    features: ['Custom visual direction', 'Advanced page sections', 'Testimonials/reviews area', 'Polished case-study style layout', 'Analytics-ready setup', 'Priority support option'],
-    highlight: false
-  }
+    firstYear: '€2,270 – €2,820',
+    bestFor: 'A business that wants a distinctive, premium presence.',
+    features: [
+      'Custom visual direction and brand feel',
+      'Advanced page sections and animations',
+      'Testimonials and social proof layout',
+      'Analytics setup and reporting',
+      'Priority support option',
+      'Fully documented handover',
+    ],
+    highlight: false,
+  },
 ];
 
 export const maintenanceItems = [
@@ -136,8 +162,8 @@ export const faqs = [
     a: 'Yes. Social platforms are useful, but a website gives your business a professional home online where customers can quickly find your key details without scrolling through posts.'
   },
   {
-    q: 'Can the site include bookings or payments later?',
-    a: 'The first packages focus on brochure-style websites. Bookings, payments or admin systems can be scoped later as a separate upgrade.'
+    q: 'Can the site include bookings or a payment system?',
+    a: 'Not at the moment. I currently build brochure-style websites — the kind that give your business a clear, professional presence online and make it easy for customers to call, find you or get in touch. Booking systems and payment integrations are more complex and not something I offer right now. If that is something you need, I will tell you upfront rather than take the project on.'
   },
   {
     q: 'Can you update my menu or opening hours later?',

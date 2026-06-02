@@ -9,7 +9,7 @@ export default function MaintenancePage({ goToPage }) {
       <PageIntro
         eyebrow="Care Plan"
         title="Keep your website current after launch."
-        text="Monthly plans covering hosting checks, content updates, fixes and support. From €30/month."
+        text="Monthly plans covering hosting checks, content updates, fixes and support. From €50/month."
       />
 
       <section className="container maintenance-dashboard-section">
