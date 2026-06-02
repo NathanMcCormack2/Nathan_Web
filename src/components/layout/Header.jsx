@@ -14,7 +14,7 @@ export default function Header({ activePage, goToPage, mobileOpen, setMobileOpen
       <div className="container header-inner">
         <button className="brand" onClick={() => goToPage('home')} aria-label="Go to homepage">
           <span className="brand-text">
-            <strong>McCormack Digital</strong>
+            <strong>McCormack Web Designs</strong>
             <small>Design · Build · Maintain</small>
           </span>
         </button>

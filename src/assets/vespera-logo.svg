@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322 82" role="img" aria-labelledby="vesperaTitle vesperaDesc">
+  <title id="vesperaTitle">Vespera</title>
+  <desc id="vesperaDesc">A refined Vespera restaurant wordmark with a fine gold monogram.</desc>
+  <defs>
+    <linearGradient id="vesperaGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f1d39b"/>
+      <stop offset="0.55" stop-color="#b98d54"/>
+      <stop offset="1" stop-color="#7c5a33"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#vesperaGold)" stroke-linecap="square" stroke-width="2">
+    <path d="M18 13 38 66 59 13"/>
+    <path d="M28 13 38 40 49 13"/>
+    <path d="M18 69h41"/>
+    <path d="M38 66V40"/>
+  </g>
+  <circle cx="38.5" cy="40.5" r="35" fill="none" stroke="#b98d54" stroke-width="1" opacity="0.55"/>
+  <circle cx="38.5" cy="40.5" r="29" fill="none" stroke="#f5ecdc" stroke-width="0.65" opacity="0.42"/>
+  <text x="88" y="42" fill="#f5ecdc" font-family="'Bodoni Moda', 'Didot', 'Bodoni 72', Georgia, serif" font-size="30" font-weight="600">VESPERA</text>
+  <path d="M90 52h184" stroke="#b98d54" stroke-width="1" opacity="0.72"/>
+  <text x="90" y="68" fill="#b98d54" font-family="'IBM Plex Sans Condensed', Arial, sans-serif" font-size="11" font-weight="600">MAYFAIR TASTING ROOMS</text>
+</svg>
