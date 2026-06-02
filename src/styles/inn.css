@@ -1,0 +1,679 @@
+/* ══════════════════════════════════════════════════════════════
+   TIGH MHÓIR — Full redesign
+   Palette: Heritage green · warm amber · cream · dark timber
+   Packages: GSAP (parallax, text reveal, counters) · Motion · Lenis
+   ══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Barlow+Condensed:wght@500;600;700;800&display=swap');
+
+/* ── WORK PAGE PREVIEW CARD ── */
+.featured-demo-card.inn-demo-card {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(196,115,42,.28), transparent 55%),
+    linear-gradient(135deg, #1B3A2F 0%, #2D5944 55%, #1a3028 100%);
+  border-radius: 3px 3px 3px 34px;
+}
+.inn-preview-window {
+  position: relative; width: min(390px,100%); min-height: 284px; overflow: hidden;
+  border: 1px solid rgba(196,115,42,.4); background: #14211a;
+  box-shadow: 12px 12px 0 rgba(10,16,12,.5); transform: rotate(-1deg);
+}
+.inn-preview-top { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid rgba(196,115,42,.15); }
+.inn-preview-top span { width: 8px; height: 8px; border-radius: 50%; background: #C8873E; opacity: .75; }
+.inn-preview-hero {
+  min-height: 170px; padding: 28px 20px; display: flex; align-items: flex-end;
+  background: linear-gradient(160deg, #1B3A2F, #0e1d16);
+  position: relative; overflow: hidden;
+}
+.inn-preview-hero::before {
+  content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 200px; height: 90px;
+  background: radial-gradient(ellipse, rgba(196,115,42,.3), transparent 70%);
+}
+.inn-preview-hero small { font-family:'Barlow Condensed',sans-serif; font-size:9px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(196,115,42,.7); display:block; margin-bottom:4px; }
+.inn-preview-hero strong { font-family:'Cinzel',serif; font-size:18px; font-weight:600; color:#f5e8cc; letter-spacing:.04em; display:block; }
+.inn-preview-band { display:flex; gap:6px; padding:10px 14px; border-top:1px solid rgba(196,115,42,.12); }
+.inn-preview-band span { height:4px; border-radius:2px; background:rgba(196,115,42,.22); flex:1; }
+
+/* ══════════════════════════════════════════════════════════════
+   TOKENS
+   ══════════════════════════════════════════════════════════════ */
+.inn {
+  --ivy:      #1B3A2F;
+  --moss:     #2D5944;
+  --fern:     #3D7052;
+  --amber:    #C8873E;
+  --amber-l:  #D99648;
+  --honey:    #D4A843;
+  --cream:    #FDF3E3;
+  --stone:    #F0E6D4;
+  --parchment:#FEFAF3;
+  --bark:     #2C1810;
+  --timber:   #5C3018;
+  --muted:    rgba(28,20,14,.6);
+  --muted-l:  rgba(28,20,14,.4);
+  --line:     rgba(28,20,14,.12);
+  --line-inv: rgba(245,232,204,.13);
+
+  --ff-display: 'Cinzel','Georgia',serif;
+  --ff-serif:   'Crimson Pro','Georgia',serif;
+  --ff-cond:    'Barlow Condensed',Arial,sans-serif;
+
+  background: var(--parchment);
+  color: var(--bark);
+  font-family: var(--ff-serif);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.inn * { box-sizing: border-box; }
+.inn a { color: inherit; text-decoration: none; }
+.inn img { display: block; max-width: 100%; height: 100%; object-fit: cover; }
+
+/* ── SHARED ── */
+.inn-eyebrow {
+  font-family: var(--ff-cond);
+  font-size: .72rem; font-weight: 800; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--amber); margin: 0 0 12px; display: block;
+}
+.inn-eyebrow.light { color: rgba(212,168,67,.9); }
+
+.inn-section-head { text-align: center; max-width: 620px; margin: 0 auto clamp(44px,6vh,68px); }
+.inn-section-h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(1.9rem,4vw,3.6rem);
+  font-weight: 600; letter-spacing: .04em; color: var(--ivy);
+  margin: 0 0 14px; line-height: 1.1;
+}
+.inn-section-sub {
+  font-family: var(--ff-serif); font-size: 1.06rem; line-height: 1.72;
+  color: var(--muted); margin: 0;
+}
+
+/* ── BUTTONS ── */
+.inn-btn-primary {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 14px 26px; background: var(--amber); color: #fff; border-radius: 3px;
+  font-family: var(--ff-cond); font-size: .9rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; border: none; cursor: pointer;
+  transition: background .22s, transform .22s;
+}
+.inn-btn-primary:hover { background: var(--amber-l); transform: translateY(-2px); }
+
+.inn-btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 24px; border: 2px solid rgba(245,232,204,.42); color: var(--cream);
+  border-radius: 3px; font-family: var(--ff-cond); font-size: .88rem;
+  font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  background: none; cursor: pointer;
+  transition: border-color .22s, background .22s, transform .22s;
+}
+.inn-btn-secondary:hover { border-color: rgba(245,232,204,.8); background: rgba(245,232,204,.08); transform: translateY(-2px); }
+
+/* ── TONIGHT BANNER ── */
+.inn-tonight-bar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  justify-content: center;
+  background: var(--ivy); color: var(--cream);
+  padding: 10px clamp(18px,4vw,52px);
+  font-family: var(--ff-cond); font-size: .78rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+}
+.inn-tonight-pulse {
+  width: 8px; height: 8px; border-radius: 50%; background: #4ade80; flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(74,222,128,.22);
+  animation: inn-pulse 2.2s ease-in-out infinite;
+}
+@keyframes inn-pulse { 0%,100% { box-shadow: 0 0 0 3px rgba(74,222,128,.22); } 50% { box-shadow: 0 0 0 8px rgba(74,222,128,.06); } }
+.inn-tonight-bar strong { color: #fff; letter-spacing: .14em; }
+.inn-tonight-sep { opacity: .35; }
+.inn-tonight-bar > span { opacity: .75; }
+.inn-tonight-more {
+  display: inline-flex; align-items: center; gap: 4px;
+  color: var(--honey); opacity: .85; margin-left: 8px;
+  transition: opacity .2s, gap .2s;
+}
+.inn-tonight-more:hover { opacity: 1; gap: 7px; }
+
+/* ── HEADER ── */
+.inn-header {
+  position: fixed; inset: 0 0 auto; z-index: 100;
+  display: grid; grid-template-columns: auto 1fr auto auto;
+  align-items: center; gap: 20px;
+  padding: 13px clamp(18px,4vw,52px);
+  background: rgba(27,58,47,.92); backdrop-filter: blur(18px) saturate(1.1);
+  border-bottom: 1px solid var(--line-inv);
+}
+.inn-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid var(--line-inv); border-radius: 2px; background: transparent;
+  color: rgba(245,232,204,.6); padding: 7px 12px; cursor: pointer;
+  font-family: var(--ff-cond); font-size: .78rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; transition: color .2s, border-color .2s;
+}
+.inn-back:hover { color: var(--cream); border-color: rgba(245,232,204,.4); }
+
+.inn-header-brand { display: flex; flex-direction: column; align-items: center; }
+.inn-header-name { font-family: var(--ff-display); font-size: 1.1rem; font-weight: 600; color: var(--cream); letter-spacing: .08em; line-height: 1; }
+.inn-header-tag { font-family: var(--ff-cond); font-size: .62rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--honey); opacity: .75; margin-top: 3px; }
+
+.inn-nav { display: flex; align-items: center; justify-content: flex-end; gap: clamp(16px,2.5vw,36px); }
+.inn-nav a {
+  font-family: var(--ff-cond); font-size: .82rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: rgba(245,232,204,.58);
+  padding: 3px 0; position: relative; transition: color .2s;
+}
+.inn-nav a::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 100%; height: 1px; background: var(--amber); transition: right .25s ease; }
+.inn-nav a:hover { color: var(--cream); }
+.inn-nav a:hover::after { right: 0; }
+
+.inn-header-cta {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 18px; background: var(--amber); color: #fff; border-radius: 2px;
+  font-family: var(--ff-cond); font-size: .8rem; font-weight: 700; letter-spacing: .06em;
+  transition: background .2s, transform .2s;
+}
+.inn-header-cta:hover { background: var(--amber-l); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.inn-hero {
+  position: relative; min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; overflow: hidden; isolation: isolate;
+  padding: 120px clamp(24px,6vw,80px) 80px;
+}
+
+.inn-hero-media {
+  position: absolute; inset: 0; z-index: -1;
+  overflow: hidden; /* key — photo expands here for parallax */
+}
+.inn-hero-media img {
+  width: 100%; height: 130%; /* extra height for parallax travel */
+  object-fit: cover; object-position: center 30%;
+  filter: saturate(.88) brightness(.72) contrast(1.04);
+}
+.inn-hero-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(27,58,47,.55) 0%, rgba(14,28,22,.3) 40%, rgba(12,20,16,.82) 100%),
+    radial-gradient(ellipse at 50% 70%, rgba(200,135,62,.15), transparent 55%);
+}
+
+/* Floating badges */
+.inn-hero-badge {
+  position: absolute; z-index: 2;
+  font-family: var(--ff-cond); font-size: .7rem; font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase;
+  border-radius: 50%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,.35);
+}
+.inn-hero-badge-open {
+  top: 120px; right: clamp(24px,5vw,72px);
+  width: 80px; height: 80px; gap: 4px;
+  background: var(--ivy); color: var(--cream); border: 2px solid rgba(245,232,204,.2);
+  font-size: .65rem;
+}
+.inn-hero-badge-est {
+  bottom: 80px; left: clamp(24px,5vw,72px);
+  width: 72px; height: 72px; gap: 0;
+  background: var(--amber); color: #fff; transform: rotate(-8deg);
+  font-size: 1rem; line-height: 1.15;
+}
+.inn-open-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74,222,128,.25); margin-bottom: 4px;
+  animation: inn-pulse 2.2s ease-in-out infinite;
+}
+
+.inn-hero-body { position: relative; z-index: 2; max-width: 820px; }
+.inn-hero-location {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--ff-cond); font-size: .72rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--honey); opacity: .8; margin-bottom: clamp(20px,3vh,36px);
+}
+
+/* GSAP-animated lines — each .line is a separate block */
+.inn-hero-lines {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0; margin-bottom: clamp(20px,3vh,32px);
+  overflow: hidden; /* clips the yPercent reveal */
+}
+.inn-hero-lines .line {
+  display: block;
+  font-family: var(--ff-display);
+  font-size: clamp(48px,9vw,118px);
+  font-weight: 600; letter-spacing: .03em; line-height: 1;
+  color: var(--cream);
+  text-shadow: 0 4px 40px rgba(0,0,0,.45);
+}
+.inn-hero-lines .line:nth-child(2) { color: var(--honey); }
+
+.inn-hero-sub {
+  font-family: var(--ff-serif); font-style: italic;
+  font-size: clamp(1rem,1.5vw,1.22rem); line-height: 1.7;
+  color: rgba(245,232,204,.72); margin: 0 0 clamp(24px,3.5vh,40px); max-width: 560px;
+}
+.inn-hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+.inn-hero-facts {
+  display: flex; align-items: center; gap: 12px; justify-content: center;
+  font-family: var(--ff-cond); font-size: .7rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: rgba(245,232,204,.45); flex-wrap: wrap;
+}
+.inn-hero-facts span { display: flex; align-items: center; gap: 5px; }
+.inn-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--amber); opacity: .45; }
+
+.inn-scroll-cue {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  color: rgba(245,232,204,.35); z-index: 2;
+  animation: inn-bounce 2s ease-in-out infinite;
+}
+@keyframes inn-bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
+
+/* ── INFO BAND ── */
+.inn-band {
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+  background: var(--ivy); color: var(--cream);
+}
+.inn-band-item {
+  display: flex; align-items: center; gap: 10px; padding: 18px clamp(20px,3.5vw,44px);
+  flex: 1; min-width: 180px; justify-content: center;
+}
+.inn-band-item svg { color: var(--honey); flex-shrink: 0; opacity: .85; }
+.inn-band-item > span { font-family:var(--ff-cond); font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(245,232,204,.55); }
+.inn-band-item > strong { font-family:var(--ff-cond); font-size:.96rem; font-weight:700; letter-spacing:.02em; }
+.inn-band-rule { width:1px; height:36px; background:rgba(245,232,204,.15); flex-shrink:0; }
+
+/* ── WELCOME ── */
+.inn-welcome {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; background: var(--parchment);
+  border-bottom: 1px solid var(--line);
+  min-height: 640px;
+}
+
+.inn-welcome-photos {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--stone);
+  min-height: 540px;
+}
+.inn-wp-main {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+.inn-wp-main img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .7s ease;
+}
+.inn-welcome-photos:hover .inn-wp-main img { transform: scale(1.03); }
+
+.inn-wp-small {
+  height: 200px;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+.inn-wp-small img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .7s ease;
+}
+.inn-welcome-photos:hover .inn-wp-small img { transform: scale(1.03); }
+
+.inn-wp-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(14,28,22,.85));
+  color: var(--cream); padding: 28px 20px 14px;
+  font-family: var(--ff-cond); font-size: .72rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; opacity: .9;
+}
+
+/* A thin stripe between the two photos */
+.inn-welcome-photos::after {
+  content: ''; position: absolute; left: 0; right: 0; top: calc(60% - 2px); height: 4px;
+  background: repeating-linear-gradient(90deg, var(--amber) 0 8px, var(--cream) 8px 16px);
+  z-index: 2;
+}
+
+.inn-welcome-copy {
+  padding: clamp(52px,6.5vw,88px) clamp(36px,5vw,68px);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.inn-welcome-h2 {
+  font-family: var(--ff-display); font-size: clamp(1.7rem,3.2vw,2.8rem);
+  font-weight: 600; letter-spacing: .04em; color: var(--ivy);
+  line-height: 1.15; margin: 0 0 20px;
+}
+.inn-welcome-p { font-size: 1.03rem; line-height: 1.78; color: var(--muted); margin: 0 0 16px; }
+
+.inn-welcome-amenities {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px 20px; margin-top: 28px;
+  border-top: 1px solid var(--line); padding-top: 24px;
+}
+.inn-amenity {
+  display: flex; align-items: center; gap: 9px;
+  font-family: var(--ff-cond); font-size: .78rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+}
+.inn-amenity svg { color: var(--amber); flex-shrink: 0; }
+
+/* ── STATS ── */
+.inn-stats {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  background: var(--ivy); color: var(--cream);
+}
+.inn-stat {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: clamp(28px,4vh,44px) 20px; gap: 6px;
+  border-right: 1px solid rgba(245,232,204,.1);
+}
+.inn-stat:last-child { border-right: none; }
+.inn-stat strong {
+  font-family: var(--ff-display); font-size: clamp(2.4rem,5vw,4rem);
+  font-weight: 600; color: var(--honey); letter-spacing: .04em; line-height: 1;
+}
+.inn-stat span {
+  font-family: var(--ff-cond); font-size: .72rem; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase; opacity: .55;
+}
+
+/* ── ROOMS ── */
+.inn-rooms {
+  background: var(--cream); border-top: 1px solid var(--line);
+  padding: clamp(72px,10vw,120px) clamp(24px,5vw,72px);
+}
+.inn-rooms-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; max-width: 1180px; margin: 0 auto;
+}
+.inn-room-card {
+  background: #fff; border: 1px solid var(--line); border-radius: 3px; overflow: hidden;
+}
+.inn-room-img-wrap { position: relative; height: 220px; overflow: hidden; }
+.inn-room-img-wrap img { transition: transform .6s ease; height: 100%; }
+.inn-room-card:hover .inn-room-img-wrap img { transform: scale(1.04); }
+.inn-room-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: rgba(27,58,47,.85); color: var(--honey); backdrop-filter: blur(6px);
+  font-family: var(--ff-cond); font-size: .65rem; font-weight: 800;
+  letter-spacing: .14em; text-transform: uppercase; padding: 5px 10px; border-radius: 2px;
+}
+.inn-room-body { padding: 20px; }
+.inn-room-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 14px; }
+.inn-room-head h3 { font-family: var(--ff-display); font-size: 1rem; font-weight: 600; color: var(--ivy); letter-spacing: .05em; margin: 0; }
+.inn-room-price { display: flex; align-items: baseline; gap: 3px; flex-shrink: 0; }
+.inn-room-price strong { font-family: var(--ff-display); font-size: 1.3rem; font-weight: 400; color: var(--amber); }
+.inn-room-price span { font-family: var(--ff-cond); font-size: .65rem; font-weight: 700; letter-spacing: .1em; color: var(--muted); }
+.inn-room-features { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.inn-room-features li {
+  font-family: var(--ff-cond); font-size: .7rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+  padding-left: 12px; position: relative;
+}
+.inn-room-features li::before { content: '✦'; position: absolute; left: 0; color: var(--amber); font-size: .5rem; top: 1px; }
+.inn-rooms-footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  max-width: 1180px; margin: 36px auto 0; padding-top: 28px;
+  border-top: 1px solid var(--line); flex-wrap: wrap;
+}
+.inn-rooms-footer p { font-family: var(--ff-cond); font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+
+/* ── FOOD ── */
+.inn-food { background: var(--parchment); }
+
+.inn-food-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  padding: clamp(72px,10vw,120px) clamp(24px,5vw,72px);
+  max-width: 1180px; margin: 0 auto;
+  align-items: start; gap: clamp(32px,5vw,80px);
+}
+
+.inn-food-photos { display: flex; flex-direction: column; gap: 12px; position: relative; }
+.inn-food-photo-main { position: relative; height: 380px; overflow: hidden; border-radius: 3px; }
+.inn-food-photo-main img { transition: transform .6s ease; }
+.inn-food-photo-main:hover img { transform: scale(1.03); }
+.inn-food-photo-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(27,58,47,.88));
+  color: var(--cream); padding: 28px 18px 14px;
+  font-family: var(--ff-cond); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+}
+.inn-food-photo-bar { height: 200px; overflow: hidden; border-radius: 3px; }
+.inn-food-photo-bar img { transition: transform .6s ease; }
+.inn-food-photo-bar:hover img { transform: scale(1.03); }
+
+.inn-food-content { display: flex; flex-direction: column; justify-content: center; }
+
+.inn-chalkboard {
+  background: #1a2b1a;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 22px, rgba(255,255,255,.014) 22px, rgba(255,255,255,.014) 24px);
+  border: 2px solid rgba(255,255,255,.1);
+  padding: clamp(22px,3.5vw,36px); margin-top: 20px;
+  position: relative;
+}
+.inn-chalkboard::before { content: ''; position: absolute; inset: 5px; border: 1px solid rgba(255,255,255,.05); pointer-events: none; }
+.inn-chalkboard-title {
+  font-family: var(--ff-display); font-size: 1.4rem; font-weight: 600;
+  color: #f9f2e4; letter-spacing: .1em; margin: 0 0 20px;
+  padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.inn-menu-list { display: flex; flex-direction: column; gap: 0; }
+.inn-menu-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+  padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.inn-menu-row:last-child { border-bottom: none; }
+.inn-menu-row strong { display: block; font-family: var(--ff-serif); font-size: .96rem; font-weight: 600; color: #f9f2e4; }
+.inn-menu-row em { font-style: italic; font-size: .8rem; color: rgba(249,242,228,.42); }
+.inn-menu-row b { font-family: var(--ff-cond); font-size: .9rem; font-weight: 700; color: var(--honey); flex-shrink: 0; }
+.inn-chalkboard-foot {
+  margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.07);
+  font-family: var(--ff-cond); font-size: .66rem; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: rgba(249,242,228,.32); text-align: center;
+}
+
+/* Bar section */
+.inn-bar-section {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 440px;
+  border-top: 1px solid var(--line);
+}
+.inn-bar-photo { position: relative; overflow: hidden; }
+.inn-bar-photo img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.7) saturate(.85); transition: transform .7s ease; }
+.inn-bar-section:hover .inn-bar-photo img { transform: scale(1.02); }
+.inn-bar-overlay { position: absolute; inset: 0; background: linear-gradient(to right, transparent 60%, rgba(27,58,47,.85) 100%); }
+
+.inn-bar-content {
+  background: var(--ivy); color: var(--cream);
+  padding: clamp(36px,5vw,64px) clamp(28px,4.5vw,56px);
+  display: flex; flex-direction: column; justify-content: center; gap: 0;
+}
+.inn-bar-h3 {
+  font-family: var(--ff-display); font-size: clamp(1.5rem,3vw,2.4rem);
+  font-weight: 600; letter-spacing: .04em; margin: 0 0 24px; line-height: 1.15;
+  color: var(--cream);
+}
+.inn-drinks-grid { display: flex; flex-direction: column; gap: 0; }
+.inn-drink-row {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid var(--line-inv);
+}
+.inn-drink-row:last-child { border-bottom: none; }
+.inn-drink-row strong { display: block; font-family: var(--ff-serif); font-size: .96rem; font-weight: 600; color: var(--cream); }
+.inn-drink-row span { font-style: italic; font-size: .82rem; color: rgba(245,232,204,.42); }
+.inn-drink-row b { font-family: var(--ff-cond); font-size: .9rem; font-weight: 700; color: var(--honey); flex-shrink: 0; }
+
+/* ── EVENTS ── */
+.inn-events { background: var(--stone); padding: clamp(72px,10vw,120px) clamp(24px,5vw,72px); }
+.inn-events-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; max-width: 1180px; margin: 0 auto;
+}
+.inn-event-card { overflow: hidden; border-radius: 3px; background: #fff; border: 1px solid var(--line); }
+.inn-event-photo { position: relative; height: 220px; overflow: hidden; }
+.inn-event-photo img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.78) saturate(.85); transition: transform .55s ease; }
+.inn-event-card:hover .inn-event-photo img { transform: scale(1.05); }
+.inn-event-overlay { position: absolute; inset: 0; }
+.inn-event-when {
+  position: absolute; bottom: 14px; left: 14px; display: flex; flex-direction: column; gap: 2px;
+}
+.inn-event-when span { font-family: var(--ff-cond); font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.65); }
+.inn-event-when strong { font-family: var(--ff-display); font-size: 1.05rem; font-weight: 600; color: #fff; letter-spacing: .04em; }
+.inn-event-body { padding: 18px; }
+.inn-event-body h3 { font-family: var(--ff-display); font-size: 1rem; font-weight: 600; color: var(--ivy); letter-spacing: .04em; margin: 0 0 8px; }
+.inn-event-body p { font-size: .88rem; line-height: 1.65; color: var(--muted); margin: 0; }
+
+/* Tonight feature banner */
+.inn-tonight-feature {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  max-width: 1180px; margin: 28px auto 0;
+  background: var(--ivy); overflow: hidden; border-radius: 3px;
+}
+.inn-tonight-feature-photo { position: relative; min-height: 300px; overflow: hidden; }
+.inn-tonight-feature-photo img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.65) saturate(.85); }
+.inn-tonight-live {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--ff-cond); font-size: .72rem; font-weight: 800;
+  letter-spacing: .18em; text-transform: uppercase; color: #4ade80; margin-bottom: 12px;
+}
+.inn-tonight-feature-copy {
+  padding: clamp(32px,4vw,52px); color: var(--cream); display: flex; flex-direction: column; justify-content: center; gap: 12px;
+}
+.inn-tonight-feature-copy h3 {
+  font-family: var(--ff-display); font-size: clamp(1.4rem,2.8vw,2.2rem);
+  font-weight: 600; letter-spacing: .04em; margin: 0; color: var(--cream);
+}
+.inn-tonight-feature-copy p { font-family: var(--ff-serif); font-size: 1rem; line-height: 1.72; color: rgba(245,232,204,.65); margin: 0; }
+
+/* ── GALLERY ── */
+.inn-gallery { background: var(--parchment); padding: clamp(72px,10vw,120px) clamp(24px,5vw,72px); }
+.inn-gallery-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  grid-template-rows: 260px 260px; gap: 10px; max-width: 1180px; margin: 0 auto;
+}
+.inn-gal-item { margin: 0; overflow: hidden; border-radius: 3px; }
+.inn-gal-photo { position: relative; height: 100%; overflow: hidden; }
+.inn-gal-photo img { height: 100%; transition: transform .5s ease; filter: saturate(.88) brightness(.9); }
+.inn-gal-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(14,28,22,.9));
+  padding: 32px 18px 16px; display: flex; flex-direction: column; gap: 4px;
+}
+.inn-gal-caption strong { font-family: var(--ff-display); font-size: .96rem; font-weight: 600; color: var(--cream); letter-spacing: .04em; }
+.inn-gal-caption span { font-family: var(--ff-serif); font-style: italic; font-size: .82rem; color: rgba(245,232,204,.65); }
+
+/* ── REVIEW ── */
+.inn-review-band {
+  background: var(--ivy); padding: clamp(52px,7vh,80px) clamp(24px,5vw,72px);
+  text-align: center;
+}
+.inn-review { max-width: 680px; margin: 0 auto; }
+.inn-review-stars { display: flex; justify-content: center; gap: 4px; color: var(--honey); margin-bottom: 20px; }
+.inn-review blockquote {
+  font-family: var(--ff-serif); font-style: italic;
+  font-size: clamp(1.1rem,2.2vw,1.65rem); line-height: 1.65;
+  color: var(--cream); margin: 0 0 20px;
+}
+.inn-review cite {
+  font-family: var(--ff-cond); font-size: .72rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; font-style: normal;
+  color: rgba(245,232,204,.4);
+}
+
+/* ── CONTACT ── */
+.inn-contact { position: relative; min-height: 540px; display: flex; align-items: center; overflow: hidden; isolation: isolate; }
+.inn-contact-bg { position: absolute; inset: 0; z-index: -1; }
+.inn-contact-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.45) saturate(.7); }
+.inn-contact-bg-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(14,28,22,.92) 0%, rgba(14,28,22,.65) 60%, rgba(14,28,22,.45) 100%);
+}
+.inn-contact-content {
+  width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 52px;
+  padding: clamp(64px,9vh,104px) clamp(24px,5vw,72px); align-items: center;
+  max-width: 1100px; margin: 0 auto; position: relative;
+}
+.inn-contact-copy { display: flex; flex-direction: column; gap: 16px; color: var(--cream); }
+.inn-contact-copy h2 {
+  font-family: var(--ff-display); font-size: clamp(1.8rem,3.8vw,3.2rem);
+  font-weight: 600; letter-spacing: .04em; color: var(--cream);
+  line-height: 1.1; margin: 0;
+}
+.inn-contact-copy p { font-size: 1rem; line-height: 1.72; color: rgba(245,232,204,.65); margin: 0; }
+.inn-contact-info { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.inn-contact-info > div { display: flex; align-items: center; gap: 9px; font-family: var(--ff-cond); font-size: .8rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: rgba(245,232,204,.5); }
+.inn-contact-info svg { color: var(--amber); flex-shrink: 0; }
+
+.inn-hours-card { background: rgba(245,232,204,.07); border: 1px solid var(--line-inv); padding: 30px 34px; }
+.inn-hours-title { display: block; font-family: var(--ff-cond); font-size: .7rem; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; color: var(--honey); margin-bottom: 22px; }
+.inn-hours-card dl { margin: 0 0 18px; display: flex; flex-direction: column; gap: 12px; }
+.inn-hours-card dl div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line-inv); }
+.inn-hours-card dl div:last-child { border-bottom: none; padding-bottom: 0; }
+.inn-hours-card dt { font-family: var(--ff-cond); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(245,232,204,.42); }
+.inn-hours-card dd { font-family: var(--ff-display); font-size: .9rem; color: var(--cream); margin: 0; }
+.inn-hours-note { display: flex; align-items: center; gap: 8px; font-family: var(--ff-cond); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(245,232,204,.42); margin-top: 8px; }
+.inn-hours-note svg { color: var(--amber); flex-shrink: 0; }
+
+/* ── FOOTER ── */
+.inn-footer { background: var(--ivy); color: var(--cream); }
+.inn-footer-inner {
+  display: grid; grid-template-columns: 1fr auto auto; gap: 40px;
+  padding: clamp(40px,6vw,64px) clamp(24px,5vw,72px) 28px;
+  border-bottom: 1px solid var(--line-inv); max-width: 1180px; margin: 0 auto;
+}
+.inn-footer-brand { display: flex; flex-direction: column; gap: 4px; }
+.inn-footer-brand strong { font-family: var(--ff-display); font-size: 1.1rem; font-weight: 600; letter-spacing: .08em; color: var(--cream); }
+.inn-footer-brand span { font-family: var(--ff-cond); font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(245,232,204,.42); }
+.inn-footer-nav { display: flex; flex-direction: column; gap: 8px; }
+.inn-footer-nav a { font-family: var(--ff-cond); font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(245,232,204,.42); transition: color .2s; }
+.inn-footer-nav a:hover { color: var(--cream); }
+.inn-footer-contact { display: flex; flex-direction: column; gap: 8px; }
+.inn-footer-contact a { display: flex; align-items: center; gap: 8px; font-family: var(--ff-cond); font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: rgba(245,232,204,.42); transition: color .2s; }
+.inn-footer-contact a:hover { color: var(--amber); }
+.inn-footer-bottom {
+  max-width: 1180px; margin: 0 auto; padding: 18px clamp(24px,5vw,72px);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.inn-footer-bottom p { font-family: var(--ff-cond); font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(245,232,204,.22); margin: 0; }
+.inn-back-btn { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line-inv); border-radius: 2px; background: transparent; color: rgba(245,232,204,.5); padding: 8px 14px; font-family: var(--ff-cond); font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: color .2s, border-color .2s; }
+.inn-back-btn:hover { color: var(--cream); border-color: rgba(245,232,204,.35); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .inn-rooms-grid { grid-template-columns: repeat(2,1fr); }
+  .inn-events-grid { grid-template-columns: repeat(2,1fr); }
+  .inn-stats { grid-template-columns: repeat(2,1fr); }
+  .inn-stats .inn-stat { border-bottom: 1px solid rgba(245,232,204,.1); }
+}
+@media (max-width: 900px) {
+  .inn-header { grid-template-columns: auto 1fr auto; }
+  .inn-nav { display: none; }
+  .inn-welcome { grid-template-columns: 1fr; }
+  .inn-welcome-photos { min-height: 480px; }
+  .inn-food-layout { grid-template-columns: 1fr; gap: 36px; }
+  .inn-bar-section { grid-template-columns: 1fr; }
+  .inn-bar-photo { min-height: 280px; }
+  .inn-tonight-feature { grid-template-columns: 1fr; }
+  .inn-tonight-feature-photo { min-height: 260px; }
+  .inn-gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px 220px; }
+  .inn-contact-content { grid-template-columns: 1fr; gap: 36px; }
+  .inn-footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .inn-band { flex-direction: column; }
+  .inn-band-item { width: 100%; border-bottom: 1px solid rgba(245,232,204,.1); justify-content: flex-start; padding: 16px 24px; }
+  .inn-band-item:last-child { border-bottom: none; }
+  .inn-band-rule { display: none; }
+}
+@media (max-width: 600px) {
+  .inn-hero-lines .line { font-size: clamp(38px,10vw,56px); }
+  .inn-rooms-grid { grid-template-columns: 1fr; }
+  .inn-events-grid { grid-template-columns: 1fr; }
+  .inn-gallery-grid { grid-template-columns: 1fr; grid-template-rows: none; }
+  .inn-gal-item { height: 240px; }
+  .inn-stats { grid-template-columns: 1fr 1fr; }
+  .inn-hero-badge-est, .inn-hero-badge-open { display: none; }
+  .inn-hero-ctas { flex-direction: column; align-items: center; }
+  .inn-welcome-amenities { grid-template-columns: 1fr; }
+  .inn-footer-inner { gap: 24px; }
+}

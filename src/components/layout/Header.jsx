@@ -1,20 +1,21 @@
-import { Code2, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { navLinks } from '../../data/siteData.js';
 
 export default function Header({ activePage, goToPage, mobileOpen, setMobileOpen }) {
   return (
     <header className="site-header">
-      <div className="header-rail" aria-hidden="true">
-        <span>LOCAL WEB STUDIO</span>
-        <span>IRELAND</span>
+      <div className="header-rail" aria-label="Studio notice">
+        <span>Independent web design for local businesses</span>
+        <button type="button" onClick={() => goToPage('contact')}>
+          Free website audit available
+        </button>
       </div>
 
       <div className="container header-inner">
         <button className="brand" onClick={() => goToPage('home')} aria-label="Go to homepage">
-          <span className="brand-mark"><Code2 size={22} /></span>
           <span className="brand-text">
-            <strong>Nathan Web Studio</strong>
-            <small>Websites with care plans</small>
+            <strong>McCormack Web Designs</strong>
+            <small>Design · Build · Maintain</small>
           </span>
         </button>
 
@@ -30,14 +31,17 @@ export default function Header({ activePage, goToPage, mobileOpen, setMobileOpen
           ))}
         </nav>
 
-        <button className="availability-pill" onClick={() => goToPage('contact')}>
-          <span className="pulse-dot" /> Available for new builds
-        </button>
+        <div className="header-actions">
+          <button className="availability-pill" onClick={() => goToPage('contact')}>
+            <span className="pulse-dot" /> Free audit
+          </button>
+        </div>
 
         <button
           className="mobile-toggle"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle navigation"
+          aria-expanded={mobileOpen}
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -55,6 +59,10 @@ export default function Header({ activePage, goToPage, mobileOpen, setMobileOpen
                 {link.label}
               </button>
             ))}
+
+            <button className="mobile-quote-link" onClick={() => goToPage('contact')}>
+              Request a free website audit
+            </button>
           </div>
         </div>
       )}

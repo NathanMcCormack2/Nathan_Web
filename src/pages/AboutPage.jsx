@@ -1,59 +1,100 @@
-import { Code2, GraduationCap, TerminalSquare } from 'lucide-react';
+import { Briefcase, Code2, GraduationCap, TerminalSquare } from 'lucide-react';
 import PageIntro from '../components/ui/PageIntro.jsx';
 import { stackItems } from '../data/siteData.js';
+import profilePhoto from '../assets/nathan-profile.jpg';
 
 export default function AboutPage() {
   return (
     <>
       <PageIntro
         eyebrow="About"
-        title="Technical enough to build properly. Practical enough to keep it simple."
-        text="This page should make you feel credible without overwhelming small business owners with developer jargon."
+        title="A technical background, applied to practical websites for local businesses."
+        text="I build clean, maintainable websites for small businesses that need to look professional online without paying for unnecessary complexity."
       />
 
       <section className="container about-split-section">
         <div className="portrait-placeholder">
-          <div className="portrait-frame-text">Add your profile photo here</div>
+          <img
+            className="portrait-photo"
+            src={profilePhoto}
+            alt="Nathan McCormack"
+          />
         </div>
+
         <div className="about-copy-card">
-          <p className="eyebrow">My background</p>
-          <h2>I am a Software & Electronic Engineering graduate building websites for local businesses.</h2>
+          <p className="eyebrow">Nathan McCormack</p>
+
+          <h2>Websites built with structure, care and long-term support in mind.</h2>
+
           <p>
-            I have completed a Level 8 degree in Software & Electronic Engineering, giving me a strong foundation in software development, web technologies, problem solving, testing, deployment and maintainable systems.
+            I am a Software and Electronic Engineering graduate focused on building
+            professional websites for local businesses such as restaurants, cafés,
+            shops, salons and service providers.
           </p>
+
           <p>
-            For clients, that means I am not only thinking about how the website looks. I am also thinking about how it performs, how it is structured, how it is deployed and how it can be updated later.
+            My goal is to give small businesses a clear, trustworthy online presence:
+            somewhere customers can quickly find what they need, understand the business,
+            and take the next step.
+          </p>
+
+          <p>
+            I do not start by adding unnecessary booking systems, payment features or
+            complicated dashboards. I focus first on the parts that matter most:
+            mobile-friendly pages, clear contact details, useful content, strong layout
+            and a website that can be maintained after launch.
           </p>
         </div>
       </section>
 
       <section className="container credibility-grid">
         <article>
-          <GraduationCap size={27} />
-          <h3>Engineering background</h3>
-          <p>Strong technical base from software and electronic engineering.</p>
+          <GraduationCap size={26} />
+
+          <h3>Software & Electronic Engineering</h3>
+
+          <p>
+            I have a Level 8 degree in Software & Electronic Engineering, giving me
+            a strong foundation in software development, problem solving and technical
+            project work.
+          </p>
         </article>
+
         <article>
-          <Code2 size={27} />
-          <h3>Modern web skills</h3>
-          <p>Comfortable with JavaScript, React, CSS, Python and GitHub workflows.</p>
+          <Briefcase size={26} />
+
+          <h3>Professional software experience</h3>
+
+          <p>
+            Before building websites independently, I worked as an undergraduate
+            software developer at Jaguar Land Rover. That experience shaped how I
+            approach structure, maintainability and reliable delivery.
+          </p>
         </article>
+
         <article>
-          <TerminalSquare size={27} />
-          <h3>Maintainable builds</h3>
-          <p>Projects structured so future updates are not messy or fragile.</p>
+          <Code2 size={26} />
+
+          <h3>Built properly, not just visually</h3>
+
+          <p>
+            I care about how a website is put together behind the scenes: clean code,
+            version control, deployment setup and a structure that can be updated as
+            the business changes.
+          </p>
         </article>
       </section>
 
       <section className="tool-stack-section">
         <div className="container tool-stack-inner">
           <div>
-            <p className="eyebrow dark">Tools I use</p>
-            <h2>Built with tools I know properly.</h2>
-            <p>The tools are not the sales pitch, but they show clients the website is backed by a real development workflow.</p>
-          </div>
-          <div className="stack-cloud">
-            {stackItems.map((item) => <span key={item}>{item}</span>)}
+            <p className="eyebrow dark">How I work</p>
+
+            <p>
+              I use a practical web development workflow so each site can be built,
+              reviewed, launched and maintained properly. My clients don't need to
+              understand the tools — they just get a clean, reliable website.
+            </p>
           </div>
         </div>
       </section>
