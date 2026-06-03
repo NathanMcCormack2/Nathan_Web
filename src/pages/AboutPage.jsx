@@ -93,7 +93,7 @@ export default function AboutPage() {
             <p>
               I use a practical web development workflow so each site can be built,
               reviewed, launched and maintained properly. My clients don't need to
-              understand the tools — they just get a clean, reliable website.
+              understand the tools - they just get a clean, reliable website.
             </p>
           </div>
         </div>

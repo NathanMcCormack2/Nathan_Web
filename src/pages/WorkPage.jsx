@@ -166,7 +166,6 @@ export default function WorkPage({ goToPage }) {
       <PageIntro
         eyebrow="Work"
         title="Demo projects built for real local business use cases."
-        text="Each project shows a different direction: diner, fine dining, seafood, pizza and cafe. The goal is simple: make the business feel trustworthy, memorable and easy to contact."
       />
 
       <section className="container featured-demo-stack">
