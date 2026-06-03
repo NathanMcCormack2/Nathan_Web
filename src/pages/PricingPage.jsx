@@ -48,7 +48,7 @@ export default function PricingPage({ goToPage }) {
           <div className="pricing-range-note">
             <CheckCircle2 size={16} />
             <p>
-              I'll give you a specific number — not a range — after a free audit.
+              I'll give you a specific number - not a range - after a free audit.
               Most clients know their exact cost before any work begins.
             </p>
           </div>

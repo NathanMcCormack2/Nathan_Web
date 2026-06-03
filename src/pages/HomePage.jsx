@@ -57,7 +57,7 @@ export default function HomePage({ goToPage }) {
               Websites for the businesses that make your town worth living in.
             </h1>
             <p className="hp-hero-sub">
-              Design, build and monthly care — for restaurants, cafés, shops and local services.
+              Design, build and monthly care - for restaurants, cafés, shops and local services.
             </p>
             <div className="hp-hero-actions">
               <button className="hp-btn-primary" onClick={() => goToPage('contact')}>
@@ -126,7 +126,7 @@ export default function HomePage({ goToPage }) {
         <div className="container hp-offer-grid">
           <div className="hp-offer-item">
             <h3>Design</h3>
-            <p>A look that fits your business — not a template pulled off a shelf.</p>
+            <p>A look that fits your business - not a template pulled off a shelf.</p>
           </div>
           <div className="hp-offer-divider" aria-hidden="true" />
           <div className="hp-offer-item">
