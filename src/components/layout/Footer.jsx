@@ -28,7 +28,7 @@ export default function Footer({ goToPage }) {
         <div className="footer-contact">
           <h3>Get in touch</h3>
           <a href="mailto:nathanmccormack1@gmail.com">
-            nathanmccormack1@gmail.com
+            nmccormack@zohomail.eu
           </a>
           <p>Galway, Ireland</p>
         </div>
